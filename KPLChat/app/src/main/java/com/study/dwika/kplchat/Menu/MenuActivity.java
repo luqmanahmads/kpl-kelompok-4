@@ -4,8 +4,9 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 
+import com.study.dwika.kplchat.Menu.Conversation.ConversationFragment;
+import com.study.dwika.kplchat.Menu.Friend.FriendFragment;
 import com.study.dwika.kplchat.R;
 
 import butterknife.BindView;
@@ -13,14 +14,18 @@ import butterknife.ButterKnife;
 
 public class MenuActivity extends AppCompatActivity {
 
-    @BindView(R.id.toolbar)
-    private Toolbar toolbar;
+//    @BindView(R.id.toolbar)
+//    Toolbar toolbar;
 
     @BindView(R.id.menuViewPager)
-    private ViewPager menuViewPager;
+    ViewPager menuViewPager;
 
     @BindView(R.id.tabLayout)
-    private TabLayout tabLayout;
+    TabLayout tabLayout;
+
+    private MenuViewPagerAdapter menuViewPagerAdapter;
+    private ConversationFragment conversationFragment;
+    private FriendFragment friendFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,5 +34,45 @@ public class MenuActivity extends AppCompatActivity {
 
         ButterKnife.bind(this);
 
+        setupTab();
+
+        setupViewPager(menuViewPager);
     }
+
+    private void setupTab(){
+
+        menuViewPager.setOffscreenPageLimit(2);
+
+        tabLayout.setupWithViewPager(menuViewPager);
+
+        menuViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                menuViewPager.setCurrentItem(position, false);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+
+    }
+
+    private void setupViewPager(ViewPager viewPager){
+
+        menuViewPagerAdapter = new MenuViewPagerAdapter(getSupportFragmentManager());
+        menuViewPagerAdapter.addFragment(new FriendFragment(), "Friends");
+        menuViewPagerAdapter.addFragment(new        ConversationFragment(), "Conversation");
+
+        viewPager.setAdapter(menuViewPagerAdapter);
+
+    }
+
+
 }
