@@ -3,39 +3,48 @@ package com.study.dwika.kplchat.Menu;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.app.FragmentPagerAdapter;
 
-import com.study.dwika.kplchat.Menu.Conversation.ConversationFragment;
-import com.study.dwika.kplchat.Menu.Friend.FriendFragment;
+import java.util.ArrayList;
+import java.util.List;
 
-public class MenuViewPagerAdapter extends FragmentStatePagerAdapter{
+import javax.inject.Inject;
+import javax.inject.Singleton;
 
-    private int tabCount;
+@Singleton
+public class MenuViewPagerAdapter extends FragmentPagerAdapter{
 
-    public MenuViewPagerAdapter(FragmentManager fragmentManager) {
-        super(fragmentManager);
-        this.tabCount = 0;
+    private final List<Fragment> fragmentList = new ArrayList<>();
+    private final List<String> titleList = new ArrayList<>();
+
+    @Inject
+    public MenuViewPagerAdapter(FragmentManager fm) {
+        super(fm);
     }
 
     @Override
     public Fragment getItem(int position) {
-        switch (position) {
-            case 0:
-                return ConversationFragment.newInstance();
-            case 1:
-                return FriendFragment.newInstance();
-            default:
-                return null;
-        }
-
+        return fragmentList.get(position);
     }
 
     @Override
     public int getCount() {
-        return tabCount;
+        return fragmentList.size();
     }
 
-    public void setCount(int count){
-        tabCount = count;
+    public void addFragment(Fragment fragment, String title){
+        fragmentList.add(fragment);
+        titleList.add(title);
     }
+
+    @Override
+    public CharSequence getPageTitle(int position){
+        return titleList.get(position);
+    }
+
+    @Override
+    public int getItemPosition(Object object){
+        return super.getItemPosition(object);
+    }
+
 }
