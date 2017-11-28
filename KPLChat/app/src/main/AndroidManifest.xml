@@ -20,6 +20,7 @@
             android:name="com.study.dwika.kplchat.login.LoginActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
+        <activity android:name=".Menu.MenuActivity"></activity>
     </application>
 
 </manifest>
