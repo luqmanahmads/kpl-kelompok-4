@@ -23,7 +23,7 @@ public class MenuActivity extends AppCompatActivity {
     @BindView(R.id.tabLayout)
     TabLayout tabLayout;
 
-    private MenuViewPagerAdapter menuViewPagerAdapter;
+//    private MenuViewPagerAdapter menuViewPagerAdapter;
     private ConversationFragment conversationFragment;
     private FriendFragment friendFragment;
 
@@ -66,11 +66,11 @@ public class MenuActivity extends AppCompatActivity {
 
     private void setupViewPager(ViewPager viewPager){
 
-        menuViewPagerAdapter = new MenuViewPagerAdapter(getSupportFragmentManager());
-        menuViewPagerAdapter.addFragment(new FriendFragment(), "Friends");
-        menuViewPagerAdapter.addFragment(new        ConversationFragment(), "Conversation");
-
-        viewPager.setAdapter(menuViewPagerAdapter);
+//        menuViewPagerAdapter = new MenuViewPagerAdapter(getSupportFragmentManager());
+//        menuViewPagerAdapter.addFragment(new FriendFragment(), "Friends");
+//        menuViewPagerAdapter.addFragment(new        ConversationFragment(), "Conversation");
+//
+//        viewPager.setAdapter(menuViewPagerAdapter);
 
     }
 
