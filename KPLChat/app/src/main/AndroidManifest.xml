@@ -28,6 +28,8 @@
             </intent-filter>
         </activity>
 
+        <activity android:name="com.study.dwika.kplchat.register.RegisterActivity" />
+
 
     </application>
 
