@@ -1,5 +1,5 @@
-package com.study.dwika.kplchat.Menu;
 
+package com.study.dwika.kplchat.Menu;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -8,16 +8,11 @@ import android.support.v4.app.FragmentPagerAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.inject.Inject;
-import javax.inject.Singleton;
-
-@Singleton
-public class MenuViewPagerAdapter extends FragmentPagerAdapter{
+public class MenuViewPagerAdapter extends FragmentPagerAdapter {
 
     private final List<Fragment> fragmentList = new ArrayList<>();
     private final List<String> titleList = new ArrayList<>();
 
-    @Inject
     public MenuViewPagerAdapter(FragmentManager fm) {
         super(fm);
     }

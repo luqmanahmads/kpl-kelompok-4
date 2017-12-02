@@ -36,6 +36,8 @@ public class MenuActivity extends AppCompatActivity {
 
         setupTab();
 
+        menuViewPagerAdapter = new MenuViewPagerAdapter(getSupportFragmentManager());
+
         setupViewPager(menuViewPager);
     }
 
@@ -66,9 +68,8 @@ public class MenuActivity extends AppCompatActivity {
 
     private void setupViewPager(ViewPager viewPager){
 
-        menuViewPagerAdapter = new MenuViewPagerAdapter(getSupportFragmentManager());
         menuViewPagerAdapter.addFragment(new FriendFragment(), "Friends");
-        menuViewPagerAdapter.addFragment(new        ConversationFragment(), "Conversation");
+        menuViewPagerAdapter.addFragment(new ConversationFragment(), "Conversation");
 
         viewPager.setAdapter(menuViewPagerAdapter);
 
