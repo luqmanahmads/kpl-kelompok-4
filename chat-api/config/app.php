@@ -12,7 +12,7 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => 'Laravel API',
+    'name' => env('APP_NAME', 'Laravel'),
 
     /*
     |--------------------------------------------------------------------------
@@ -126,14 +126,6 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Pagination limit
-    |--------------------------------------------------------------------------
-    |
-    */
-    'pagination_limit' => env('PAGINATE_LIMIT', 20),
-
-    /*
-    |--------------------------------------------------------------------------
     | Autoloaded Service Providers
     |--------------------------------------------------------------------------
     |
@@ -175,9 +167,6 @@ return [
          * Package Service Providers...
          */
         Laravel\Tinker\TinkerServiceProvider::class,
-        Dingo\Api\Provider\LaravelServiceProvider::class,
-        Spatie\Permission\PermissionServiceProvider::class,
-        Laravel\Passport\PassportServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -187,7 +176,6 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        App\Providers\ErrorHandlerServiceProvider::class,
 
     ],
 
@@ -237,7 +225,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-        'Uuid' => Webpatser\Uuid\Uuid::class,
+
     ],
 
 ];
