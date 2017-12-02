@@ -69,6 +69,16 @@
             android:textAllCaps="false"
             android:textColor="@color/white" />
 
+        <Button
+            android:id="@+id/btn_to_register"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dip"
+            android:background="@color/colorPrimary"
+            android:text="Register"
+            android:textAllCaps="false"
+            android:textColor="@color/white" />
+
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
