@@ -1,5 +1,6 @@
 package com.study.dwika.kplchat.register;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -24,7 +25,6 @@ public class RegisterActivity extends AppCompatActivity implements RegisterView 
 
     private RegisterPresenter presenter;
 
-
     /** Attribute of activity_register.xml **/
 
     @BindView(R.id.et_reg_username)
@@ -39,16 +39,23 @@ public class RegisterActivity extends AppCompatActivity implements RegisterView 
     @BindView(R.id.pb_reg)
     public ProgressBar mRegisterProgressBar;
 
+    private ProgressDialog progressDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         ButterKnife.bind(this);
 
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Loading...");
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+
         /** Binding presenter **/
         presenter = new RegisterPresenter(this);
     }
 
+    @OnClick(R.id.btn_reg)
     public void onRegisterClick(View view) {
 
         /** Pass data to presenter if register clicked **/
@@ -59,14 +66,15 @@ public class RegisterActivity extends AppCompatActivity implements RegisterView 
     public void showProgress(){
 
         /** Set progress bar to visible **/
-        mRegisterProgressBar.setVisibility(View.VISIBLE);
-
+//        mRegisterProgressBar.setVisibility(View.VISIBLE);
+        progressDialog.show();
     }
 
     public void hideProgress(){
 
         /** Set progress bar to invisible **/
-        mRegisterProgressBar.setVisibility(View.INVISIBLE);
+//        mRegisterProgressBar.setVisibility(View.INVISIBLE);
+        progressDialog.dismiss();
 
     }
 
@@ -79,7 +87,7 @@ public class RegisterActivity extends AppCompatActivity implements RegisterView 
 
     public void onSuccess(){
 
-        /** Go to menu **/
+        /** Show success message or go to another activity  **/
         Toast.makeText(getBaseContext(), "Success", Toast.LENGTH_LONG).show();
 
     }

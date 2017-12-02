@@ -9,7 +9,7 @@ public class RegisterModel {
 
     public boolean requestRegister(String username, String email, String password){
 
-        System.out.println("MODEL ON REGISTER CLICK");
+        System.out.println("IN MODEL");
 
         /** Send request **/
 
@@ -17,8 +17,7 @@ public class RegisterModel {
 
         /** Return status code **/
 
-        return true;
-        //return false;
+//        return true;
+        return false;
     }
-
 }

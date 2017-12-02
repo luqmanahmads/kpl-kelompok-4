@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c206d865-f2d4-4838-b7ac-df995c98e862" name="Default" comment="" />
+    <list default="true" id="c206d865-f2d4-4838-b7ac-df995c98e862" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/KPLChat/app/src/main/java/com/study/dwika/kplchat/register/RegisterActivity.java" afterPath="$PROJECT_DIR$/KPLChat/app/src/main/java/com/study/dwika/kplchat/register/RegisterActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/KPLChat/app/src/main/java/com/study/dwika/kplchat/register/RegisterModel.java" afterPath="$PROJECT_DIR$/KPLChat/app/src/main/java/com/study/dwika/kplchat/register/RegisterModel.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/KPLChat/app/src/main/java/com/study/dwika/kplchat/register/RegisterPresenter.java" afterPath="$PROJECT_DIR$/KPLChat/app/src/main/java/com/study/dwika/kplchat/register/RegisterPresenter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/KPLChat/app/src/main/res/layout/activity_register.xml" afterPath="$PROJECT_DIR$/KPLChat/app/src/main/res/layout/activity_register.xml" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -39,6 +44,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
@@ -86,9 +94,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
