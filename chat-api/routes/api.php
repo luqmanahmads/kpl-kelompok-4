@@ -1,51 +1,18 @@
 <?php
 
-$api = app('Dingo\Api\Routing\Router');
+use Illuminate\Http\Request;
 
-$api->version('v1', function($api){
+/*
+|--------------------------------------------------------------------------
+| API Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register API routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| is assigned the "api" middleware group. Enjoy building your API!
+|
+*/
 
-    $api->group(['middleware' => ['throttle:60,1', 'bindings'], 'namespace' => 'App\Http\Controllers'], function($api) {
-
-        $api->get('ping', 'Api\PingController@index');
-
-        $api->group(['middleware' => ['auth:api'], ], function ($api) {
-
-            $api->group(['prefix' => 'users'], function ($api) {
-                $api->get('/', 'Api\Users\UsersController@index');
-                $api->post('/', 'Api\Users\UsersController@store');
-                $api->get('/{uuid}', 'Api\Users\UsersController@show');
-                $api->put('/{uuid}', 'Api\Users\UsersController@update');
-                $api->patch('/{uuid}', 'Api\Users\UsersController@update');
-                $api->delete('/{uuid}', 'Api\Users\UsersController@destroy');
-            });
-
-            $api->group(['prefix' => 'roles'], function ($api) {
-                $api->get('/', 'Api\Users\RolesController@index');
-                $api->post('/', 'Api\Users\RolesController@store');
-                $api->get('/{uuid}', 'Api\Users\RolesController@show');
-                $api->put('/{uuid}', 'Api\Users\RolesController@update');
-                $api->patch('/{uuid}', 'Api\Users\RolesController@update');
-                $api->delete('/{uuid}', 'Api\Users\RolesController@destroy');
-            });
-
-            $api->get('permissions', 'Api\Users\PermissionsController@index');
-
-            $api->group(['prefix' => 'me'], function($api) {
-                $api->get('/', 'Api\Users\ProfileController@index');
-                $api->put('/', 'Api\Users\ProfileController@update');
-                $api->patch('/', 'Api\Users\ProfileController@update');
-                $api->put('/password', 'Api\Users\ProfileController@updatePassword');
-            });
-
-            $api->group(['prefix' => 'assets'], function($api) {
-                $api->post('/', 'Api\Assets\UploadFileController@store');
-            });
-
-        });
-
-    });
-
+Route::middleware('auth:api')->get('/user', function (Request $request) {
+    return $request->user();
 });
-
-
-

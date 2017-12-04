@@ -1,78 +1,51 @@
-## Laravel API Starter Kit
+<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
-[![Build Status](https://travis-ci.org/joselfonseca/laravel-api.svg)](https://travis-ci.org/joselfonseca/laravel-api)
-[![StyleCI](https://styleci.io/repos/52485545/shield?branch=master)](https://styleci.io/repos/52485545)
-[![Total Downloads](https://poser.pugx.org/joselfonseca/laravel-api/downloads.svg)](https://packagist.org/packages/joselfonseca/laravel-api) 
-[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+<p align="center">
+<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
+</p>
 
-Laravel API starter Kit will provide you with the tools for making API's that everyone will love, API Authentication is already provided with passport. 
+## About Laravel
 
-Here is a list of the packages installed:
+Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as:
 
-- [Dingo API](https://github.com/dingo/api)
-- [Laravel Passport](https://laravel.com/docs/5.4/passport)
-- [Laravel Permission](https://github.com/spatie/laravel-permission)
-- [Laravel Uuid](https://github.com/webpatser/laravel-uuid)
+- [Simple, fast routing engine](https://laravel.com/docs/routing).
+- [Powerful dependency injection container](https://laravel.com/docs/container).
+- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
+- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
+- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
+- [Robust background job processing](https://laravel.com/docs/queues).
+- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-## Installation
+Laravel is accessible, yet powerful, providing tools needed for large, robust applications. A superb combination of simplicity, elegance, and innovation give you tools you need to build any application with which you are tasked.
 
-To install the project you can use composer
+## Learning Laravel
 
-```bash
-composer create-project joselfonseca/laravel-api new-api
-```
+Laravel has the most extensive and thorough documentation and video tutorial library of any modern web application framework. The [Laravel documentation](https://laravel.com/docs) is thorough, complete, and makes it a breeze to get started learning the framework.
 
-Then run `composer install` again and the error should be gone.
+If you're not in the mood to read, [Laracasts](https://laracasts.com) contains over 900 video tutorials on a range of topics including Laravel, modern PHP, unit testing, JavaScript, and more. Boost the skill level of yourself and your entire team by digging into our comprehensive video library.
 
-Modify the .env file to suit your needs
+## Laravel Sponsors
 
-```
-APP_ENV=local
-APP_DEBUG=true
-APP_KEY=base64:JqyMTmt5qr1CW6BH+GG+4iKfU4RiNjZTLy33TdTT7+4=
+We would like to extend our thanks to the following sponsors for helping fund on-going Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](http://patreon.com/taylorotwell):
 
-API_STANDARDS_TREE=vnd
-API_SUBTYPE=api
-API_PREFIX=api
-API_VERSION=v1
-API_DEBUG=true
+- **[Vehikl](http://vehikl.com)**
+- **[Tighten Co.](https://tighten.co)**
+- **[British Software Development](https://www.britishsoftware.co)**
+- **[Styde](https://styde.net)**
+- **[Codecourse](https://www.codecourse.com)**
+- [Fragrantica](https://www.fragrantica.com)
 
-DB_HOST=localhost
-DB_DATABASE=laravel_api
-DB_USERNAME=homestead
-DB_PASSWORD=secret
+## Contributing
 
-CACHE_DRIVER=file
-SESSION_DRIVER=file
-QUEUE_DRIVER=sync
+Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
 
-MAIL_DRIVER=smtp
-MAIL_HOST=mailtrap.io
-MAIL_PORT=2525
-MAIL_USERNAME=null
-MAIL_PASSWORD=null
-MAIL_ENCRYPTION=null
-```
+## Security Vulnerabilities
 
-When you have the .env with your database connection set up you can run your migrations
-
-```bash
-php artisan migrate
-```
-Then run `php artisan passport:install`
-
-Run `php artisan app:install` and fill out the information of the admin user.
-
-You should be done with the basic installation and configuration.
-
-## Tests
-
-Navigate to the project root and run `vendor/bin/phpunit` after installing all the composer dependencies and after the .env file was created.
-
-## Demo
-
-You can visit the demo in the following link [https://demo.laravelapi.com/](https://demo.laravelapi.com/)
+If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
 
 ## License
 
-The Laravel API Starter kit is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
