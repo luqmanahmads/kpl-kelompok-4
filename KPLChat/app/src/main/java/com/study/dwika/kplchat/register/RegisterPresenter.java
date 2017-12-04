@@ -1,14 +1,16 @@
 package com.study.dwika.kplchat.register;
 
-import java.io.IOException;
+import com.rx2androidnetworking.Rx2AndroidNetworking;
+import com.study.dwika.kplchat.Model.Messages;
+import com.study.dwika.kplchat.Model.MessagesResponse;
+import com.study.dwika.kplchat.Network.APIEndPoint;
 
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
+import java.util.List;
 
-import io.reactivex.Observable;
-import io.reactivex.Scheduler;
+import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by Luqman Ahmad on 11/29/2017.
@@ -16,14 +18,13 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 
 public class RegisterPresenter {
     private RegisterView registerView;
-    private RegisterModel registerModel;
 
     public RegisterPresenter(RegisterView view){
         this.registerView = view;
-        this.registerModel = new RegisterModel();
+
     }
 
-    public void onRegisterClicked(String username, String email, String password){
+    public void onRegisterClicked(String username, String email, String password) {
 
         System.out.println("IN PRESENTER");
 
@@ -31,46 +32,37 @@ public class RegisterPresenter {
         registerView.showProgress();
 
         /** Ask model for data **/
-//        boolean success = registerModel.requestRegister(username, email, password);
+//        Contoh Fast android network + rx java 2 get request
+        Rx2AndroidNetworking.get(APIEndPoint.BASE_URL)
+                .build()
+                .getObjectObservable(MessagesResponse.class)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<MessagesResponse>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
 
-        final String param_username = username;
-        final String param_email = email;
-        final String param_password = password;
+                    }
 
-        new Thread() {
-            public void run() {
-                boolean success = false;
-                Message msg = Message.obtain();
-                Bundle b = new Bundle();
-                msg.what = 1;
-                try {
-                    success = registerModel.requestRegister(param_username, param_email, param_password);
-                    b.putBoolean("success", success);
-                    msg.setData(b);
-                }catch (Exception e1) {
-                    e1.printStackTrace();
-                    success = false;
-                }
+                    @Override
+                    public void onNext(MessagesResponse messagesResponse) {
+                        List<Messages> messagesList = messagesResponse.getMessagesList();
+                        System.out.println("message name " + messagesList.get(0).getMessage());
+                        registerView.hideProgress();
 
-                handler.sendMessage(msg);
-            }
-        }.start();
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+
+
     }
-
-    private Handler handler= new Handler() {
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            boolean success = msg.getData().getBoolean("success");
-
-            /** Stop the progress bar **/
-            registerView.hideProgress();
-
-            if(success){
-                registerView.onSuccess();
-            }
-            else {
-                registerView.showError("Register Failed");
-            }
-        }
-    };
 }
