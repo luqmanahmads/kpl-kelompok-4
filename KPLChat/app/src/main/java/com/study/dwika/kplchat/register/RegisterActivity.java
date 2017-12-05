@@ -4,11 +4,11 @@ import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.androidnetworking.AndroidNetworking;
 import com.study.dwika.kplchat.R;
 
 import butterknife.BindView;
@@ -46,6 +46,8 @@ public class RegisterActivity extends AppCompatActivity implements RegisterView 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         ButterKnife.bind(this);
+
+        AndroidNetworking.initialize(getApplicationContext());
 
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Loading...");

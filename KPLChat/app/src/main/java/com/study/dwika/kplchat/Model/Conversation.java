@@ -6,6 +6,7 @@ package com.study.dwika.kplchat.Model;
 
 public class Conversation {
 
+
     private int conversationId;
     private String title, channelId;
 
