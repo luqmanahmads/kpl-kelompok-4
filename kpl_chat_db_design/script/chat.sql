@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     12/5/2017 6:49:15 PM                         */
+/* Created on:     12/5/2017 9:56:04 PM                         */
 /*==============================================================*/
 
 
@@ -21,7 +21,7 @@ drop table if exists users;
 /*==============================================================*/
 create table conversation
 (
-   id                   int not null,
+   id                   int not null auto_increment,
    title                varchar(40),
    channel_id           varchar(50),
    created_at           datetime,
@@ -39,7 +39,7 @@ User ke user dihitung 1 c';
 create table devices
 (
    id                   varchar(50) not null,
-   users_id             int,
+   user_id              int,
    device_id            varchar(20),
    type                 varchar(10),
    device_token         varchar(50),
@@ -57,7 +57,7 @@ Diasumsika';
 /*==============================================================*/
 create table friends
 (
-   id                   int not null,
+   id                   int not null auto_increment,
    user_id              int,
    friend_id            int not null,
    created_at           datetime,
@@ -71,8 +71,8 @@ create table friends
 /*==============================================================*/
 create table messages
 (
-   id                   int not null,
-   participants_id      int,
+   id                   int not null auto_increment,
+   participant_id       int,
    conversation_id      int,
    users_id             int,
    message_type         varchar(20) not null,
@@ -92,7 +92,7 @@ attachme';
 /*==============================================================*/
 create table participants
 (
-   id                   int not null,
+   id                   int not null auto_increment,
    conversation_id      int,
    users_id             int,
    created_at           datetime,
@@ -106,11 +106,12 @@ create table participants
 /*==============================================================*/
 create table users
 (
-   id                   int not null,
+   id                   int not null auto_increment,
    phone                varchar(16),
    email                varchar(255),
    password             varchar(255),
    name                 varchar(255),
+   remember_token       varchar(100),
    verification_code    varchar(40),
    is_active            bool,
    created_at           datetime,
@@ -119,7 +120,7 @@ create table users
    primary key (id)
 );
 
-alter table devices add constraint FK_user_has_device foreign key (users_id)
+alter table devices add constraint FK_user_has_device foreign key (user_id)
       references users (id) on delete restrict on update restrict;
 
 alter table friends add constraint FK_friend_of_user foreign key (user_id)
@@ -131,7 +132,7 @@ alter table friends add constraint FK_user_has_friends foreign key (friend_id)
 alter table messages add constraint FK_conversation_has_messages foreign key (conversation_id)
       references conversation (id) on delete restrict on update restrict;
 
-alter table messages add constraint FK_participant_message foreign key (participants_id)
+alter table messages add constraint FK_participant_message foreign key (participant_id)
       references participants (id) on delete restrict on update restrict;
 
 alter table messages add constraint FK_sender foreign key (users_id)
