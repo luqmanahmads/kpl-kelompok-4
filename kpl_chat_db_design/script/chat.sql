@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     12/2/2017 1:45:04 PM                         */
+/* Created on:     12/5/2017 6:49:15 PM                         */
 /*==============================================================*/
 
 
@@ -110,9 +110,7 @@ create table users
    phone                varchar(16),
    email                varchar(255),
    password             varchar(255),
-   first_name           varchar(255),
-   last_name            varchar(255),
-   middle_name          varchar(255),
+   name                 varchar(255),
    verification_code    varchar(40),
    is_active            bool,
    created_at           datetime,
