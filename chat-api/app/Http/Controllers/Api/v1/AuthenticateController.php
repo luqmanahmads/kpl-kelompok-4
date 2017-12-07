@@ -3,12 +3,25 @@
 namespace App\Http\Controllers\Api\v1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\RegisterRequest;
+use App\Transformers\UsersTransformer;
+use Dingo\Api\Routing\Helpers;
 use JWTAuth;
 use Illuminate\Http\Request;
 use Tymon\JWTAuth\Exceptions\JWTException;
+use App\Services\UserService;
 
 class AuthenticateController extends Controller
 {
+    use Helpers;
+
+    private $userService;
+
+    public function __construct()
+    {
+        $this->userService = app()->make('userService');
+    }
+
     public function authenticate(Request $request)
     {
         $credential = $request->only('email', 'password');
@@ -46,7 +59,8 @@ class AuthenticateController extends Controller
             return response()->json(['token_absent'], $e->getStatusCode());
         }
         // the token is valid and we have found the user via the sub claim
-        return response()->json(compact('user'));
+//        return response()->json(compact('user'));
+        return $this->response->item($user, new UsersTransformer);
     }
 
     public function getToken()
@@ -61,6 +75,13 @@ class AuthenticateController extends Controller
             return $this->response->errorInternal('Not able to refresh Token');
         }
         return $this->response->withArray(['token' => $refreshedToken]);
+    }
+
+    public function register(RegisterRequest $request)
+    {
+        $data = $this->userService->create($request->all());
+
+        return $this->response->created();
     }
 
 }
