@@ -11,8 +11,9 @@ namespace App\Repositories;
 
 use App\Repositories\Contracts\RepositoryInterface;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\App;
+//use Illuminate\Support\Facades\App;
 use Mockery\Exception;
+use Illuminate\Container\Container as App;
 
 abstract class BaseRepository implements RepositoryInterface
 {
