@@ -43,6 +43,11 @@ public class DataManager implements BaseDataManager {
     }
 
     @Override
+    public Observable<UsersResponse> getFriend(ApiHeader apiHeader) {
+        return baseApiHelper.getFriend(apiHeader);
+    }
+
+    @Override
     public String getAccessToken() {
         return baseSharedPreferenceHelper.getAccessToken();
     }
