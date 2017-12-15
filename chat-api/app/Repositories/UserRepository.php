@@ -15,4 +15,9 @@ class UserRepository extends BaseRepository
     {
         return 'App\Models\User';
     }
+
+    public function getFriends()
+    {
+        return $this->model->friend();
+    }
 }

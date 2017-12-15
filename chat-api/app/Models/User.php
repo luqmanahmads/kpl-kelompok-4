@@ -31,4 +31,14 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'verification_code',
     ];
+
+    public function friend()
+    {
+        return $this->hasMany('App\Models\Friend', 'user_id', 'id');
+    }
+
+    public function setPasswordAttribute($value)
+    {
+        $this->attributes['password'] = bcrypt($value);
+    }
 }

@@ -32,4 +32,5 @@ $api->version('v1', function ($api) {
 $api->version('v1', function ($api){
 
     $api->get('authenticated_user', 'App\Http\Controllers\Api\v1\AuthenticateController@authenticatedUser');
+
 });
