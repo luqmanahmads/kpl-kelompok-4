@@ -12,4 +12,5 @@ public interface RegisterView {
 
     // CHECK BRANCH
     // REBASE
+    // CHECK AFTER REBASE
 }
