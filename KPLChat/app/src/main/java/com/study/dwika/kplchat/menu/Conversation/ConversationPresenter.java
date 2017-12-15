@@ -36,5 +36,4 @@ public class ConversationPresenter implements ConversationPresenterContract{
 
     }
 
-
 }

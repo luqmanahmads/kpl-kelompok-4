@@ -43,6 +43,7 @@ public class FriendPresenter implements FriendPresenterContract{
                     public void accept(UsersResponse usersResponse) throws Exception {
                         Log.d("Debug", "friend list " + usersResponse.getUsersData().get(0).getName());
                         friendViewContract.displayFriend(usersResponse);
+
                     }
                 }, new Consumer<Throwable>() {
                     @Override

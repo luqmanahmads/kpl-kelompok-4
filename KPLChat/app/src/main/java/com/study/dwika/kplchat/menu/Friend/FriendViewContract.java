@@ -11,4 +11,5 @@ public interface FriendViewContract {
     void getFriend();
 
     void displayFriend(UsersResponse usersResponse);
+
 }

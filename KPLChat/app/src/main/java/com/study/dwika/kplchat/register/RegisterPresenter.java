@@ -3,18 +3,17 @@ package com.study.dwika.kplchat.register;
 import android.content.Context;
 import android.util.Log;
 
-import com.rx2androidnetworking.Rx2AndroidNetworking;
 import com.study.dwika.kplchat.data.BaseDataManager;
 import com.study.dwika.kplchat.data.network.ApiEndPoint;
 import com.study.dwika.kplchat.model.BaseResponse;
-import com.study.dwika.kplchat.model.MessagesResponse;
+
 import com.study.dwika.kplchat.model.Users;
 import com.study.dwika.kplchat.utils.BaseSchedulerProvider;
 
-import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Consumer;
+
 import io.reactivex.schedulers.Schedulers;
 
 import io.reactivex.functions.Consumer;

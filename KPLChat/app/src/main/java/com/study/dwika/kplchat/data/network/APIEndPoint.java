@@ -17,8 +17,10 @@ public class ApiEndPoint {
 
     public static final String REGISTER = "register";
     public static final String AUTHENTICATED_USER = BASE_URL + "authenticated_user";
+
     public static final String SEARCH_USER_BY_EMAIL = BASE_URL + "user/find?email={email}";
     public static final String ADD_FRIEND = BASE_URL + "friends/add/{id}";
     public static final String CONVERSATION_DETAIL = BASE_URL + "conversation/{id}";
     public static final String GET_FRIEND = BASE_URL + "friends";
+
 }

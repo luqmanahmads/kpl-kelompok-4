@@ -17,9 +17,11 @@ public interface BaseApiHelper {
     io.reactivex.Observable<BaseResponse> doRegister(Users users);
     Observable<BaseResponse> doLogin(Login login);
     Observable<UsersResponse> authenticatedUser(ApiHeader header);
+
     Observable<UsersResponse> searchUserByEmail(ApiHeader header, String email);
     Observable<BaseResponse> addFriend(ApiHeader header, String id);
     Observable<ConversationDetailResponse> conversationDetail(ApiHeader header, String id);
+
     Observable<UsersResponse> getFriend(ApiHeader apiHeader);
 
 }

@@ -2,8 +2,10 @@ package com.study.dwika.kplchat.menu.Friend;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +21,7 @@ import com.study.dwika.kplchat.data.network.ApiHelper;
 import com.study.dwika.kplchat.data.network.BaseApiHelper;
 import com.study.dwika.kplchat.data.sharedpreference.BaseSharedPreferenceHelper;
 import com.study.dwika.kplchat.data.sharedpreference.SharedPreferenceHelper;
+
 import com.study.dwika.kplchat.model.UsersResponse;
 import com.study.dwika.kplchat.utils.BaseSchedulerProvider;
 
@@ -42,11 +45,12 @@ public class FriendFragment extends Fragment implements FriendViewContract {
     @BindView(R.id.rvFriend)
     RecyclerView rvFriend;
 
+
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
 
-        baseDataManager = new DataManager(new ApiHelper(), new DatabaseHelper(), new SharedPreferenceHelper());
+        baseDataManager = new DataManager(new ApiHelper(), new DatabaseHelper(), new SharedPreferenceHelper(getContext()));
 
         friendPresenterContract = new FriendPresenter(baseDataManager, this, baseSchedulerProvider);
         Log.d("Debug", "FriendFragment");
@@ -67,7 +71,7 @@ public class FriendFragment extends Fragment implements FriendViewContract {
 
     @Override
     public void getFriend() {
-        friendPresenterContract.getFriend(new ApiHeader("Bearer " + "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEsImlzcyI6Imh0dHA6Ly9jbGFzc2lmaWVkNS5tZS9jaGF0LWFwaS9hcGkvYXV0aGVudGljYXRlIiwiaWF0IjoxNTEzMzUxNjMzLCJleHAiOjE1MTM0MzgwMzMsIm5iZiI6MTUxMzM1MTYzMywianRpIjoiNzlTN21GVHZCWFVHT1UwUyJ9.jpBWJ_98Z6-_TuoatAIirebb3PHfIp820y1F-CjusqQ", "application/json"));
+        friendPresenterContract.getFriend(new ApiHeader("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEsImlzcyI6Imh0dHA6Ly9jbGFzc2lmaWVkNS5tZS9jaGF0LWFwaS9hcGkvYXV0aGVudGljYXRlIiwiaWF0IjoxNTEzMzUxNjMzLCJleHAiOjE1MTM0MzgwMzMsIm5iZiI6MTUxMzM1MTYzMywianRpIjoiNzlTN21GVHZCWFVHT1UwUyJ9.jpBWJ_98Z6-_TuoatAIirebb3PHfIp820y1F-CjusqQ"));
     }
 
     @Override
@@ -76,4 +80,6 @@ public class FriendFragment extends Fragment implements FriendViewContract {
         rvFriend.setAdapter(friendAdapter);
 
     }
+
+
 }
