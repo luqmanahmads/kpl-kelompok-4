@@ -16,4 +16,5 @@ public interface BaseApiHelper {
     io.reactivex.Observable<BaseResponse> doRegister(Users users);
     Observable<BaseResponse> doLogin(Login login);
     Observable<UsersResponse> authenticatedUser(ApiHeader header);
+
 }

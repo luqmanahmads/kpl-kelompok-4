@@ -31,7 +31,6 @@ public class DataManager implements BaseDataManager {
     public Observable<BaseResponse> doRegister(Users users) {
         return baseApiHelper.doRegister(users);
     }
-
     @Override
     public Observable<BaseResponse> doLogin(Login login) {
         return baseApiHelper.doLogin(login);
