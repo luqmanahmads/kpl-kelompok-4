@@ -33,4 +33,6 @@ $api->version('v1', function ($api){
 
     $api->get('authenticated_user', 'App\Http\Controllers\Api\v1\AuthenticateController@authenticatedUser');
 
+
+    $api->get('friends', 'App\Http\Controllers\Api\v1\UserController@getFriends');
 });

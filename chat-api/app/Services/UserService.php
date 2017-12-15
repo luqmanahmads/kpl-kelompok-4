@@ -27,9 +27,11 @@ class UserService
         return $data;
     }
 
-    public function getFriends($id)
+    public function getFriends()
     {
-        return $this->userRepository->getFriends();
+        $user = $this->authenticatedUser();
+
+        return $user->friends;
     }
 
     public function authenticatedUser()

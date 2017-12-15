@@ -32,7 +32,7 @@ class User extends Authenticatable
         'password', 'verification_code',
     ];
 
-    public function friend()
+    public function friends()
     {
         return $this->hasMany('App\Models\Friend', 'user_id', 'id');
     }
