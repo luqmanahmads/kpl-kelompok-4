@@ -70,4 +70,5 @@ public class SharedPreferenceHelper implements BaseSharedPreferenceHelper {
     public void setEmail(String email) {
         mPrefs.edit().putString(EMAIL, email).apply();
     }
+
 }

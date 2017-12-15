@@ -5,6 +5,7 @@ import com.study.dwika.kplchat.model.BaseResponse;
 import com.study.dwika.kplchat.model.Users;
 import com.study.dwika.kplchat.model.Login;
 import com.study.dwika.kplchat.model.UsersResponse;
+import com.study.dwika.kplchat.model.Users;
 
 import io.reactivex.Observable;
 

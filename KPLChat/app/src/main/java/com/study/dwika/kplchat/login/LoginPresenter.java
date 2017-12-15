@@ -1,6 +1,7 @@
 package com.study.dwika.kplchat.login;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.util.Log;
 
 import com.study.dwika.kplchat.data.BaseDataManager;
@@ -10,7 +11,6 @@ import com.study.dwika.kplchat.model.Login;
 import com.study.dwika.kplchat.model.UsersResponse;
 import com.study.dwika.kplchat.model.BaseResponse;
 import com.study.dwika.kplchat.model.Login;
-import com.study.dwika.kplchat.data.BaseDataManager;
 import com.study.dwika.kplchat.utils.BaseSchedulerProvider;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -52,6 +52,7 @@ public class LoginPresenter implements LoginPresenterContract {
                                    baseDataManager.setAccessToken(baseResponse.getToken());
                                    authenticatedUserDetail();
                                    loginActivityContract.hideLoading();
+                                   baseDataManager.setAccessToken(baseResponse.getToken());
                                }
                            }, new Consumer<Throwable>() {
                                @Override

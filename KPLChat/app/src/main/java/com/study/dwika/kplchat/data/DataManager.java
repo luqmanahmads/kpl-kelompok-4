@@ -91,5 +91,4 @@ public class DataManager implements BaseDataManager {
         baseSharedPreferenceHelper.setEmail(email);
     }
 
-
 }

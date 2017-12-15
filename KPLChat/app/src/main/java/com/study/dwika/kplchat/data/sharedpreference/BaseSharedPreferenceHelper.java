@@ -16,4 +16,5 @@ public interface BaseSharedPreferenceHelper {
     void setPhone(String phone);
     String getEmail();
     void setEmail(String email);
+
 }
