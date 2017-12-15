@@ -1,4 +1,4 @@
-package com.study.dwika.kplchat.Menu.Friend;
+package com.study.dwika.kplchat.menu.Friend;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

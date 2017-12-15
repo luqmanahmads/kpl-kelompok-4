@@ -1,4 +1,4 @@
-package com.study.dwika.kplchat.Model;
+package com.study.dwika.kplchat.model;
 
 /**
  * Created by A.I on 28/11/2017.
@@ -9,6 +9,11 @@ public class Users {
     private int usersId;
     private String phone, email, password, firstName, lastName, middleName, verificationCode;
     private Boolean isActive;
+
+    public Users(String email, String password) {
+        this.email = email;
+        this.password = password;
+    }
 
     public int getUsersId() {
         return usersId;

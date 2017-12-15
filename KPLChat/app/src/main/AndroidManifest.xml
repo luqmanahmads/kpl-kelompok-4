@@ -14,7 +14,7 @@
         <activity android:name=".MainActivity">
 
         </activity>
-        <activity android:name=".Menu.MenuActivity">
+        <activity android:name=".menu.MenuActivity">
 
         </activity>
 
