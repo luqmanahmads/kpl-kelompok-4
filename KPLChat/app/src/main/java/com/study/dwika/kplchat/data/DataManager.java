@@ -5,6 +5,7 @@ import com.study.dwika.kplchat.data.network.BaseApiHelper;
 import com.study.dwika.kplchat.data.sharedpreference.BaseSharedPreferenceHelper;
 import com.study.dwika.kplchat.model.BaseResponse;
 import com.study.dwika.kplchat.model.Users;
+import com.study.dwika.kplchat.model.Login;
 
 import io.reactivex.Observable;
 
@@ -27,5 +28,9 @@ public class DataManager implements BaseDataManager{
     @Override
     public Observable<BaseResponse> doRegister(Users users) {
         return baseApiHelper.doRegister(users);
+    }
+    @Override
+    public Observable<BaseResponse> doLogin(Login login) {
+        return baseApiHelper.doLogin(login);
     }
 }

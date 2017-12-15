@@ -5,5 +5,5 @@ package com.study.dwika.kplchat.login;
  */
 
 public interface LoginPresenterContract {
-    void serverLogin(String username, String Password);
+    void serverLogin(String email, String Password);
 }
