@@ -10,7 +10,7 @@ public class APIEndPoint {
     public static final String BASE_URL = "http://10.107.255.221/chat-api/api/";
 
     // address url selanjutnya ketik di sini
-    public static final String LOGIN = "authenticate";
+    public static final String LOGIN = BASE_URL + "authenticate";
     public static final String REGISTER = "register";
 
 }
