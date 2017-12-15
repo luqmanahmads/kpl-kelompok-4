@@ -59,6 +59,13 @@
             android:textColor="@color/black"
             android:textColorHint="@color/darkGray" />
 
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            />
+
         <Button
             android:id="@+id/btn_login"
             android:layout_width="fill_parent"
@@ -66,16 +73,6 @@
             android:layout_marginTop="20dip"
             android:background="@color/colorPrimary"
             android:text="@string/btn_login"
-            android:textAllCaps="false"
-            android:textColor="@color/white" />
-
-        <Button
-            android:id="@+id/btn_to_register"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dip"
-            android:background="@color/colorPrimary"
-            android:text="Register"
             android:textAllCaps="false"
             android:textColor="@color/white" />
 
@@ -95,12 +92,15 @@
             android:textColor="@color/darkGray"
             android:textSize="15dp" />
 
-        <ProgressBar
-            android:id="@+id/progressBar"
-            android:layout_width="wrap_content"
+        <Button
+            android:id="@+id/btn_to_register"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:visibility="gone"
-            />
+            android:layout_marginTop="20dip"
+            android:background="@color/colorPrimary"
+            android:text="Register"
+            android:textAllCaps="false"
+            android:textColor="@color/white" />
 
     </LinearLayout>
 
