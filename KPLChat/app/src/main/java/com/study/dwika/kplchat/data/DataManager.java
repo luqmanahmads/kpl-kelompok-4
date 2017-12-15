@@ -10,6 +10,7 @@ import com.study.dwika.kplchat.model.BaseResponse;
 import com.study.dwika.kplchat.model.ConversationDetailResponse;
 import com.study.dwika.kplchat.model.Users;
 import com.study.dwika.kplchat.model.Login;
+
 import com.study.dwika.kplchat.model.UsersResponse;
 
 import io.reactivex.Observable;
@@ -110,6 +111,11 @@ public class DataManager implements BaseDataManager {
     @Override
     public void setEmail(String email) {
         baseSharedPreferenceHelper.setEmail(email);
+    }
+
+    @Override
+    public Observable<UsersResponse> getFriend(ApiHeader apiHeader) {
+        return baseApiHelper.getFriend(apiHeader);
     }
 
 }

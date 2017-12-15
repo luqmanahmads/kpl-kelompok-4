@@ -3,10 +3,12 @@ package com.study.dwika.kplchat.data.network;
 import android.util.Log;
 
 import com.rx2androidnetworking.Rx2AndroidNetworking;
+
 import com.study.dwika.kplchat.model.BaseResponse;
 import com.study.dwika.kplchat.model.ConversationDetailResponse;
 import com.study.dwika.kplchat.model.Users;
 import com.study.dwika.kplchat.model.Login;
+
 import com.study.dwika.kplchat.model.UsersResponse;
 
 import io.reactivex.Observable;
@@ -67,6 +69,15 @@ public class ApiHelper implements BaseApiHelper {
                 .addPathParameter("id",id)
                 .build()
                 .getObjectObservable(ConversationDetailResponse.class);
+    }
+
+    @Override
+    public Observable<UsersResponse> getFriend(ApiHeader apiHeader) {
+        Log.d("debug", "apihelper friend");
+        return Rx2AndroidNetworking.get(ApiEndPoint.GET_FRIEND)
+                .addHeaders(apiHeader)
+                .build()
+                .getObjectObservable(UsersResponse.class);
     }
 
 }
