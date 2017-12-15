@@ -79,4 +79,5 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityCon
     public void hideLoading() {
         progressBar.setVisibility(View.INVISIBLE);
     }
+
 }
