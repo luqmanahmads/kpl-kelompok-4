@@ -1,26 +1,50 @@
 package com.study.dwika.kplchat.model;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by A.I on 28/11/2017.
  */
 
 public class Users {
 
-    private int usersId;
-    private String phone, email, password, firstName, lastName, middleName, verificationCode;
-    private Boolean isActive;
+    @SerializedName("id")
+    private int id;
 
-    public Users(String email, String password) {
-        this.email = email;
-        this.password = password;
+    @SerializedName("name")
+    private String name;
+
+    @SerializedName("phone")
+    private String phone;
+
+    @SerializedName("email")
+    private String email;
+
+    private String password;
+    private String rememberToken;
+    private String verificationCode;
+    private String isActive;
+    private String createdAt;
+    private String updatedAt;
+    private String deletedAt;
+
+    public Users() {
     }
 
-    public int getUsersId() {
-        return usersId;
+    public int getId() {
+        return id;
     }
 
-    public void setUsersId(int usersId) {
-        this.usersId = usersId;
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getPhone() {
@@ -47,28 +71,12 @@ public class Users {
         this.password = password;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getRememberToken() {
+        return rememberToken;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getMiddleName() {
-        return middleName;
-    }
-
-    public void setMiddleName(String middleName) {
-        this.middleName = middleName;
+    public void setRememberToken(String rememberToken) {
+        this.rememberToken = rememberToken;
     }
 
     public String getVerificationCode() {
@@ -79,11 +87,35 @@ public class Users {
         this.verificationCode = verificationCode;
     }
 
-    public Boolean getActive() {
+    public String getIsActive() {
         return isActive;
     }
 
-    public void setActive(Boolean active) {
-        isActive = active;
+    public void setIsActive(String isActive) {
+        this.isActive = isActive;
+    }
+
+    public String getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(String createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public String getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(String updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    public String getDeletedAt() {
+        return deletedAt;
+    }
+
+    public void setDeletedAt(String deletedAt) {
+        this.deletedAt = deletedAt;
     }
 }

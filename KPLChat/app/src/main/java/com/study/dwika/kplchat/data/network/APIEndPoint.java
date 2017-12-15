@@ -11,4 +11,5 @@ public class APIEndPoint {
 
     // address url selanjutnya ketik di sini
     public static final String LOGIN = BASE_URL + "authenticate";
+    public static final String AUTHENTICATED_USER = BASE_URL + "authenticated_user";
 }

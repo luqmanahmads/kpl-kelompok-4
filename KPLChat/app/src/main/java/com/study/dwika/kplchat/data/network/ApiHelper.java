@@ -3,6 +3,7 @@ package com.study.dwika.kplchat.data.network;
 import com.rx2androidnetworking.Rx2AndroidNetworking;
 import com.study.dwika.kplchat.model.BaseResponse;
 import com.study.dwika.kplchat.model.Login;
+import com.study.dwika.kplchat.model.Users;
 
 import io.reactivex.Observable;
 
@@ -18,4 +19,11 @@ public class ApiHelper implements BaseApiHelper {
                 .build()
                 .getObjectObservable(BaseResponse.class);
     }
+
+//    @Override
+//    public Observable<Users> authenticatedUser(APIHeader header) {
+//        return Rx2AndroidNetworking.get(APIEndPoint.AUTHENTICATED_USER)
+//                .addHeaders();
+//    }
+
 }

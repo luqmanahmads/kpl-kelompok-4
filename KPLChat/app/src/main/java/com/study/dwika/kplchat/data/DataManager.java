@@ -28,4 +28,14 @@ public class DataManager implements BaseDataManager{
     public Observable<BaseResponse> doLogin(Login login) {
         return baseApiHelper.doLogin(login);
     }
+
+    @Override
+    public String getAccessToken() {
+        return null;
+    }
+
+    @Override
+    public void setAccessToken(String accessToken) {
+
+    }
 }
