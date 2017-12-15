@@ -1,9 +1,9 @@
 package com.study.dwika.kplchat.register;
 
 import com.rx2androidnetworking.Rx2AndroidNetworking;
+import com.study.dwika.kplchat.data.network.ApiEndPoint;
 import com.study.dwika.kplchat.model.Messages;
 import com.study.dwika.kplchat.model.MessagesResponse;
-import com.study.dwika.kplchat.data.network.APIEndPoint;
 
 import java.util.List;
 
@@ -33,7 +33,7 @@ public class RegisterPresenter {
 
         /** Ask model for data **/
 //        Contoh Fast android network + rx java 2 get request
-        Rx2AndroidNetworking.post(APIEndPoint.BASE_URL)
+        Rx2AndroidNetworking.post(ApiEndPoint.BASE_URL)
                 .build()
                 .getObjectObservable(MessagesResponse.class)
                 .subscribeOn(Schedulers.io())

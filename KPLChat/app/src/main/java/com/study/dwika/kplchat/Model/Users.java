@@ -1,26 +1,55 @@
 package com.study.dwika.kplchat.model;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by A.I on 28/11/2017.
  */
 
 public class Users {
 
-    private int usersId;
-    private String phone, email, password, firstName, lastName, middleName, verificationCode;
+    @SerializedName("id")
+    private int id;
+
+    private String phone, email, password, verificationCode, token;
     private Boolean isActive;
 
+    @SerializedName("name")
+    private String name;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    public Users(String token) {
+        this.token = token;
+    }
+
     public Users(String email, String password) {
+
         this.email = email;
         this.password = password;
     }
 
-    public int getUsersId() {
-        return usersId;
+
+    public int getId() {
+        return id;
     }
 
-    public void setUsersId(int usersId) {
-        this.usersId = usersId;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getPhone() {
@@ -45,30 +74,6 @@ public class Users {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getMiddleName() {
-        return middleName;
-    }
-
-    public void setMiddleName(String middleName) {
-        this.middleName = middleName;
     }
 
     public String getVerificationCode() {
