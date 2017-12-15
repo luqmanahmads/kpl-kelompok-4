@@ -20,4 +20,9 @@ class UserRepository extends BaseRepository
     {
         return $this->model->friend();
     }
+
+    public function addFriend($user, $id)
+    {
+        return $user->friends()->attach($id);
+    }
 }

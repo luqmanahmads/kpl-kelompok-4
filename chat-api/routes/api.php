@@ -33,6 +33,8 @@ $api->version('v1', function ($api){
 
     $api->get('authenticated_user', 'App\Http\Controllers\Api\v1\AuthenticateController@authenticatedUser');
 
-
-    $api->get('friends', 'App\Http\Controllers\Api\v1\UserController@getFriends');
+    $api->group(['prefix' => 'friends'], function ($api){
+        $api->get('/', 'App\Http\Controllers\Api\v1\UserController@getFriends');
+        $api->post('add/{id}', 'App\Http\Controllers\Api\v1\UserController@addFriend');
+    });
 });

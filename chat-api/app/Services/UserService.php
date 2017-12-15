@@ -8,16 +8,19 @@
 
 namespace App\Services;
 
+use App\Repositories\FriendRepository;
 use JWTAuth;
 use App\Repositories\UserRepository;
 
 class UserService
 {
     private $userRepository;
+    private $friendRepository;
 
-    public function __construct(UserRepository $userRepository)
+    public function __construct(UserRepository $userRepository, FriendRepository $friendRepository)
     {
         $this->userRepository = $userRepository;
+        $this->friendRepository = $friendRepository;
     }
 
     public function create($data)
@@ -32,6 +35,13 @@ class UserService
         $user = $this->authenticatedUser();
 
         return $user->friends;
+    }
+
+    public function addFriend($id)
+    {
+        $user = $this->authenticatedUser();
+
+        return $this->friendRepository->create(['user_id' => $user->id, 'friend_id' => $id]);
     }
 
     public function authenticatedUser()
