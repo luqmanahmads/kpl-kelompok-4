@@ -34,13 +34,13 @@
         android:paddingRight="20dp">
 
         <EditText
-            android:id="@+id/et_username"
+            android:id="@+id/et_email"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:background="@color/lightGray"
             android:hint="@string/hint_user"
-            android:inputType="text"
+            android:inputType="textEmailAddress"
             android:padding="10dp"
             android:singleLine="true"
             android:textColor="@color/black"
@@ -94,6 +94,14 @@
             android:textAllCaps="false"
             android:textColor="@color/darkGray"
             android:textSize="15dp" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            />
+
     </LinearLayout>
 
 </LinearLayout>

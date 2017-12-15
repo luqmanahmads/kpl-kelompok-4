@@ -10,5 +10,5 @@ public class APIEndPoint {
     public static final String BASE_URL = "http://classified5.me/chat-api/api/";
 
     // address url selanjutnya ketik di sini
-    public static final String LOGIN = "authenticate";
+    public static final String LOGIN = BASE_URL + "authenticate";
 }
