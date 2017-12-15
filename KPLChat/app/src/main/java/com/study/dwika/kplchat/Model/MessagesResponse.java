@@ -1,4 +1,4 @@
-package com.study.dwika.kplchat.Model;
+package com.study.dwika.kplchat.model;
 
 import com.google.gson.annotations.SerializedName;
 

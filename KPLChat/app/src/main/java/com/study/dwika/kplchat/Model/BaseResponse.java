@@ -1,4 +1,4 @@
-package com.study.dwika.kplchat.Model;
+package com.study.dwika.kplchat.model;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -14,6 +14,16 @@ public class BaseResponse {
     @SerializedName("status")
     private String status;
 
+    @SerializedName("token")
+    private String token;
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
 
     public String getCode() {
         return code;

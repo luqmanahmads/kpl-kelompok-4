@@ -1,9 +1,9 @@
 package com.study.dwika.kplchat.register;
 
 import com.rx2androidnetworking.Rx2AndroidNetworking;
-import com.study.dwika.kplchat.Model.Messages;
-import com.study.dwika.kplchat.Model.MessagesResponse;
-import com.study.dwika.kplchat.Network.APIEndPoint;
+import com.study.dwika.kplchat.model.Messages;
+import com.study.dwika.kplchat.model.MessagesResponse;
+import com.study.dwika.kplchat.data.network.APIEndPoint;
 
 import java.util.List;
 
@@ -29,11 +29,11 @@ public class RegisterPresenter {
         System.out.println("IN PRESENTER");
 
         /** Show progress bar when waiting data **/
-        registerView.showProgress();
+//        registerView.showProgress();
 
         /** Ask model for data **/
 //        Contoh Fast android network + rx java 2 get request
-        Rx2AndroidNetworking.get(APIEndPoint.BASE_URL)
+        Rx2AndroidNetworking.post(APIEndPoint.BASE_URL)
                 .build()
                 .getObjectObservable(MessagesResponse.class)
                 .subscribeOn(Schedulers.io())

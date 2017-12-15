@@ -1,4 +1,4 @@
-package com.study.dwika.kplchat.Model;
+package com.study.dwika.kplchat.model;
 
 /**
  * Created by A.I on 28/11/2017.
