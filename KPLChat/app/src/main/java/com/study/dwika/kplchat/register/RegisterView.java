@@ -9,4 +9,6 @@ public interface RegisterView {
     void hideProgress();
     void showError(String error);
     void onSuccess();
+
+    // CHECK BRANCH
 }
