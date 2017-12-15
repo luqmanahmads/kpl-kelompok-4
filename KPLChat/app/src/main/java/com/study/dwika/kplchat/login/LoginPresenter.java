@@ -1,11 +1,12 @@
 package com.study.dwika.kplchat.login;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.util.Log;
 
+import com.study.dwika.kplchat.data.BaseDataManager;
 import com.study.dwika.kplchat.model.BaseResponse;
 import com.study.dwika.kplchat.model.Login;
-import com.study.dwika.kplchat.data.BaseDataManager;
 import com.study.dwika.kplchat.utils.BaseSchedulerProvider;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -45,6 +46,7 @@ public class LoginPresenter implements LoginPresenterContract {
                                public void accept(BaseResponse baseResponse) throws Exception {
                                    Log.d("Debug", "token " + baseResponse.getToken());
                                    loginActivityContract.hideLoading();
+                                   baseDataManager.setAccessToken(baseResponse.getToken());
                                }
                            }, new Consumer<Throwable>() {
                                @Override
@@ -53,6 +55,6 @@ public class LoginPresenter implements LoginPresenterContract {
                                }
                            }
                 ));
-
     }
+
 }

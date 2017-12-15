@@ -13,5 +13,4 @@ import io.reactivex.Observable;
  */
 
 public interface BaseDataManager extends BaseApiHelper, BaseSharedPreferenceHelper, BaseDatabaseHelper {
-    Observable<BaseResponse> doLogin(Login login);
 }

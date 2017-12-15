@@ -5,4 +5,8 @@ package com.study.dwika.kplchat.data.sharedpreference;
  */
 
 public interface BaseSharedPreferenceHelper {
+
+    String getAccessToken();
+
+    void setAccessToken(String accessToken);
 }

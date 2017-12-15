@@ -1,5 +1,6 @@
 package com.study.dwika.kplchat.login;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -15,6 +16,7 @@ import com.study.dwika.kplchat.data.database.BaseDatabaseHelper;
 import com.study.dwika.kplchat.data.network.ApiHelper;
 import com.study.dwika.kplchat.data.network.BaseApiHelper;
 import com.study.dwika.kplchat.data.sharedpreference.BaseSharedPreferenceHelper;
+import com.study.dwika.kplchat.register.RegisterActivity;
 import com.study.dwika.kplchat.utils.BaseSchedulerProvider;
 
 import butterknife.BindView;
@@ -45,11 +47,11 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityCon
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
         ButterKnife.bind(this);
 
         baseApiHelper = new ApiHelper();
         baseDataManager = new DataManager(baseApiHelper, baseDatabaseHelper, baseSharedPreferenceHelper);
-
         mPresenter = new LoginPresenter(baseDataManager, this, baseSchedulerProvider);
 
     }
@@ -62,7 +64,8 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityCon
 
     @OnClick(R.id.btn_to_register)
     void onRegisterClick(View v) {
-        //register
+        Intent register = new Intent(LoginActivity.this, RegisterActivity.class);
+        startActivity(register);
     }
 
     @Override
