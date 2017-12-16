@@ -1,26 +1,42 @@
 package com.study.dwika.kplchat.model;
 
+import java.util.Date;
+
 /**
  * Created by A.I on 28/11/2017.
  */
 
 public class Users {
 
-    private int usersId;
-    private String phone, email, password, firstName, lastName, middleName, verificationCode;
-    private Boolean isActive;
+    int id;
 
-    public Users(String email, String password) {
+    String phone;
+    String email;
+    String password;
+    String name;
+
+    String remenber_token;
+    String verfication_code;
+
+    int is_active;
+    Date created_at;
+    Date updated_at;
+    Date deleted_at;
+
+    public Users(String phone, String email, String password, String name){
+        this.phone = phone;
         this.email = email;
         this.password = password;
+        this.name = name;
     }
 
-    public int getUsersId() {
-        return usersId;
+
+    public int getId() {
+        return id;
     }
 
-    public void setUsersId(int usersId) {
-        this.usersId = usersId;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getPhone() {
@@ -47,43 +63,59 @@ public class Users {
         this.password = password;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getName() {
+        return name;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getRemenber_token() {
+        return remenber_token;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setRemenber_token(String remenber_token) {
+        this.remenber_token = remenber_token;
     }
 
-    public String getMiddleName() {
-        return middleName;
+    public String getVerfication_code() {
+        return verfication_code;
     }
 
-    public void setMiddleName(String middleName) {
-        this.middleName = middleName;
+    public void setVerfication_code(String verfication_code) {
+        this.verfication_code = verfication_code;
     }
 
-    public String getVerificationCode() {
-        return verificationCode;
+    public int getIs_active() {
+        return is_active;
     }
 
-    public void setVerificationCode(String verificationCode) {
-        this.verificationCode = verificationCode;
+    public void setIs_active(int is_active) {
+        this.is_active = is_active;
     }
 
-    public Boolean getActive() {
-        return isActive;
+    public Date getCreated_at() {
+        return created_at;
     }
 
-    public void setActive(Boolean active) {
-        isActive = active;
+    public void setCreated_at(Date created_at) {
+        this.created_at = created_at;
+    }
+
+    public Date getUpdated_at() {
+        return updated_at;
+    }
+
+    public void setUpdated_at(Date updated_at) {
+        this.updated_at = updated_at;
+    }
+
+    public Date getDeleted_at() {
+        return deleted_at;
+    }
+
+    public void setDeleted_at(Date deleted_at) {
+        this.deleted_at = deleted_at;
     }
 }
