@@ -50,7 +50,7 @@ public class ConversationAdapter extends RecyclerView.Adapter<ConversationAdapte
         @BindView(R.id.tvConversationName)
         TextView tvConversationName;
 
-        @BindView(R.id.tvConvsationChat)
+        @BindView(R.id.tvConversationChat)
         TextView tvConversationChat;
 
         public ConversationViewHolder(View itemView) {
