@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">KPLChat</string>
-    <string name="hint_user">Username</string>
+    <string name="hint_email">Email</string>
     <string name="hint_password">Password</string>
     <string name="btn_login">Log In</string>
     <string name="btn_link_to_register">Don\'t have an account? <b>Register now</b></string>
