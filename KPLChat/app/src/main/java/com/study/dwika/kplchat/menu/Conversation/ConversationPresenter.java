@@ -31,22 +31,10 @@ public class ConversationPresenter implements ConversationPresenterContract{
 
     }
 
-//    @Override
-//    public void getFriend(ApiHeader apiHeader) {
-//        compositeDisposable.add(baseDataManager.getFriend(apiHeader)
-//                            .subscribeOn(baseSchedulerProvider.io())
-//                            .observeOn(baseSchedulerProvider.ui())
-//                            .subscribe(new Consumer<BaseResponse>() {
-//                                @Override
-//                                public void accept(BaseResponse baseResponse) throws Exception {
-//
-//                                }
-//                            }, new Consumer<Throwable>() {
-//                                @Override
-//                                public void accept(Throwable throwable) throws Exception {
-//
-//                                }
-//                            }));
-//
-//    }
+    @Override
+    public void getConversation() {
+
+    }
+
+
 }
