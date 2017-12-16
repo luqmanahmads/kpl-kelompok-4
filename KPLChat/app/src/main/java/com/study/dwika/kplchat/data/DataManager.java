@@ -1,5 +1,7 @@
 package com.study.dwika.kplchat.data;
 
+import android.util.Log;
+
 import com.study.dwika.kplchat.data.database.BaseDatabaseHelper;
 import com.study.dwika.kplchat.data.network.ApiHeader;
 import com.study.dwika.kplchat.data.network.BaseApiHelper;
