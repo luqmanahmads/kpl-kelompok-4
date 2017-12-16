@@ -26,7 +26,6 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
 
-
     //Design
     compile 'com.android.support:design:26.1.0'
 
@@ -50,6 +49,6 @@ dependencies {
 
     // Decode JWT
     compile 'com.auth0.android:jwtdecode:1.1.1'
-	
+
 
 }
