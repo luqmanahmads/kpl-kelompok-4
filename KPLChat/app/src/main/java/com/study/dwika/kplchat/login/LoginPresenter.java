@@ -1,12 +1,13 @@
 package com.study.dwika.kplchat.login;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.util.Log;
 
 import com.study.dwika.kplchat.data.BaseDataManager;
+import com.study.dwika.kplchat.data.network.ApiHeader;
 import com.study.dwika.kplchat.model.BaseResponse;
 import com.study.dwika.kplchat.model.Login;
+import com.study.dwika.kplchat.model.UsersResponse;
 import com.study.dwika.kplchat.utils.BaseSchedulerProvider;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -45,13 +46,37 @@ public class LoginPresenter implements LoginPresenterContract {
                                @Override
                                public void accept(BaseResponse baseResponse) throws Exception {
                                    Log.d("Debug", "token " + baseResponse.getToken());
-                                   loginActivityContract.hideLoading();
                                    baseDataManager.setAccessToken(baseResponse.getToken());
+                                   Log.d("Debug","token dari datamanager"+baseDataManager.getAccessToken());
+                                   authenticatedUserDetail();
+                                   loginActivityContract.hideLoading();
                                }
                            }, new Consumer<Throwable>() {
                                @Override
                                public void accept(Throwable throwable) throws Exception {
-                                   Log.d("Debug", "error " + throwable.getLocalizedMessage());
+                                   Log.d("Debug", "serverLogin error - " + throwable.getLocalizedMessage());
+                               }
+                           }
+                ));
+    }
+
+    @Override
+    public void authenticatedUserDetail() {
+        loginActivityContract.showLoading();
+        compositeDisposable.add(baseDataManager.authenticatedUser(new ApiHeader(baseDataManager.getAccessToken(), "application/json"))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<UsersResponse>() {
+                               @Override
+                               public void accept(UsersResponse usersResponse) throws Exception {
+                                   Log.d("Debug", "usersResponse " + usersResponse);
+                                   loginActivityContract.hideLoading();
+                               }
+                           }, new Consumer<Throwable>() {
+                               @Override
+                               public void accept(Throwable throwable) throws Exception {
+                                   Log.d("Debug", "tokennya = "+baseDataManager.getAccessToken());
+                                   Log.d("Debug", "authenticatedUserDetail error - " + throwable.getLocalizedMessage());
                                }
                            }
                 ));
