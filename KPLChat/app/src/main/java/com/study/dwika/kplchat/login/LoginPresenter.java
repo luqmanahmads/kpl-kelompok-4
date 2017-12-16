@@ -68,7 +68,14 @@ public class LoginPresenter implements LoginPresenterContract {
                 .subscribe(new Consumer<UsersResponse>() {
                                @Override
                                public void accept(UsersResponse usersResponse) throws Exception {
-                                   Log.d("Debug", "usersResponse " + usersResponse);
+                                   Log.d("Debug", "usersResponse " + usersResponse.getUsersData().get(0).getId());
+                                   Log.d("Debug", "usersResponse " + usersResponse.getUsersData().get(0).getName());
+                                   Log.d("Debug", "usersResponse " + usersResponse.getUsersData().get(0).getPhone());
+                                   Log.d("Debug", "usersResponse " + usersResponse.getUsersData().get(0).getEmail());
+                                   baseDataManager.setId(String.valueOf(usersResponse.getUsersData().get(0).getId()));
+                                   baseDataManager.setName(usersResponse.getUsersData().get(0).getName());
+                                   baseDataManager.setPhone(usersResponse.getUsersData().get(0).getPhone());
+                                   baseDataManager.setEmail(usersResponse.getUsersData().get(0).getEmail());
                                    loginActivityContract.hideLoading();
                                }
                            }, new Consumer<Throwable>() {
