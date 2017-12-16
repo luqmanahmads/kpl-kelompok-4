@@ -45,4 +45,46 @@ public class DataManager implements BaseDataManager {
     public void setAccessToken(String accessToken) {
         baseSharedPreferenceHelper.setAccessToken(accessToken);
     }
+
+    @Override
+    public String getId() {
+        return baseSharedPreferenceHelper.getId();
+    }
+
+    @Override
+    public void setId(String id) {
+        baseSharedPreferenceHelper.setId(id);
+    }
+
+    @Override
+    public String getName() {
+        return baseSharedPreferenceHelper.getName();
+    }
+
+    @Override
+    public void setName(String name) {
+        baseSharedPreferenceHelper.setName(name);
+    }
+
+    @Override
+    public String getPhone() {
+        return baseSharedPreferenceHelper.getPhone();
+    }
+
+    @Override
+    public void setPhone(String phone) {
+        baseSharedPreferenceHelper.setPhone(phone);
+    }
+
+    @Override
+    public String getEmail() {
+        return baseSharedPreferenceHelper.getEmail();
+    }
+
+    @Override
+    public void setEmail(String email) {
+        baseSharedPreferenceHelper.setEmail(email);
+    }
+
+
 }
