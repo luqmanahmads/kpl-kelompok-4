@@ -1,68 +1,85 @@
 package com.study.dwika.kplchat.register;
 
+import android.content.Context;
+import android.util.Log;
+import android.widget.Toast;
+
 import com.rx2androidnetworking.Rx2AndroidNetworking;
+import com.study.dwika.kplchat.data.BaseDataManager;
+import com.study.dwika.kplchat.model.BaseResponse;
 import com.study.dwika.kplchat.model.Messages;
 import com.study.dwika.kplchat.model.MessagesResponse;
 import com.study.dwika.kplchat.data.network.APIEndPoint;
+import com.study.dwika.kplchat.model.Users;
+import com.study.dwika.kplchat.utils.BaseSchedulerProvider;
 
 import java.util.List;
 
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by Luqman Ahmad on 11/29/2017.
  */
 
-public class RegisterPresenter {
-    private RegisterView registerView;
+public class RegisterPresenter implements RegisterPresenterContract {
 
-    public RegisterPresenter(RegisterView view){
-        this.registerView = view;
+    /** View **/
 
+    private RegisterActivityContract registerActivityContract;
+
+    /** Data **/
+
+    private BaseDataManager baseDataManager;
+
+    private BaseSchedulerProvider baseSchedulerProvider;
+
+    /** Init **/
+    private CompositeDisposable compositeDisposable;
+    private Context context;
+
+    public RegisterPresenter(RegisterActivityContract view, BaseDataManager baseDataManager, BaseSchedulerProvider baseSchedulerProvider){
+        this.registerActivityContract = view;
+        this.baseDataManager = baseDataManager;
+        this.baseSchedulerProvider = baseSchedulerProvider;
+        this.compositeDisposable = new CompositeDisposable();
     }
 
-    public void onRegisterClicked(String username, String email, String password) {
+    @Override
+    public void register(String name, String email, String password, String phonenumber){
 
-        System.out.println("IN PRESENTER");
+        System.out.println("ON PRESENTER");
+        System.out.println("name : "+name);
+        System.out.println("email : "+email);
+        System.out.println("password : "+password);
+        System.out.println("phonenumber : "+phonenumber);
 
-        /** Show progress bar when waiting data **/
-//        registerView.showProgress();
-
-        /** Ask model for data **/
-//        Contoh Fast android network + rx java 2 get request
-        Rx2AndroidNetworking.post(APIEndPoint.BASE_URL)
-                .build()
-                .getObjectObservable(MessagesResponse.class)
+        registerActivityContract.showLoading();
+        compositeDisposable.add(baseDataManager.doRegister(new Users(phonenumber, email, password, name))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<MessagesResponse>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
-
-                    }
-
-                    @Override
-                    public void onNext(MessagesResponse messagesResponse) {
-                        List<Messages> messagesList = messagesResponse.getMessagesList();
-                        System.out.println("message name " + messagesList.get(0).getMessage());
-                        registerView.hideProgress();
-
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-
-                    }
-
-                    @Override
-                    public void onComplete() {
-
-                    }
-                });
-
+                .subscribe(new Consumer<BaseResponse>() {
+                               @Override
+                               public void accept(BaseResponse baseResponse) throws Exception {
+                                   System.out.println("BERHASIL");
+                                   Log.d("Debug", "token " + baseResponse.getToken());
+                                   registerActivityContract.hideLoading();
+                                   registerActivityContract.onSuccess();
+                               }
+                           }, new Consumer<Throwable>() {
+                               @Override
+                               public void accept(Throwable throwable) throws Exception {
+                                   Log.d("Debug" , "error " + throwable.getLocalizedMessage());
+                                   System.out.println("ERROR");
+                                   registerActivityContract.hideLoading();
+                                   registerActivityContract.onError();
+                               }
+                           }
+                ));
 
     }
 }

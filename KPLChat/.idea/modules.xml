@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/KPLChat.iml" filepath="$PROJECT_DIR$/KPLChat.iml" />
-      <module fileurl="file://D:\Informatics\Semester 7\Konstruksi Perangkat Lunak Pak Rizky Januar\Final Project\final-project\kpl-kelompok-4\KPLChat\KPLChat.iml" filepath="D:\Informatics\Semester 7\Konstruksi Perangkat Lunak Pak Rizky Januar\Final Project\final-project\kpl-kelompok-4\KPLChat\KPLChat.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
