@@ -47,7 +47,6 @@ public class LoginPresenter implements LoginPresenterContract {
                                public void accept(BaseResponse baseResponse) throws Exception {
                                    Log.d("Debug", "token " + baseResponse.getToken());
                                    baseDataManager.setAccessToken(baseResponse.getToken());
-                                   Log.d("Debug","token dari datamanager"+baseDataManager.getAccessToken());
                                    authenticatedUserDetail();
                                    loginActivityContract.hideLoading();
                                }
@@ -75,7 +74,6 @@ public class LoginPresenter implements LoginPresenterContract {
                            }, new Consumer<Throwable>() {
                                @Override
                                public void accept(Throwable throwable) throws Exception {
-                                   Log.d("Debug", "tokennya = "+baseDataManager.getAccessToken());
                                    Log.d("Debug", "authenticatedUserDetail error - " + throwable.getLocalizedMessage());
                                }
                            }

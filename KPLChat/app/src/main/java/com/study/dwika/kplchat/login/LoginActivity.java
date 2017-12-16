@@ -16,6 +16,7 @@ import com.study.dwika.kplchat.data.database.BaseDatabaseHelper;
 import com.study.dwika.kplchat.data.network.ApiHelper;
 import com.study.dwika.kplchat.data.network.BaseApiHelper;
 import com.study.dwika.kplchat.data.sharedpreference.BaseSharedPreferenceHelper;
+import com.study.dwika.kplchat.data.sharedpreference.SharedPreferenceHelper;
 import com.study.dwika.kplchat.register.RegisterActivity;
 import com.study.dwika.kplchat.utils.BaseSchedulerProvider;
 
@@ -51,6 +52,7 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityCon
         ButterKnife.bind(this);
 
         baseApiHelper = new ApiHelper();
+        baseSharedPreferenceHelper = new SharedPreferenceHelper(this);
         baseDataManager = new DataManager(baseApiHelper, baseDatabaseHelper, baseSharedPreferenceHelper);
         mPresenter = new LoginPresenter(baseDataManager, this, baseSchedulerProvider);
 
