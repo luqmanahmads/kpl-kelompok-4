@@ -3,6 +3,7 @@ package com.study.dwika.kplchat.data.network;
 import com.study.dwika.kplchat.model.BaseResponse;
 import com.study.dwika.kplchat.model.Login;
 import com.study.dwika.kplchat.model.Users;
+import com.study.dwika.kplchat.model.UsersResponse;
 
 import io.reactivex.Observable;
 
@@ -12,5 +13,5 @@ import io.reactivex.Observable;
 
 public interface BaseApiHelper {
     Observable<BaseResponse> doLogin(Login login);
-//    Observable<Users> authenticatedUser(APIHeader header);
+    Observable<UsersResponse> authenticatedUser(ApiHeader header);
 }
