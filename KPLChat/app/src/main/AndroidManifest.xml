@@ -30,6 +30,7 @@
         </activity>
 
         <activity android:name="com.study.dwika.kplchat.register.RegisterActivity" />
+        <activity android:name="com.study.dwika.kplchat.addfriend.AddFriendActivity"/>
 
     </application>
 

@@ -4,4 +4,6 @@
     <string name="hint_password">Password</string>
     <string name="btn_login">Log In</string>
     <string name="btn_link_to_register">Don\'t have an account? <b>Register now</b></string>
+    <string name="tv_add_friend">Add Friend</string>
+    <string name="btn_add_friend">Add</string>
 </resources>
