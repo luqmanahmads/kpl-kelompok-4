@@ -54,7 +54,7 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityCon
         baseApiHelper = new ApiHelper();
         baseSharedPreferenceHelper = new SharedPreferenceHelper(this);
         baseDataManager = new DataManager(baseApiHelper, baseDatabaseHelper, baseSharedPreferenceHelper);
-        mPresenter = new LoginPresenter(baseDataManager, this, baseSchedulerProvider);
+        mPresenter = new LoginPresenter(this, baseDataManager, baseSchedulerProvider);
 
     }
 

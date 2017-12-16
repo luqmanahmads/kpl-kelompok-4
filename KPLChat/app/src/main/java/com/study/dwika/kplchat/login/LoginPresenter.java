@@ -21,15 +21,15 @@ import io.reactivex.schedulers.Schedulers;
 
 public class LoginPresenter implements LoginPresenterContract {
 
-    private BaseDataManager baseDataManager;
     private LoginActivityContract loginActivityContract;
+    private BaseDataManager baseDataManager;
     private BaseSchedulerProvider baseSchedulerProvider;
     private CompositeDisposable compositeDisposable;
     private Context context;
 
-    public LoginPresenter(BaseDataManager baseDataManager, LoginActivityContract loginActivityContract, BaseSchedulerProvider baseSchedulerProvider) {
-        this.baseDataManager = baseDataManager;
+    public LoginPresenter(LoginActivityContract loginActivityContract, BaseDataManager baseDataManager, BaseSchedulerProvider baseSchedulerProvider) {
         this.loginActivityContract = loginActivityContract;
+        this.baseDataManager = baseDataManager;
         this.baseSchedulerProvider = baseSchedulerProvider;
 
         compositeDisposable = new CompositeDisposable();
