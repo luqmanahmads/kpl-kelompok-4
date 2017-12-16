@@ -87,4 +87,5 @@ public class AddFriendActivity extends AppCompatActivity implements AddFriendAct
             Log.d("Debug","showUserFound error ");
         }
     }
+
 }

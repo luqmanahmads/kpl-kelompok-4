@@ -9,4 +9,5 @@ import com.study.dwika.kplchat.model.Users;
 public interface AddFriendPresenterContract {
     void searchByEmail(String email);
     void addById(String id);
+
 }
