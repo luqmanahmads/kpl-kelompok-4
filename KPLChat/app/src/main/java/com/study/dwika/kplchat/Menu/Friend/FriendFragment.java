@@ -2,15 +2,12 @@ package com.study.dwika.kplchat.menu.Friend;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-<<<<<<< HEAD
+
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
-=======
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
->>>>>>> Add adapter for displaying friend list
+
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,10 +23,7 @@ import com.study.dwika.kplchat.data.network.ApiHelper;
 import com.study.dwika.kplchat.data.network.BaseApiHelper;
 import com.study.dwika.kplchat.data.sharedpreference.BaseSharedPreferenceHelper;
 import com.study.dwika.kplchat.data.sharedpreference.SharedPreferenceHelper;
-<<<<<<< HEAD
 
-=======
->>>>>>> Add adapter for displaying friend list
 import com.study.dwika.kplchat.model.UsersResponse;
 import com.study.dwika.kplchat.utils.BaseSchedulerProvider;
 
