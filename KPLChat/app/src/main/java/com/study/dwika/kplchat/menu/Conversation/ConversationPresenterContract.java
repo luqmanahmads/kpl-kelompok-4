@@ -8,6 +8,6 @@ public interface ConversationPresenterContract {
 
     void setPresenter(ConversationPresenterContract conversationPresenterContract);
 
-//    void getFriend(Users users);
+    void getConversation();
 
 }
