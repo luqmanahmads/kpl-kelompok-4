@@ -1,11 +1,16 @@
 package com.study.dwika.kplchat.data;
 
+import android.util.Log;
+
 import com.study.dwika.kplchat.data.database.BaseDatabaseHelper;
+import com.study.dwika.kplchat.data.network.ApiHeader;
 import com.study.dwika.kplchat.data.network.BaseApiHelper;
 import com.study.dwika.kplchat.data.sharedpreference.BaseSharedPreferenceHelper;
 import com.study.dwika.kplchat.model.BaseResponse;
 import com.study.dwika.kplchat.model.Users;
 import com.study.dwika.kplchat.model.Login;
+import com.study.dwika.kplchat.model.UsersResponse;
+
 import io.reactivex.Observable;
 
 /**
@@ -35,12 +40,18 @@ public class DataManager implements BaseDataManager{
     }
 
     @Override
+    public Observable<UsersResponse> authenticatedUser(ApiHeader header) {
+        return baseApiHelper.authenticatedUser(header);
+    }
+
+    @Override
     public String getAccessToken() {
-        return null;
+        return baseSharedPreferenceHelper.getAccessToken();
     }
 
     @Override
     public void setAccessToken(String accessToken) {
-
+        Log.d("Debug","Ngeset token nih : "+accessToken);
+        baseSharedPreferenceHelper.setAccessToken(accessToken);
     }
 }
