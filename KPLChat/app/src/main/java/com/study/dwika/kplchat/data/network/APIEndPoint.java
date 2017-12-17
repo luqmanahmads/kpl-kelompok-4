@@ -4,7 +4,7 @@ package com.study.dwika.kplchat.data.network;
  * Created by A.I on 02/12/2017.
  */
 
-public class APIEndPoint {
+public class ApiEndPoint {
 
     //Base url ketik di sini
     //public static final String BASE_URL = "http://classified5.me/chat-api/api/";
@@ -18,5 +18,6 @@ public class APIEndPoint {
     public static final String AUTHENTICATED_USER = BASE_URL + "authenticated_user";
     public static final String SEARCH_USER_BY_EMAIL = BASE_URL + "user/find?email={email}";
     public static final String ADD_FRIEND = BASE_URL + "friends/add/{id}";
+    public static final String CONVERSATION_DETAIL = BASE_URL + "conversation/{id}";
 
 }

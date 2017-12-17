@@ -7,6 +7,7 @@ import com.study.dwika.kplchat.data.network.ApiHeader;
 import com.study.dwika.kplchat.data.network.BaseApiHelper;
 import com.study.dwika.kplchat.data.sharedpreference.BaseSharedPreferenceHelper;
 import com.study.dwika.kplchat.model.BaseResponse;
+import com.study.dwika.kplchat.model.ConversationDetailResponse;
 import com.study.dwika.kplchat.model.Users;
 import com.study.dwika.kplchat.model.Login;
 import com.study.dwika.kplchat.model.UsersResponse;
@@ -54,6 +55,11 @@ public class DataManager implements BaseDataManager {
     public Observable<BaseResponse> addFriend(ApiHeader header, String id) {
         Log.d("Debug","Calls dataManager.addFriend");
         return baseApiHelper.addFriend(header,id);
+    }
+
+    @Override
+    public Observable<ConversationDetailResponse> conversationDetail(ApiHeader header, String id) {
+        return baseApiHelper.conversationDetail(header,id);
     }
 
     @Override
