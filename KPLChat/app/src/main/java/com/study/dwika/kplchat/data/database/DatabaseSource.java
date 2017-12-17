@@ -10,11 +10,12 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DatabaseSource extends SQLiteOpenHelper {
 
-    public static final String TABLE_NAME = "chat";
-    public static final String COLUMN_NAME_ID = "entryid";
-    public static final String COLUMN_NAME_TITLE = "title";
-    public static final String COLUMN_NAME_DESCRIPTION = "description";
-    public static final String COLUMN_NAME_COMPLETED = "completed";
+    public static final String TABLE_NAME = "messages";
+    public static final String COLUMN_NAME_ID = "id";
+    public static final String COLUMN_NAME_MESSAGE = "message";
+    public static final String COLUMN_NAME_USER_ID = "userid";
+    public static final String COLUMN_NAME_CONVERSATION_ID = "conversationid";
+    public static final String COLUMN_NAME_TIMESTAMP = "timestamp";
 
     public static final int DATABASE_VERSION = 1;
 
@@ -24,23 +25,26 @@ public class DatabaseSource extends SQLiteOpenHelper {
 
     private static final String INTEGER_TYPE = " INTEGER";
 
+    private static final String TIMESTAMP_TYPE = " TIMESTAMP";
+
     private static final String COMMA_SEP = ",";
 
     private static final String SQL_CREATE_ENTRIES =
             "CREATE TABLE " + TABLE_NAME + " (" +
-                    COLUMN_NAME_ID + TEXT_TYPE + " PRIMARY KEY," +
-                    COLUMN_NAME_TITLE + TEXT_TYPE + COMMA_SEP +
-                    COLUMN_NAME_DESCRIPTION + TEXT_TYPE + COMMA_SEP +
-                    COLUMN_NAME_COMPLETED + INTEGER_TYPE +
+                    COLUMN_NAME_ID + INTEGER_TYPE + " PRIMARY KEY AUTOINCREMENT," +
+                    COLUMN_NAME_MESSAGE + TEXT_TYPE + COMMA_SEP +
+                    COLUMN_NAME_CONVERSATION_ID + INTEGER_TYPE + COMMA_SEP +
+                    COLUMN_NAME_USER_ID + INTEGER_TYPE + COMMA_SEP +
+                    COLUMN_NAME_TIMESTAMP + TIMESTAMP_TYPE + "DEFAULT CURRENT_TIMESTAMP" +
                     " )";
 
-    public DatabaseSource(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
-        super(context, name, factory, version);
+    public DatabaseSource(Context context) {
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-
+        sqLiteDatabase.execSQL(SQL_CREATE_ENTRIES);
     }
 
     @Override

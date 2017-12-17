@@ -15,11 +15,7 @@
 
         </activity>
         <activity android:name=".menu.MenuActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".login.LoginActivity"
@@ -38,7 +34,11 @@
         <activity android:name=".conversationdetail.ConversationDetailActivity" />
 
         <activity android:name=".chatroom.ChatRoomActivity"></activity>
-
+        
+        <service
+            android:name=".service.ReceiverService"
+            android:exported="true">
+        </service>
 
     </application>
 

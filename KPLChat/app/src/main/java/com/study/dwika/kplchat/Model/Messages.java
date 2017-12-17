@@ -1,28 +1,37 @@
 package com.study.dwika.kplchat.model;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by A.I on 28/11/2017.
  */
 
 public class Messages {
 
-    private int messagesId, participantsId, conversationId, usersId;
-    private String messageType, message, attachmentUrl;
+    @SerializedName("user_id")
+    private int userId;
 
-    public int getMessagesId() {
-        return messagesId;
+    @SerializedName("conversation_id")
+    private int conversationId;
+
+    @SerializedName("message")
+    private String message;
+
+    public Messages() {
     }
 
-    public void setMessagesId(int messagesId) {
-        this.messagesId = messagesId;
+    public Messages(int userId, int conversationId, String message) {
+        this.userId = userId;
+        this.conversationId = conversationId;
+        this.message = message;
     }
 
-    public int getParticipantsId() {
-        return participantsId;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setParticipantsId(int participantsId) {
-        this.participantsId = participantsId;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public int getConversationId() {
@@ -33,35 +42,11 @@ public class Messages {
         this.conversationId = conversationId;
     }
 
-    public int getUsersId() {
-        return usersId;
-    }
-
-    public void setUsersId(int usersId) {
-        this.usersId = usersId;
-    }
-
-    public String getMessageType() {
-        return messageType;
-    }
-
-    public void setMessageType(String messageType) {
-        this.messageType = messageType;
-    }
-
     public String getMessage() {
         return message;
     }
 
     public void setMessage(String message) {
         this.message = message;
-    }
-
-    public String getAttachmentUrl() {
-        return attachmentUrl;
-    }
-
-    public void setAttachmentUrl(String attachmentUrl) {
-        this.attachmentUrl = attachmentUrl;
     }
 }

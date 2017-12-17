@@ -50,4 +50,12 @@ dependencies {
     // Decode JWT
     compile 'com.auth0.android:jwtdecode:1.1.1'
 
+//    RabbitMQ
+    compile 'com.rabbitmq:amqp-client:4.3.0'
+
+//    GSON
+    compile 'com.google.code.gson:gson:2.8.2'
+
+//    SQLBrite
+    compile 'com.squareup.sqlbrite3:sqlbrite:3.0.0'
 }

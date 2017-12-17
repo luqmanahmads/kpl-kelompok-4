@@ -35,7 +35,7 @@ public class ConversationFragment extends Fragment implements ConversationViewCo
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
 
-        baseDataManager = new DataManager(new ApiHelper(), new DatabaseHelper(), new SharedPreferenceHelper());
+        baseDataManager = new DataManager(new ApiHelper(), new DatabaseHelper(getContext()), new SharedPreferenceHelper(getContext()));
 
         conversationPresenterContract = new ConversationPresenter(baseDataManager, this, baseSchedulerProvider);
 
