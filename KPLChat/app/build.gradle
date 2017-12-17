@@ -50,5 +50,4 @@ dependencies {
     // Decode JWT
     compile 'com.auth0.android:jwtdecode:1.1.1'
 
-
 }
