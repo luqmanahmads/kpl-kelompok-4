@@ -63,8 +63,6 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityCon
     void onLoginClick(View v) {
         Log.d("di activity", "email:" + etEmail + ",password:" + etPassword);
         mPresenter.serverLogin(etEmail.getText().toString(), etPassword.getText().toString());
-        Intent menu = new Intent(LoginActivity.this, MenuActivity.class);
-        startActivity(menu);
     }
 
     @OnClick(R.id.btn_to_register)
@@ -81,6 +79,12 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityCon
     @Override
     public void hideLoading() {
         progressBar.setVisibility(View.INVISIBLE);
+    }
+
+    @Override
+    public void loginSuccess() {
+        Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
+        startActivity(intent);
     }
 
 }

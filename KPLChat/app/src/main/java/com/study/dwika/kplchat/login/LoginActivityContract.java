@@ -5,7 +5,8 @@ package com.study.dwika.kplchat.login;
  */
 
 public interface LoginActivityContract {
-    void showLoading();
 
+    void showLoading();
     void hideLoading();
+    void loginSuccess();
 }

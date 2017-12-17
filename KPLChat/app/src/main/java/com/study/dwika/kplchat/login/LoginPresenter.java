@@ -49,11 +49,14 @@ public class LoginPresenter implements LoginPresenterContract {
                                    baseDataManager.setAccessToken(baseResponse.getToken());
                                    authenticatedUserDetail();
                                    loginActivityContract.hideLoading();
+                                   loginActivityContract.loginSuccess();
+
                                }
                            }, new Consumer<Throwable>() {
                                @Override
                                public void accept(Throwable throwable) throws Exception {
                                    Log.d("Debug", "serverLogin error - " + throwable.getLocalizedMessage());
+                                   loginActivityContract.hideLoading();
                                }
                            }
                 ));
@@ -76,7 +79,6 @@ public class LoginPresenter implements LoginPresenterContract {
                                    baseDataManager.setName(usersResponse.getUsersData().get(0).getName());
                                    baseDataManager.setPhone(usersResponse.getUsersData().get(0).getPhone());
                                    baseDataManager.setEmail(usersResponse.getUsersData().get(0).getEmail());
-                                   loginActivityContract.hideLoading();
                                }
                            }, new Consumer<Throwable>() {
                                @Override
