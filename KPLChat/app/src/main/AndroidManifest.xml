@@ -11,26 +11,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
 
-        </activity>
-        <activity android:name=".menu.MenuActivity">
-
-        </activity>
-
+        <activity android:name=".MainActivity" ></activity>
+        <activity android:name=".menu.MenuActivity" ></activity>
         <activity
             android:name="com.study.dwika.kplchat.login.LoginActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait">
+        </activity>
+        <activity android:name="com.study.dwika.kplchat.register.RegisterActivity" />
+        <activity android:name=".addfriend.AddFriendActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name="com.study.dwika.kplchat.register.RegisterActivity" />
-        <activity android:name="com.study.dwika.kplchat.addfriend.AddFriendActivity"/>
 
     </application>
 

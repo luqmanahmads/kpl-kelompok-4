@@ -37,4 +37,22 @@ public class ApiHelper implements BaseApiHelper {
                 .getObjectObservable(UsersResponse.class);
     }
 
+    @Override
+    public Observable<UsersResponse> searchUserByEmail(ApiHeader header, String email) {
+        return Rx2AndroidNetworking.post(APIEndPoint.SEARCH_USER_BY_EMAIL)
+                .addHeaders(header)
+                .addBodyParameter("email",email)
+                .build()
+                .getObjectObservable(UsersResponse.class);
+    }
+
+    @Override
+    public Observable<BaseResponse> addFriend(ApiHeader header, String id) {
+        return Rx2AndroidNetworking.post(APIEndPoint.ADD_FRIEND)
+                .addHeaders(header)
+                .addBodyParameter("id",id)
+                .build()
+                .getObjectObservable(BaseResponse.class);
+    }
+
 }

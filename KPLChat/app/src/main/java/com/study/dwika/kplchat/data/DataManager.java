@@ -43,6 +43,16 @@ public class DataManager implements BaseDataManager {
     }
 
     @Override
+    public Observable<UsersResponse> searchUserByEmail(ApiHeader header, String email) {
+        return baseApiHelper.searchUserByEmail(header,email);
+    }
+
+    @Override
+    public Observable<BaseResponse> addFriend(ApiHeader header, String id) {
+        return baseApiHelper.addFriend(header,id);
+    }
+
+    @Override
     public String getAccessToken() {
         return baseSharedPreferenceHelper.getAccessToken();
     }

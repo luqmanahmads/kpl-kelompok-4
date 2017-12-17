@@ -62,7 +62,7 @@ public class LoginPresenter implements LoginPresenterContract {
     @Override
     public void authenticatedUserDetail() {
         loginActivityContract.showLoading();
-        compositeDisposable.add(baseDataManager.authenticatedUser(new ApiHeader(baseDataManager.getAccessToken(), "application/json"))
+        compositeDisposable.add(baseDataManager.authenticatedUser(new ApiHeader(baseDataManager.getAccessToken()))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Consumer<UsersResponse>() {

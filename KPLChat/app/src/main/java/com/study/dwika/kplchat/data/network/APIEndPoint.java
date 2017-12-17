@@ -15,5 +15,7 @@ public class APIEndPoint {
     public static final String LOGIN = BASE_URL + "authenticate";
     public static final String REGISTER = "register";
     public static final String AUTHENTICATED_USER = BASE_URL + "authenticated_user";
+    public static final String SEARCH_USER_BY_EMAIL = BASE_URL + "search_by_email";
+    public static final String ADD_FRIEND = BASE_URL + "friends/add/";
 
 }

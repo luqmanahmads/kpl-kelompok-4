@@ -17,6 +17,7 @@ import com.study.dwika.kplchat.data.network.ApiHelper;
 import com.study.dwika.kplchat.data.network.BaseApiHelper;
 import com.study.dwika.kplchat.data.sharedpreference.BaseSharedPreferenceHelper;
 import com.study.dwika.kplchat.data.sharedpreference.SharedPreferenceHelper;
+import com.study.dwika.kplchat.model.Users;
 import com.study.dwika.kplchat.register.RegisterActivity;
 import com.study.dwika.kplchat.utils.BaseSchedulerProvider;
 
