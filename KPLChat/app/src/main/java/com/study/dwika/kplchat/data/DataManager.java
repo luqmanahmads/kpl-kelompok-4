@@ -1,5 +1,7 @@
 package com.study.dwika.kplchat.data;
 
+import android.util.Log;
+
 import com.study.dwika.kplchat.data.database.BaseDatabaseHelper;
 import com.study.dwika.kplchat.data.network.ApiHeader;
 import com.study.dwika.kplchat.data.network.BaseApiHelper;
@@ -44,11 +46,13 @@ public class DataManager implements BaseDataManager {
 
     @Override
     public Observable<UsersResponse> searchUserByEmail(ApiHeader header, String email) {
+        Log.d("Debug","Calls dataManager.searchUserByEmail");
         return baseApiHelper.searchUserByEmail(header,email);
     }
 
     @Override
     public Observable<BaseResponse> addFriend(ApiHeader header, String id) {
+        Log.d("Debug","Calls dataManager.addFriend");
         return baseApiHelper.addFriend(header,id);
     }
 
