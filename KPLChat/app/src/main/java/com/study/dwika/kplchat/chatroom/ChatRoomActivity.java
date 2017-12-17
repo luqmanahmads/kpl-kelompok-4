@@ -2,6 +2,7 @@ package com.study.dwika.kplchat.chatroom;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -49,10 +50,8 @@ public class ChatRoomActivity extends AppCompatActivity implements ChatRoomActiv
     private BaseDataManager baseDataManager;
     private ChatRoomPresenterContract chatRoomPresenterContract;
     private BaseSchedulerProvider baseSchedulerProvider;
-
-    private ReceiverService receiverService;
     private ChatRoomAdapter chatRoomAdapter;
-
+    private Handler handler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,7 +66,19 @@ public class ChatRoomActivity extends AppCompatActivity implements ChatRoomActiv
 
         baseDataManager = new DataManager(new ApiHelper(), new DatabaseHelper(this), new SharedPreferenceHelper(this));
         chatRoomPresenterContract = new ChatRoomPresenter(baseDataManager, this, baseSchedulerProvider);
-        chatRoomPresenterContract.getMessage();
+
+        handler =new Handler();
+        handler.postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                //call function
+                chatRoomPresenterContract.getMessage();
+                handler.postDelayed(this, 5000);
+            }
+        }, 5000);
+
+
     }
 
 
