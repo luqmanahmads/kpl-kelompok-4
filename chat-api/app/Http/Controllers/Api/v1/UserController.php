@@ -12,6 +12,7 @@ namespace app\Http\Controllers\Api\v1;
 use App\Http\Controllers\Controller;
 use App\Transformers\FriendsTransformer;
 use App\Transformers\UserFriendsTransformer;
+use App\Transformers\UsersTransformer;
 use Dingo\Api\Routing\Helpers;
 
 class UserController extends Controller
@@ -23,6 +24,17 @@ class UserController extends Controller
     public function __construct()
     {
         $this->userService = app()->make('userService');
+    }
+
+    public function findUserToAdd($query)
+    {
+        $user = $this->userService->findUserToAdd($query);
+
+        if ($user) {
+            return $this->response->item($user, new UsersTransformer);
+        }
+
+        return $this->response->errorNotFound();
     }
 
     public function getFriends()

@@ -35,7 +35,7 @@ class User extends Authenticatable
     public function friends()
     {
 //        return $this->belongsToMany('App\Models\User', 'friends', 'friend_id', 'user_id');
-        return $this->hasMany('App\Models\Friend', 'friend_id', 'id');
+        return $this->hasMany('App\Models\Friend', 'user_id', 'id');
     }
 
     public function setPasswordAttribute($value)

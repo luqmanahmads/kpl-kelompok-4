@@ -44,6 +44,43 @@ class UserService
         return $this->friendRepository->create(['user_id' => $user->id, 'friend_id' => $id]);
     }
 
+    public function detectString($input)
+    {
+        if (filter_var($input, FILTER_VALIDATE_EMAIL)) {
+            return 'email';
+        }
+
+        return 'name';
+    }
+
+    public function findUserToAdd($input)
+    {
+        $type = $this->detectString($input);
+
+        switch ($type){
+            case 'email':
+                return $this->findByEmail($input);
+                break;
+            case 'name':
+                return $this->findByName($input);
+                break;
+        }
+
+        return null;
+    }
+
+    public function findByEmail($email)
+    {
+        $user = $this->userRepository->findBy('email', $email);
+
+        return $user;
+    }
+
+    public function findByName($name)
+    {
+        return $this->userRepository->findBy('name', $name);
+    }
+
     public function authenticatedUser()
     {
         try {

@@ -49,7 +49,7 @@ class AuthenticateController extends Controller
     {
         $user = $this->userService->authenticatedUser();
 
-        return $this->response->item($user, new UsersTransformer);
+        return $this->response->collection(collect([$user]), new UsersTransformer);
     }
 
     public function getToken()
@@ -70,7 +70,7 @@ class AuthenticateController extends Controller
     {
         $data = $this->userService->create($request->all());
 
-        return $this->response->created();
+        return $this->response->item($data, new UsersTransformer)->setStatusCode(201);
     }
 
 }

@@ -37,4 +37,8 @@ $api->version('v1', function ($api){
         $api->get('/', 'App\Http\Controllers\Api\v1\UserController@getFriends');
         $api->post('add/{id}', 'App\Http\Controllers\Api\v1\UserController@addFriend');
     });
+
+    $api->group(['prefix' => 'user'], function ($api){
+        $api->get('find/{data}', 'App\Http\Controllers\Api\v1\UserController@findUserToAdd');
+    });
 });
