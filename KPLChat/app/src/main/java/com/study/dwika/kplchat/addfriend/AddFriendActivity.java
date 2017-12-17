@@ -16,7 +16,6 @@ import com.study.dwika.kplchat.data.network.ApiHelper;
 import com.study.dwika.kplchat.data.network.BaseApiHelper;
 import com.study.dwika.kplchat.data.sharedpreference.BaseSharedPreferenceHelper;
 import com.study.dwika.kplchat.data.sharedpreference.SharedPreferenceHelper;
-import com.study.dwika.kplchat.login.LoginPresenterContract;
 import com.study.dwika.kplchat.model.Users;
 import com.study.dwika.kplchat.utils.BaseSchedulerProvider;
 
@@ -53,28 +52,28 @@ public class AddFriendActivity extends AppCompatActivity implements AddFriendAct
 
         baseApiHelper = new ApiHelper();
         baseSharedPreferenceHelper = new SharedPreferenceHelper(this);
-        baseDataManager = new DataManager(baseApiHelper,baseDatabaseHelper,baseSharedPreferenceHelper);
+        baseDataManager = new DataManager(baseApiHelper, baseDatabaseHelper, baseSharedPreferenceHelper);
 
-        mPresenter = new AddFriendPresenter(this, baseDataManager,baseSchedulerProvider);
+        mPresenter = new AddFriendPresenter(this, baseDataManager, baseSchedulerProvider);
     }
 
     @OnClick(R.id.btn_search_add_friend)
-    void onSearchAddFriendClick(View v){
+    void onSearchAddFriendClick(View v) {
         try {
-            Log.d("Debug","search by email "+etEmail.getText().toString());
+            Log.d("Debug", "search by email " + etEmail.getText().toString());
             mPresenter.searchByEmail(etEmail.getText().toString());
         } catch (Exception e) {
-            Log.d("Debug","onSearchAddFriendClick error ");
+            Log.d("Debug", "onSearchAddFriendClick error ");
         }
     }
 
     @OnClick(R.id.btn_add_friend)
-    void onAddFriendClick(View v){
-        Log.d("Debug", "button add friend");
-        try{
+    void onAddFriendClick(View v) {
+        Log.d("Debug", "Clicked add friend with id " + userFound.getId());
+        try {
             mPresenter.addById(String.valueOf(userFound.getId()));
-        } catch (Exception e){
-            Log.d("Debug","onAddFriendClick error ");
+        } catch (Exception e) {
+            Log.d("Debug", "onAddFriendClick error ");
         }
     }
 
@@ -83,8 +82,8 @@ public class AddFriendActivity extends AppCompatActivity implements AddFriendAct
         try {
             userFound = user;
             tvName.setText(userFound.getName().toString());
-        } catch (Exception e){
-            Log.d("Debug","showUserFound error ");
+        } catch (Exception e) {
+            Log.d("Debug", "showUserFound error ");
         }
     }
 

@@ -11,7 +11,7 @@ public class BaseResponse {
     @SerializedName("code")
     private String code;
 
-    @SerializedName("status")
+    @SerializedName("message")
     private String status;
 
     @SerializedName("token")

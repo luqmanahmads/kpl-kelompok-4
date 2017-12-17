@@ -68,7 +68,7 @@ public class AddFriendPresenter implements AddFriendPresenterContract {
                            }, new Consumer<Throwable>() {
                                @Override
                                public void accept(Throwable throwable) throws Exception {
-                                   Log.d("Debug", "addById error " + throwable.getLocalizedMessage());
+                                   Log.d("Debug", "addById error - " + throwable.getLocalizedMessage());
                                }
                            }
                 )

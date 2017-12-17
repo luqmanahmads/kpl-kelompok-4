@@ -1,5 +1,7 @@
 package com.study.dwika.kplchat.data.network;
 
+import android.util.Log;
+
 import com.rx2androidnetworking.Rx2AndroidNetworking;
 import com.study.dwika.kplchat.model.BaseResponse;
 import com.study.dwika.kplchat.model.Users;
@@ -39,18 +41,20 @@ public class ApiHelper implements BaseApiHelper {
 
     @Override
     public Observable<UsersResponse> searchUserByEmail(ApiHeader header, String email) {
-        return Rx2AndroidNetworking.post(APIEndPoint.SEARCH_USER_BY_EMAIL)
+        Log.d("Debug","Calls apiHelper.searchUserByEmail");
+        return Rx2AndroidNetworking.get(APIEndPoint.SEARCH_USER_BY_EMAIL)
                 .addHeaders(header)
-                .addBodyParameter("email",email)
+                .addPathParameter("email",email)
                 .build()
                 .getObjectObservable(UsersResponse.class);
     }
 
     @Override
     public Observable<BaseResponse> addFriend(ApiHeader header, String id) {
+        Log.d("Debug","Calls apiHelper.addFriend");
         return Rx2AndroidNetworking.post(APIEndPoint.ADD_FRIEND)
                 .addHeaders(header)
-                .addBodyParameter("id",id)
+                .addPathParameter("id",id)
                 .build()
                 .getObjectObservable(BaseResponse.class);
     }
