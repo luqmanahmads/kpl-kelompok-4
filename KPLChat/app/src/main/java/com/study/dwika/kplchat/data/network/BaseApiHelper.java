@@ -5,6 +5,7 @@ import com.study.dwika.kplchat.model.Login;
 import com.study.dwika.kplchat.model.Users;
 import com.study.dwika.kplchat.model.UsersResponse;
 
+import butterknife.OnClick;
 import io.reactivex.Observable;
 
 /**
@@ -14,4 +15,6 @@ import io.reactivex.Observable;
 public interface BaseApiHelper {
     Observable<BaseResponse> doLogin(Login login);
     Observable<UsersResponse> authenticatedUser(ApiHeader header);
+    Observable<UsersResponse> searchUserByEmail(ApiHeader header, String email);
+    Observable<BaseResponse> addFriend(ApiHeader header, String id);
 }
