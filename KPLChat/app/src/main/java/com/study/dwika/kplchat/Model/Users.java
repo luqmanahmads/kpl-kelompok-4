@@ -1,6 +1,6 @@
 package com.study.dwika.kplchat.model;
 
-import java.util.Date;
+import com.google.gson.annotations.SerializedName;
 
 /**
  * Created by A.I on 28/11/2017.
@@ -8,28 +8,32 @@ import java.util.Date;
 
 public class Users {
 
-    int id;
+    @SerializedName("id")
+    private int id;
 
-    String phone;
-    String email;
-    String password;
-    String name;
+    @SerializedName("name")
+    private String name;
 
-    String remenber_token;
-    String verfication_code;
+    @SerializedName("phone")
+    private String phone;
 
-    int is_active;
-    Date created_at;
-    Date updated_at;
-    Date deleted_at;
+    @SerializedName("email")
+    private String email;
 
-    public Users(String phone, String email, String password, String name){
+    private String password;
+    private String rememberToken;
+    private String verificationCode;
+    private String isActive;
+    private String createdAt;
+    private String updatedAt;
+    private String deletedAt;
+
+    public Users(String phone, String email, String password, String name) {
         this.phone = phone;
         this.email = email;
         this.password = password;
         this.name = name;
     }
-
 
     public int getId() {
         return id;
@@ -37,6 +41,14 @@ public class Users {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getPhone() {
@@ -63,59 +75,51 @@ public class Users {
         this.password = password;
     }
 
-    public String getName() {
-        return name;
+    public String getRememberToken() {
+        return rememberToken;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setRememberToken(String rememberToken) {
+        this.rememberToken = rememberToken;
     }
 
-    public String getRemenber_token() {
-        return remenber_token;
+    public String getVerificationCode() {
+        return verificationCode;
     }
 
-    public void setRemenber_token(String remenber_token) {
-        this.remenber_token = remenber_token;
+    public void setVerificationCode(String verificationCode) {
+        this.verificationCode = verificationCode;
     }
 
-    public String getVerfication_code() {
-        return verfication_code;
+    public String getIsActive() {
+        return isActive;
     }
 
-    public void setVerfication_code(String verfication_code) {
-        this.verfication_code = verfication_code;
+    public void setIsActive(String isActive) {
+        this.isActive = isActive;
     }
 
-    public int getIs_active() {
-        return is_active;
+    public String getCreatedAt() {
+        return createdAt;
     }
 
-    public void setIs_active(int is_active) {
-        this.is_active = is_active;
+    public void setCreatedAt(String createdAt) {
+        this.createdAt = createdAt;
     }
 
-    public Date getCreated_at() {
-        return created_at;
+    public String getUpdatedAt() {
+        return updatedAt;
     }
 
-    public void setCreated_at(Date created_at) {
-        this.created_at = created_at;
+    public void setUpdatedAt(String updatedAt) {
+        this.updatedAt = updatedAt;
     }
 
-    public Date getUpdated_at() {
-        return updated_at;
+    public String getDeletedAt() {
+        return deletedAt;
     }
 
-    public void setUpdated_at(Date updated_at) {
-        this.updated_at = updated_at;
-    }
-
-    public Date getDeleted_at() {
-        return deleted_at;
-    }
-
-    public void setDeleted_at(Date deleted_at) {
-        this.deleted_at = deleted_at;
+    public void setDeletedAt(String deletedAt) {
+        this.deletedAt = deletedAt;
     }
 }
