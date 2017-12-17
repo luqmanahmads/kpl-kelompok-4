@@ -9,9 +9,9 @@ public class ApiHeader {
     private String Authorization;
     private String Accept;
 
-    public ApiHeader(String authorization, String accept) {
+    public ApiHeader(String authorization) {
         Authorization = "Bearer " + authorization;
-        Accept = accept;
+        Accept = "application/json";
     }
 
     public String getAuthorization() {
