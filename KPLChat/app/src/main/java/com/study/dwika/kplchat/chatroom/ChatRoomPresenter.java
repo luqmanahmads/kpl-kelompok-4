@@ -26,12 +26,9 @@ public class ChatRoomPresenter implements ChatRoomPresenterContract {
         compositeDisposable = new CompositeDisposable();
     }
 
-
     @Override
     public void getMessage() {
         Log.d("Debug", "Presenter message 0 " + baseDataManager.getMessages().get(0).getMessage());
         chatRoomActivityContract.displayChat(baseDataManager.getMessages());
     }
-
-
 }

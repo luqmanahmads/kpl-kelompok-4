@@ -48,6 +48,7 @@ public class FriendFragment extends Fragment implements FriendViewContract {
 
         baseDataManager = new DataManager(new ApiHelper(), new DatabaseHelper(getContext()), new SharedPreferenceHelper(getContext()));
 
+
         friendPresenterContract = new FriendPresenter(baseDataManager, this, baseSchedulerProvider);
         Log.d("Debug", "FriendFragment");
         getFriend();

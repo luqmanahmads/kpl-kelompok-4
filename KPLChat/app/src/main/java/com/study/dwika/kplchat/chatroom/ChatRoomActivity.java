@@ -28,6 +28,8 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+
+
 public class ChatRoomActivity extends AppCompatActivity implements ChatRoomActivityContract {
 
     @BindView(R.id.etChat)
@@ -35,9 +37,8 @@ public class ChatRoomActivity extends AppCompatActivity implements ChatRoomActiv
 
     @BindView(R.id.btnSendChat)
     Button btnSendChat;
-
     @BindView(R.id.tvChat)
-    TextView tvChat;
+            TextView tvChat;
 
     @BindView(R.id.rvChat)
     RecyclerView rvChat;
@@ -48,8 +49,10 @@ public class ChatRoomActivity extends AppCompatActivity implements ChatRoomActiv
     private BaseDataManager baseDataManager;
     private ChatRoomPresenterContract chatRoomPresenterContract;
     private BaseSchedulerProvider baseSchedulerProvider;
+
     private ReceiverService receiverService;
     private ChatRoomAdapter chatRoomAdapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

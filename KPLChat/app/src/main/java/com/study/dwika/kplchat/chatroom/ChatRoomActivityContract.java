@@ -11,4 +11,5 @@ import java.util.List;
 public interface ChatRoomActivityContract {
 
     void displayChat(List<Messages> messagesList);
+
 }

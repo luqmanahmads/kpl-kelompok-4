@@ -1,6 +1,5 @@
 package com.study.dwika.kplchat.data.network;
 
-
 import android.util.Log;
 
 import com.rx2androidnetworking.Rx2AndroidNetworking;
@@ -41,6 +40,7 @@ public class ApiHelper implements BaseApiHelper {
     }
 
     @Override
+
     public Observable<UsersResponse> getFriend(ApiHeader apiHeader) {
         Log.d("debug", "apihelper friend");
         return Rx2AndroidNetworking.get(ApiEndPoint.GET_FRIEND)

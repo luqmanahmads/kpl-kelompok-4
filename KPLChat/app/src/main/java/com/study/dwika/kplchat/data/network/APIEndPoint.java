@@ -5,8 +5,8 @@ package com.study.dwika.kplchat.data.network;
  */
 
 public class ApiEndPoint {
-
     //Base url ketik di sini
+
     //public static final String BASE_URL = "http://classified5.me/chat-api/api/";
     //public static final String BASE_URL = "http://10.107.255.221/chat-api/api/";
     public static final String BASE_URL = "http://a08f0a7b.ngrok.io/chat-api/api/";

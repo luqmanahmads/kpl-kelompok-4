@@ -112,4 +112,5 @@ public class DataManager implements BaseDataManager {
         Log.d("Debug", "Save message datamanager");
         baseDatabaseHelper.saveMessages(messages);
     }
+
 }

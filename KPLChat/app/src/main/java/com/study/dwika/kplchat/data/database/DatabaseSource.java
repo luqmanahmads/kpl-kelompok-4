@@ -10,12 +10,14 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DatabaseSource extends SQLiteOpenHelper {
 
+
     public static final String TABLE_NAME = "messages";
     public static final String COLUMN_NAME_ID = "id";
     public static final String COLUMN_NAME_MESSAGE = "message";
     public static final String COLUMN_NAME_USER_ID = "userid";
     public static final String COLUMN_NAME_CONVERSATION_ID = "conversationid";
     public static final String COLUMN_NAME_TIMESTAMP = "timestamp";
+
 
     public static final int DATABASE_VERSION = 1;
 
