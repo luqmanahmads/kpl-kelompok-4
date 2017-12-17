@@ -40,6 +40,6 @@ public class LoginActivity extends AppCompatActivity {
     void onRegisterClick(View view) {
         Intent register = new Intent(LoginActivity.this, RegisterActivity.class);
         startActivity(register);
-
+        finish();
     }
 }
