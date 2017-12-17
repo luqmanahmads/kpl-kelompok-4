@@ -28,7 +28,7 @@ public class Users {
     private String updatedAt;
     private String deletedAt;
 
-    public Users(String phone, String email, String password, String name){
+    public Users(String phone, String email, String password, String name) {
         this.phone = phone;
         this.email = email;
         this.password = password;
