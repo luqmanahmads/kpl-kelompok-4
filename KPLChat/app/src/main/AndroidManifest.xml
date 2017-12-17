@@ -34,7 +34,7 @@
         <activity android:name=".conversationdetail.ConversationDetailActivity" />
 
         <activity android:name=".chatroom.ChatRoomActivity"></activity>
-        
+
         <service
             android:name=".service.ReceiverService"
             android:exported="true">

@@ -64,7 +64,8 @@ public class DatabaseHelper implements BaseDatabaseHelper {
         contentValues.put(DatabaseSource.COLUMN_NAME_MESSAGE, messages.getMessage());
         contentValues.put(DatabaseSource.COLUMN_NAME_CONVERSATION_ID, messages.getConversationId());
         contentValues.put(DatabaseSource.COLUMN_NAME_USER_ID, messages.getUserId());
-        db.insert(DatabaseSource.TABLE_NAME, null, contentValues);
+        long success = db.insert(DatabaseSource.TABLE_NAME, null, contentValues);
+        Log.d("Debug", "insert " + success);
         db.close();
     }
 }

@@ -30,7 +30,6 @@ public class ReceiverService extends Service {
 
     private PowerManager.WakeLock wakeLock;
     private ConnectionFactory factory;
-    private Connection connection;
     private BaseDataManager baseDataManager;
     private Thread listenThread;
 
@@ -69,40 +68,46 @@ public class ReceiverService extends Service {
         listenThread = new Thread(new Runnable() {
             @Override
             public void run() {
-                try{
-                    connection = factory.newConnection();
-                    Channel channel = connection.createChannel();
-                    channel.basicQos(1);
-                    AMQP.Queue.DeclareOk q = channel.queueDeclare();
-                    channel.queueBind(q.getQueue(), "user.1", "");
-                    QueueingConsumer consumer = new QueueingConsumer(channel);
-                    channel.basicConsume(q.getQueue(), true, consumer);
+                while(true){
 
-                    while (true){
-                        QueueingConsumer.Delivery delivery = consumer.nextDelivery();
+                    try{
+                        Connection connection = factory.newConnection();
+                        Channel channel = connection.createChannel();
+                        channel.basicQos(1);
+                        AMQP.Queue.DeclareOk q = channel.queueDeclare();
+                        channel.queueBind(q.getQueue(), "user.1", "");
+                        QueueingConsumer consumer = new QueueingConsumer(channel);
+                        channel.basicConsume(q.getQueue(), true, consumer);
 
-                        final String message = new String(delivery.getBody());
-                        Log.d("Debug","[r] " + message);
+                        while (true){
+                            QueueingConsumer.Delivery delivery = consumer.nextDelivery();
 
-                        Messages messages = new Messages(0,0,message);
-                        baseDataManager.saveMessages(messages);
-                    }
+                            final String message = new String(delivery.getBody());
+                            Log.d("Debug","[r] " + message);
 
-                } catch (TimeoutException e) {
-                    e.printStackTrace();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                } catch (Exception e){
-                    Log.d("debug", "Connection broken: " + e.getClass().getName());
-                    try {
-                        //sleep and then try again
-                        Thread.sleep(4000);
-                    } catch (InterruptedException el) {
-                        el.printStackTrace();
+                            Messages messages = new Messages(0,0,message);
+                            baseDataManager.saveMessages(messages);
+                            Thread.sleep(3000);
+                        }
+
+                    } catch (TimeoutException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    } catch (Exception e){
+                        Log.d("debug", "Connection broken: " + e.getClass().getName());
+                        try {
+                            //sleep and then try again
+                            Thread.sleep(4000);
+//                        setupConnectionFactory();
+                        } catch (InterruptedException el) {
+                            el.printStackTrace();
+                        }
                     }
                 }
+
             }
             });
         listenThread.start();
@@ -111,12 +116,13 @@ public class ReceiverService extends Service {
     private void setupConnectionFactory() {
 
         try {
-            factory.setAutomaticRecoveryEnabled(false);
+            factory.setAutomaticRecoveryEnabled(true);
             factory.setUsername("chat-kpl");
             factory.setPassword("chat-kpl");
             factory.setVirtualHost("/");
             factory.setHost("35.198.231.167");
             factory.setPort(5672);
+            Connection conn = factory.newConnection();
         } catch (Exception el) {
             Log.d("Debug", "Connection " + el.toString());
             el.printStackTrace();
