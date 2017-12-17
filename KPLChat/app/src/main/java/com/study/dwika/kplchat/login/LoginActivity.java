@@ -17,6 +17,7 @@ import com.study.dwika.kplchat.data.network.ApiHelper;
 import com.study.dwika.kplchat.data.network.BaseApiHelper;
 import com.study.dwika.kplchat.data.sharedpreference.BaseSharedPreferenceHelper;
 import com.study.dwika.kplchat.data.sharedpreference.SharedPreferenceHelper;
+import com.study.dwika.kplchat.menu.MenuActivity;
 import com.study.dwika.kplchat.register.RegisterActivity;
 import com.study.dwika.kplchat.utils.BaseSchedulerProvider;
 
@@ -78,6 +79,12 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityCon
     @Override
     public void hideLoading() {
         progressBar.setVisibility(View.INVISIBLE);
+    }
+
+    @Override
+    public void loginSuccess() {
+        Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
+        startActivity(intent);
     }
 
 }
