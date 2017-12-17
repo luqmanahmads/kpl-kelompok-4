@@ -17,6 +17,7 @@ import com.study.dwika.kplchat.data.network.ApiHelper;
 import com.study.dwika.kplchat.data.network.BaseApiHelper;
 import com.study.dwika.kplchat.data.sharedpreference.BaseSharedPreferenceHelper;
 import com.study.dwika.kplchat.data.sharedpreference.SharedPreferenceHelper;
+import com.study.dwika.kplchat.menu.MenuActivity;
 import com.study.dwika.kplchat.register.RegisterActivity;
 import com.study.dwika.kplchat.utils.BaseSchedulerProvider;
 
@@ -62,6 +63,8 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityCon
     void onLoginClick(View v) {
         Log.d("di activity", "email:" + etEmail + ",password:" + etPassword);
         mPresenter.serverLogin(etEmail.getText().toString(), etPassword.getText().toString());
+        Intent menu = new Intent(LoginActivity.this, MenuActivity.class);
+        startActivity(menu);
     }
 
     @OnClick(R.id.btn_to_register)
