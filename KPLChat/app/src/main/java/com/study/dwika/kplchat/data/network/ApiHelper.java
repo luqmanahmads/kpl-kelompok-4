@@ -20,6 +20,7 @@ public class ApiHelper implements BaseApiHelper {
                 .build()
                 .getObjectObservable(BaseResponse.class);
     }
+
     @Override
     public Observable<BaseResponse> doLogin(Login login) {
         return Rx2AndroidNetworking.post(APIEndPoint.LOGIN)
