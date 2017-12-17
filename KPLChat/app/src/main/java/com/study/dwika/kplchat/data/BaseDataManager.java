@@ -9,4 +9,5 @@ import com.study.dwika.kplchat.data.sharedpreference.BaseSharedPreferenceHelper;
  */
 
 public interface BaseDataManager extends BaseApiHelper, BaseSharedPreferenceHelper, BaseDatabaseHelper {
+
 }
