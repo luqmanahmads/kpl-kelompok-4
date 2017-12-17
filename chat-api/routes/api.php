@@ -26,7 +26,6 @@ $api->version('v1', function ($api) {
     $api->get('token', 'App\Http\Controllers\Api\v1\AuthenticateController@getToken');
 
     $api->post('register', 'App\Http\Controllers\Api\v1\AuthenticateController@register');
-
 });
 
 $api->version('v1', function ($api){
@@ -39,6 +38,11 @@ $api->version('v1', function ($api){
     });
 
     $api->group(['prefix' => 'user'], function ($api){
-        $api->get('find/{data}', 'App\Http\Controllers\Api\v1\UserController@findUserToAdd');
+        $api->get('find', 'App\Http\Controllers\Api\v1\UserController@findUserToAdd');
+    });
+
+    $api->group(['prefix' => 'conversation'], function ($api){
+        $api->get('/', 'App\Http\Controllers\Api\v1\UserController@getConversations');
+        $api->get('/{id}', 'App\Http\Controllers\Api\v1\ChatController@getConversationDetail');
     });
 });

@@ -37,6 +37,13 @@ class UserService
         return $user->friends;
     }
 
+    public function getConversations()
+    {
+        $user = $this->authenticatedUser();
+
+        return $user->conversation;
+    }
+
     public function addFriend($id)
     {
         $user = $this->authenticatedUser();
@@ -53,17 +60,12 @@ class UserService
         return 'name';
     }
 
-    public function findUserToAdd($input)
+    public function findUserToAdd($params)
     {
-        $type = $this->detectString($input);
-
-        switch ($type){
-            case 'email':
-                return $this->findByEmail($input);
-                break;
-            case 'name':
-                return $this->findByName($input);
-                break;
+        if (isset($params['email']))
+            return $this->findByEmail($params['email']);
+        elseif (isset($params['name'])){
+            return $this->findByName($params['name']);
         }
 
         return null;

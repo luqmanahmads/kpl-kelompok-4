@@ -10,9 +10,11 @@ namespace app\Http\Controllers\Api\v1;
 
 
 use App\Http\Controllers\Controller;
+use App\Transformers\ConversationTransformer;
 use App\Transformers\FriendsTransformer;
 use App\Transformers\UserFriendsTransformer;
 use App\Transformers\UsersTransformer;
+use Dingo\Api\Http\Request;
 use Dingo\Api\Routing\Helpers;
 
 class UserController extends Controller
@@ -26,12 +28,13 @@ class UserController extends Controller
         $this->userService = app()->make('userService');
     }
 
-    public function findUserToAdd($query)
+    public function findUserToAdd(Request $request)
     {
-        $user = $this->userService->findUserToAdd($query);
+        $params = $request->all();
+        $user = $this->userService->findUserToAdd($params);
 
         if ($user) {
-            return $this->response->item($user, new UsersTransformer);
+            return $this->response->collection(collect([$user]), new UsersTransformer);
         }
 
         return $this->response->errorNotFound();
@@ -48,6 +51,14 @@ class UserController extends Controller
     {
         $add = $this->userService->addFriend($id);
 
-        return $this->response->created();
+//        return $this->response->created();
+        return $this->success('Success', [], 201);
+    }
+
+    public function getConversations()
+    {
+        $datas = $this->userService->getConversations();
+//        dd($datas);
+        return $this->response->collection($datas, new ConversationTransformer);
     }
 }

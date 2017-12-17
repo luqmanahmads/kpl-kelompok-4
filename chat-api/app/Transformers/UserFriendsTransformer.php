@@ -17,7 +17,7 @@ class UserFriendsTransformer extends TransformerAbstract
     public function transform(User $user)
     {
         $friend = $user;
-        dd($friend);
+
         return [
             'id' => $friend->id,
             'name' => $friend->name

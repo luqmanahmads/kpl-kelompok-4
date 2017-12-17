@@ -42,4 +42,9 @@ class User extends Authenticatable
     {
         $this->attributes['password'] = bcrypt($value);
     }
+
+    public function conversation()
+    {
+        return $this->belongsToMany('App\Models\Conversation', 'participants');
+    }
 }

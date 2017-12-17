@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Response;
 use Dingo\Api\Routing\Helpers;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
@@ -13,4 +14,15 @@ class Controller extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
     use Helpers;
+
+    public function success($message, $data = [], $code = 200)
+    {
+        return Response::json([
+            'message' => $message,
+            'code' => $code,
+            'data' => [
+                $data
+            ]
+        ], $code);
+    }
 }
