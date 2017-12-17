@@ -13,18 +13,25 @@
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity"></activity>
         <activity android:name=".menu.MenuActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".login.LoginActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"></activity>
         <activity android:name=".register.RegisterActivity" />
-        <activity android:name=".chatroom.ChatRoomActivity"></activity>
+        <activity android:name=".chatroom.ChatRoomActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <service
+            android:name=".service.ReceiverService"
+            android:exported="true">
+        </service>
+
     </application>
 
 </manifest>

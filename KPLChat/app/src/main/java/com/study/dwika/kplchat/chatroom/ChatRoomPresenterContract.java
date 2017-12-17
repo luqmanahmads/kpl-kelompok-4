@@ -5,4 +5,6 @@ package com.study.dwika.kplchat.chatroom;
  */
 
 public interface ChatRoomPresenterContract {
+
+    void getMessage();
 }

@@ -46,7 +46,7 @@ public class FriendFragment extends Fragment implements FriendViewContract {
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
 
-        baseDataManager = new DataManager(new ApiHelper(), new DatabaseHelper(), new SharedPreferenceHelper());
+        baseDataManager = new DataManager(new ApiHelper(), new DatabaseHelper(getContext()), new SharedPreferenceHelper(getContext()));
 
         friendPresenterContract = new FriendPresenter(baseDataManager, this, baseSchedulerProvider);
         Log.d("Debug", "FriendFragment");

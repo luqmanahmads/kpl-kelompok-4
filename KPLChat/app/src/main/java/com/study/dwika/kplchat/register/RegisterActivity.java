@@ -79,8 +79,8 @@ public class RegisterActivity extends AppCompatActivity implements RegisterActiv
 
         /** Data Manager Init **/
         baseApiHelper = new ApiHelper();
-        baseDatabaseHelper = new DatabaseHelper();
-        baseSharedPreferenceHelper = new SharedPreferenceHelper();
+        baseDatabaseHelper = new DatabaseHelper(this);
+        baseSharedPreferenceHelper = new SharedPreferenceHelper(this);
         baseDataManager = new DataManager(baseApiHelper, baseDatabaseHelper, baseSharedPreferenceHelper);
 
         /** Binding presenter **/
