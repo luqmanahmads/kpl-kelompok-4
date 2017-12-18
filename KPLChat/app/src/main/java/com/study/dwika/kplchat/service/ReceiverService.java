@@ -37,6 +37,7 @@ public class ReceiverService extends Service {
     private Thread listenThread;
     private Messages messages;
     private Gson gson;
+    private Connection connection;
 
     @Nullable
     @Override
@@ -77,7 +78,7 @@ public class ReceiverService extends Service {
                 while(true){
 
                     try{
-                        Connection connection = factory.newConnection();
+                        connection = factory.newConnection();
                         final Channel channel = connection.createChannel();
                         channel.basicQos(1);
 
@@ -124,9 +125,10 @@ public class ReceiverService extends Service {
                                 baseDataManager.saveMessages(messages);
 
                                 channel.basicAck(deliveryTag, false);
+                                connection.close();
                             }
                         });
-
+                        connection.close();
                     } catch (TimeoutException e) {
                         e.printStackTrace();
                     } catch (IOException e) {

@@ -2,6 +2,7 @@ package com.study.dwika.kplchat.menu.Conversation;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -62,14 +63,14 @@ public class ConversationFragment extends Fragment implements ConversationViewCo
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
 
         rvConversation.setLayoutManager(layoutManager);
-
+        rvConversation.addItemDecoration(new DividerItemDecoration(getContext(), LinearLayoutManager.VERTICAL));
         return view;
     }
 
 
     @Override
     public void getConversation() {
-        conversationPresenterContract.getConversation(new ApiHeader("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3QvY2hhdC1hcGkvYXBpL2F1dGhlbnRpY2F0ZSIsImlhdCI6MTUxMzU5MTEwNywiZXhwIjoxNTEzNjc3NTA3LCJuYmYiOjE1MTM1OTExMDcsImp0aSI6InpLWWxUZ0ZBMkFuM3VydWwifQ.xaMUcc0DaTM3_EzGwqtuNa9GjS8_ZVM50pDJJtjI_k4", ""));
+        conversationPresenterContract.getConversation(new ApiHeader("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3QvY2hhdC1hcGkvYXBpL2F1dGhlbnRpY2F0ZSIsImlhdCI6MTUxMzU5MTEwNywiZXhwIjoxNTEzNjc3NTA3LCJuYmYiOjE1MTM1OTExMDcsImp0aSI6InpLWWxUZ0ZBMkFuM3VydWwifQ.xaMUcc0DaTM3_EzGwqtuNa9GjS8_ZVM50pDJJtjI_k4"));
 
     }
 
