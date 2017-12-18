@@ -115,6 +115,7 @@ public class RegisterActivity extends AppCompatActivity implements RegisterActiv
     public void onSuccess(){
         Intent register = new Intent(RegisterActivity.this, LoginActivity.class);
         startActivity(register);
+        finish();
     }
 
     @Override
