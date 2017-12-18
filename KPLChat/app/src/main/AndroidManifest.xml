@@ -14,6 +14,11 @@
         <activity android:name=".MainActivity"></activity>
         <activity android:name=".menu.MenuActivity">
 
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
 
         </activity>
         <activity
@@ -23,11 +28,6 @@
         <activity android:name=".register.RegisterActivity" />
         <activity android:name=".chatroom.ChatRoomActivity">
 
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <service

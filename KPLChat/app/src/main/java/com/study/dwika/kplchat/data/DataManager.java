@@ -7,6 +7,7 @@ import com.study.dwika.kplchat.data.network.ApiHeader;
 import com.study.dwika.kplchat.data.network.BaseApiHelper;
 import com.study.dwika.kplchat.data.sharedpreference.BaseSharedPreferenceHelper;
 import com.study.dwika.kplchat.model.BaseResponse;
+import com.study.dwika.kplchat.model.ConversationResponse;
 import com.study.dwika.kplchat.model.Login;
 import com.study.dwika.kplchat.model.Messages;
 import com.study.dwika.kplchat.model.Users;
@@ -54,18 +55,13 @@ public class DataManager implements BaseDataManager {
     }
 
     @Override
-    public Observable<BaseResponse> deliverChat(Messages messages, ApiHeader apiHeader) {
-        return baseApiHelper.deliverChat(messages, apiHeader);
-    }
-
-    @Override
-    public Observable<BaseResponse> sc(Messages messages, ApiHeader apiHeader) {
-        return baseApiHelper.sc(messages, apiHeader);
-    }
-
-    @Override
     public Observable<BaseResponse> sendChat(Messages messages, ApiHeader apiHeader) {
         return baseApiHelper.sendChat(messages, apiHeader);
+    }
+
+    @Override
+    public Observable<ConversationResponse> getConversation(ApiHeader apiHeader) {
+        return baseApiHelper.getConversation(apiHeader);
     }
 
     @Override

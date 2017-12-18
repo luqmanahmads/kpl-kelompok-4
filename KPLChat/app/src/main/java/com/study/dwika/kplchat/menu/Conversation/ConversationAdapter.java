@@ -37,7 +37,9 @@ public class ConversationAdapter extends RecyclerView.Adapter<ConversationAdapte
 
     @Override
     public void onBindViewHolder(ConversationViewHolder holder, int position) {
-
+//        Log.d("Debug", "Conversation adapter " + conversationList.get(position).getTitle());
+//        holder.tvConversationName.setText(conversationList.get(position).getTitle());
+        holder.tvConversationName.setText("test");
     }
 
     @Override
