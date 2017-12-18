@@ -77,11 +77,19 @@ public class ApiHelper implements BaseApiHelper {
     }
 
     @Override
-
     public Observable<UsersResponse> getFriend(ApiHeader apiHeader) {
         Log.d("debug", "apihelper friend");
         return Rx2AndroidNetworking.get(ApiEndPoint.GET_FRIEND)
                 .addHeaders(apiHeader)
+                .build()
+                .getObjectObservable(UsersResponse.class);
+    }
+
+    @Override
+    public Observable<UsersResponse> getAvailableFriends(ApiHeader header, String id) {
+        return Rx2AndroidNetworking.get(ApiEndPoint.AVAILABLE_FRIENDS_TO_ADD)
+                .addHeaders(header)
+                .addPathParameter("convId",id)
                 .build()
                 .getObjectObservable(UsersResponse.class);
     }
@@ -97,12 +105,21 @@ public class ApiHelper implements BaseApiHelper {
     }
 
     @Override
+    public Observable<BaseResponse> addMember(ApiHeader header, String convId, String userId) {
+        return Rx2AndroidNetworking.post(ApiEndPoint.ADD_TO_CONVERSATION)
+                .addHeaders(header)
+                .addPathParameter("convId",convId)
+                .addPathParameter("userId",userId)
+                .build()
+                .getObjectObservable(BaseResponse.class);
+    }
+
+    @Override
     public Observable<ConversationResponse> getConversation(ApiHeader apiHeader) {
         return Rx2AndroidNetworking.get(ApiEndPoint.GET_CHAT)
                 .addHeaders(apiHeader)
                 .build()
                 .getObjectObservable(ConversationResponse.class);
     }
-
 
 }
