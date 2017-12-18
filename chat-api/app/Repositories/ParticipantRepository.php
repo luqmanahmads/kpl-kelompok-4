@@ -15,5 +15,4 @@ class ParticipantRepository extends BaseRepository
     {
         return 'App\Models\Participant';
     }
-
 }

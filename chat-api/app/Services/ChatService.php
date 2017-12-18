@@ -42,4 +42,12 @@ class ChatService
 
         dd($data);
     }
+
+    public function isEligible($userId, $conversationId)
+    {
+        return $this->participantRepo->findBy([
+            'user_id' => $userId,
+            'conversation_id' => $conversationId
+        ]);
+    }
 }

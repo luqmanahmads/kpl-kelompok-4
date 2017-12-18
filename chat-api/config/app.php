@@ -169,6 +169,7 @@ return [
         Laravel\Tinker\TinkerServiceProvider::class,
         Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
         Dingo\Api\Provider\LaravelServiceProvider::class,
+        Mookofe\Tail\ServiceProvider::class,
 
         /*
          * Put our Custom Service Providers here guys...
@@ -239,6 +240,7 @@ return [
         'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class,
         'JWTFactory' => Tymon\JWTAuth\Facades\JWTFactory::class,
         'Route' => Dingo\Api\Facade\Route::class,
+        'Tail' => Mookofe\Tail\Facades\Tail::class,
 
     ],
 

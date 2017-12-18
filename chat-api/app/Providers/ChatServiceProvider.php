@@ -14,7 +14,8 @@ class ChatServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-
+        $this->app->bind('userService', 'App\Services\UserService');
+        $this->app->bind('chatService', 'App\Services\ChatService');
     }
 
     /**
@@ -24,6 +25,6 @@ class ChatServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind('userService', 'App\Services\UserService');
+
     }
 }

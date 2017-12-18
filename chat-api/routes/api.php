@@ -45,4 +45,6 @@ $api->version('v1', function ($api){
         $api->get('/', 'App\Http\Controllers\Api\v1\UserController@getConversations');
         $api->get('/{id}', 'App\Http\Controllers\Api\v1\ChatController@getConversationDetail');
     });
+
+    $api->get('is-eligible', 'App\Http\Controllers\Api\v1\ChatController@isEligible');
 });

@@ -69,8 +69,8 @@ abstract class BaseRepository implements RepositoryInterface
         return $this->model->find($id, $columns);
     }
 
-    public function findBy($field, $value, $columns = ['*'])
+    public function findBy(array $params, $columns = ['*'])
     {
-        return $this->model->where($field, '=', $value)->first($columns);
+        return $this->model->where($params)->first($columns);
     }
 }

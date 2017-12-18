@@ -6,9 +6,12 @@
     "type": "project",
     "require": {
         "php": ">=5.6.4",
+        "dingo/api": "v1.0.0-beta8",
+        "guzzlehttp/guzzle": "^6.3",
         "laravel/framework": "5.4.*",
         "laravel/tinker": "~1.0",
-        "dingo/api": "v1.0.0-beta8",
+        "mookofe/tail": "1.*",
+        "php-amqplib/php-amqplib": "2.7.*",
         "tymon/jwt-auth": "0.5.*"
     },
     "require-dev": {
