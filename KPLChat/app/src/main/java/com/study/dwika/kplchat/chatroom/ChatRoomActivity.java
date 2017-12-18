@@ -18,6 +18,7 @@ import com.study.dwika.kplchat.data.database.BaseDatabaseHelper;
 import com.study.dwika.kplchat.data.database.DatabaseHelper;
 import com.study.dwika.kplchat.data.network.ApiHelper;
 import com.study.dwika.kplchat.data.network.BaseApiHelper;
+import com.study.dwika.kplchat.data.network.RabbitMQSender;
 import com.study.dwika.kplchat.data.sharedpreference.BaseSharedPreferenceHelper;
 import com.study.dwika.kplchat.data.sharedpreference.SharedPreferenceHelper;
 import com.study.dwika.kplchat.model.Messages;
@@ -28,7 +29,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-
+import butterknife.OnClick;
 
 
 public class ChatRoomActivity extends AppCompatActivity implements ChatRoomActivityContract {
@@ -38,6 +39,7 @@ public class ChatRoomActivity extends AppCompatActivity implements ChatRoomActiv
 
     @BindView(R.id.btnSendChat)
     Button btnSendChat;
+
     @BindView(R.id.tvChat)
             TextView tvChat;
 
@@ -52,6 +54,7 @@ public class ChatRoomActivity extends AppCompatActivity implements ChatRoomActiv
     private BaseSchedulerProvider baseSchedulerProvider;
     private ChatRoomAdapter chatRoomAdapter;
     private Handler handler;
+    private RabbitMQSender rabbitMQSender;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +70,8 @@ public class ChatRoomActivity extends AppCompatActivity implements ChatRoomActiv
         baseDataManager = new DataManager(new ApiHelper(), new DatabaseHelper(this), new SharedPreferenceHelper(this));
         chatRoomPresenterContract = new ChatRoomPresenter(baseDataManager, this, baseSchedulerProvider);
 
+//        rabbitMQSender = new RabbitMQSender();
+
         handler =new Handler();
         handler.postDelayed(new Runnable() {
 
@@ -81,12 +86,17 @@ public class ChatRoomActivity extends AppCompatActivity implements ChatRoomActiv
 
     }
 
-
     @Override
     public void displayChat(List<Messages> messagesList) {
         Log.d("Debug", "chat number 0 " + messagesList.get(0).getMessage());
         chatRoomAdapter = new ChatRoomAdapter( messagesList,this);
 
         rvChat.setAdapter(chatRoomAdapter);
+    }
+
+    @OnClick(R.id.btnSendChat)
+    public void sendChat(){
+        chatRoomPresenterContract.sendMessage(etChat.getText().toString());
+//        rabbitMQSender.publishToAMQP();
     }
 }

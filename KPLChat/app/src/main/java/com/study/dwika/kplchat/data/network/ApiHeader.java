@@ -13,7 +13,7 @@ public class ApiHeader {
 
     public ApiHeader(String authorization, String accept) {
         Authorization = "Bearer " + authorization;
-        Accept = accept;
+        Accept = "application/json";
     }
 
     public String getAuthorization() {

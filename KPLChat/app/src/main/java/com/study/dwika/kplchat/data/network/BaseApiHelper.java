@@ -2,6 +2,7 @@ package com.study.dwika.kplchat.data.network;
 
 import com.study.dwika.kplchat.model.BaseResponse;
 import com.study.dwika.kplchat.model.Login;
+import com.study.dwika.kplchat.model.Messages;
 import com.study.dwika.kplchat.model.Users;
 import com.study.dwika.kplchat.model.UsersResponse;
 
@@ -17,5 +18,6 @@ public interface BaseApiHelper {
     Observable<BaseResponse> doLogin(Login login);
     Observable<UsersResponse> authenticatedUser(ApiHeader header);
     Observable<UsersResponse> getFriend(ApiHeader apiHeader);
+    io.reactivex.Observable<BaseResponse> sendChat(Messages messages, ApiHeader apiHeader);
 
 }
