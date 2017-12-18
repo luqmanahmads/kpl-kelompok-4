@@ -21,6 +21,9 @@ class UserController extends Controller
 {
     use Helpers;
 
+    /**
+     * @var \App\Services\UserService
+     */
     private $userService;
 
     public function __construct()

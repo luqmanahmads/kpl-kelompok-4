@@ -19,7 +19,15 @@ class ChatService
     private $participantRepo;
     private $friendRepo;
 
+    /**
+     * @var \App\Services\UserService
+     */
     private $userService;
+
+    /**
+     * @var \App\Services\RabbitService
+     */
+    private $rabbitService;
 
     public function __construct(
         ConversationRepository $conversationRepository,
@@ -31,6 +39,7 @@ class ChatService
         $this->friendRepo = $friendRepository;
 
         $this->userService = app()->make('userService');
+        $this->rabbitService = app()->make('rabbitService');
     }
 
     public function createConversation(array $participants)
@@ -68,6 +77,9 @@ class ChatService
 
     public function addParticipantToChat($conversationId, $friendId)
     {
-        return $this->conversationRepo->addParticipant($conversationId, $friendId);
+        $data = $this->conversationRepo->addParticipant($conversationId, $friendId);
+        $this->rabbitService->bindNewParticipant('user'.$friendId, config('rabbit.CONVERSATION_INCOMING'), $conversationId);
+
+        return $data;
     }
 }

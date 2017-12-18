@@ -81,7 +81,26 @@ class RabbitService
 
         $msg = new AMQPMessage(json_encode($data));
         $this->channel->basic_publish($msg, config('rabbit.CONVERSATION_INCOMING'), $routingKey);
+    }
 
+    /**
+     * @param $name
+     * @param string $type
+     */
+    public function createExchange($name, $type = 'fanout')
+    {
+        $this->channel->exchange_declare($name, $type, false, true, false);
+    }
+
+    public function createExchangeNewUser($id, $type = 'fanout')
+    {
+        $name = 'user.'.$id;
+        $this->createExchange($name, $type);
+    }
+
+    public function bindNewParticipant($dst, $src, $routingKey)
+    {
+        $this->channel->exchange_bind($dst, $src, $routingKey);
     }
 
     public function __destruct()

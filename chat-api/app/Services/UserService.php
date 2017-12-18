@@ -73,14 +73,14 @@ class UserService
 
     public function findByEmail($email)
     {
-        $user = $this->userRepository->findBy('email', $email);
+        $user = $this->userRepository->findBy(['email' => $email]);
 
         return $user;
     }
 
     public function findByName($name)
     {
-        return $this->userRepository->findBy('name', $name);
+        return $this->userRepository->findBy(['name', $name]);
     }
 
     public function authenticatedUser()
