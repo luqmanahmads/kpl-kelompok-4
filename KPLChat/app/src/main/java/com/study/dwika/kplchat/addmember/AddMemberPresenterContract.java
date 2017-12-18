@@ -6,6 +6,6 @@ package com.study.dwika.kplchat.addmember;
 
 public interface AddMemberPresenterContract {
 
-    void findAvailableFriend();
+    void getAvailableFriends(String id);
     void addMemberToConversation(String userId, String convId);
 }

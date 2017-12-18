@@ -1,9 +1,19 @@
 package com.study.dwika.kplchat.addmember;
 
+import android.util.Log;
+
 import com.study.dwika.kplchat.data.BaseDataManager;
+import com.study.dwika.kplchat.data.network.ApiHeader;
+import com.study.dwika.kplchat.model.BaseResponse;
+import com.study.dwika.kplchat.model.UsersResponse;
 import com.study.dwika.kplchat.utils.BaseSchedulerProvider;
 
+import java.time.LocalDate;
+
+import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.functions.Consumer;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by Dwika on 18-Dec-17.
@@ -25,12 +35,44 @@ public class AddMemberPresenter implements AddMemberPresenterContract {
     }
 
     @Override
-    public void findAvailableFriend() {
-
+    public void getAvailableFriends(String id) {
+        compositeDisposable.add(baseDataManager
+                .getAvailableFriends(new ApiHeader(baseDataManager.getAccessToken()), id)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<UsersResponse>() {
+                    @Override
+                    public void accept(UsersResponse usersResponse) throws Exception {
+                        Log.d("Debug", "User 1 " + usersResponse.getUsersData().get(0).getName());
+                        Log.d("Debug", "User 2 " + usersResponse.getUsersData().get(1).getName());
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+                        Log.d("Debug", "getAvailableFriends error " + throwable.getLocalizedMessage());
+                    }
+                })
+        );
     }
 
     @Override
     public void addMemberToConversation(String userId, String convId) {
-
+        compositeDisposable.add(baseDataManager
+                .addMember(new ApiHeader(baseDataManager.getAccessToken()), convId, userId)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<BaseResponse>() {
+                    @Override
+                    public void accept(BaseResponse baseResponse) throws Exception {
+                        Log.d("Debug", "Response " + baseResponse.getStatus());
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+                        Log.d("Debug", "addMemberToConversation error " + throwable.getLocalizedMessage());
+                    }
+                })
+        );
     }
+
 }

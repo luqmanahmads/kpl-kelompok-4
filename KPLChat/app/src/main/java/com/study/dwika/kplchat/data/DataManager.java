@@ -81,6 +81,16 @@ public class DataManager implements BaseDataManager {
     }
 
     @Override
+    public Observable<UsersResponse> getAvailableFriends(ApiHeader header, String id) {
+        return baseApiHelper.getAvailableFriends(header,id);
+    }
+
+    @Override
+    public Observable<BaseResponse> addMember(ApiHeader header, String convId, String userId) {
+        return baseApiHelper.addMember(header,convId,userId);
+    }
+
+    @Override
     public String getAccessToken() {
         return baseSharedPreferenceHelper.getAccessToken();
     }

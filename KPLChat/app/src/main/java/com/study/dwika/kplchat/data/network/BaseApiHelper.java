@@ -27,11 +27,10 @@ public interface BaseApiHelper {
     Observable<UsersResponse> getFriend(ApiHeader apiHeader);
     Observable<BaseResponse> sendChat(Messages messages, ApiHeader apiHeader);
     Observable<ConversationResponse> getConversation(ApiHeader apiHeader);
-
     Observable<UsersResponse> searchUserByEmail(ApiHeader header, String email);
     Observable<BaseResponse> addFriend(ApiHeader header, String id);
     Observable<ConversationDetailResponse> conversationDetail(ApiHeader header, String id);
-
-
+    Observable<UsersResponse> getAvailableFriends(ApiHeader header, String id);
+    Observable<BaseResponse> addMember(ApiHeader header, String convId, String userId);
 
 }

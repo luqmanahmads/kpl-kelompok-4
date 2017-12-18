@@ -5,6 +5,4 @@ package com.study.dwika.kplchat.addmember;
  */
 
 public interface AddMemberActivityContract {
-    void showAvailable();
-
 }
