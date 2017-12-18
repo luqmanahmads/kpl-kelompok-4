@@ -1,7 +1,10 @@
 package com.study.dwika.kplchat.addmember;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.RecyclerView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -30,8 +33,8 @@ import butterknife.OnItemClick;
 
 public class AddMemberActivity extends AppCompatActivity implements AddMemberActivityContract {
 
-    @BindView(R.id.lv_add_member)
-    ListView lvAddMember;
+    @BindView(R.id.rv_add_member)
+    RecyclerView rvAddMember;
 
     private AddMemberPresenterContract mPresenter;
     private BaseDataManager baseDataManager;
@@ -39,6 +42,7 @@ public class AddMemberActivity extends AppCompatActivity implements AddMemberAct
     private BaseApiHelper baseApiHelper;
     private BaseDatabaseHelper baseDatabaseHelper;
     private BaseSharedPreferenceHelper baseSharedPreferenceHelper;
+    private AddMemberAdapter addMemberAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,24 +55,41 @@ public class AddMemberActivity extends AppCompatActivity implements AddMemberAct
         baseSharedPreferenceHelper = new SharedPreferenceHelper(this);
         baseDataManager = new DataManager(baseApiHelper, baseDatabaseHelper, baseSharedPreferenceHelper);
 
-        mPresenter = new AddMemberPresenter(this,baseDataManager,baseSchedulerProvider);
+        mPresenter = new AddMemberPresenter(this, baseDataManager, baseSchedulerProvider);
 
         // Hardcode Conversation ID
         mPresenter.getAvailableFriends("1");
     }
 
-    @OnItemClick(R.id.lv_add_member)
+    @OnItemClick(R.id.rv_add_member)
     public void onFriendClick(int position) {
-        Toast.makeText(this, "Clicked position " + position + "!", Toast.LENGTH_SHORT).show();
+
+        final Users clickedUser = addMemberAdapter.findClicked(position);
+
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+        alert.setTitle("Add Member?");
+        alert.setMessage("Add "+clickedUser.getName()+" to conversation?");
+
+        alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                // Hardcode Conversation ID
+                mPresenter.addMemberToConversation(String.valueOf(clickedUser.getId()),"1");
+            }
+        });
+
+        alert.setNegativeButton("Cancel",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                    }
+                });
+
+        alert.show();
+
     }
 
     @Override
     public void showUserFound(List<Users> users) {
-        ArrayList<String> list = new ArrayList<>();
-        for (Users user : users){
-            list.add(user.getName());
-        }
-        ArrayAdapter adapter = new ArrayAdapter(this,R.layout.list_add_member,list);
-        lvAddMember.setAdapter(adapter);
+        addMemberAdapter = new AddMemberAdapter(users, this);
+        rvAddMember.setAdapter(addMemberAdapter);
     }
 }
