@@ -11,6 +11,7 @@ public class Users {
     @SerializedName("id")
     private int id;
 
+
     @SerializedName("name")
     private String name;
 
@@ -30,6 +31,7 @@ public class Users {
 
     public Users(String phone, String email, String password, String name) {
         this.phone = phone;
+
         this.email = email;
         this.password = password;
         this.name = name;

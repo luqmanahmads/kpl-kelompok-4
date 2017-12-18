@@ -7,12 +7,20 @@ import com.study.dwika.kplchat.data.network.ApiHeader;
 import com.study.dwika.kplchat.data.network.BaseApiHelper;
 import com.study.dwika.kplchat.data.sharedpreference.BaseSharedPreferenceHelper;
 import com.study.dwika.kplchat.model.BaseResponse;
+
 import com.study.dwika.kplchat.model.ConversationDetailResponse;
-import com.study.dwika.kplchat.model.Users;
+
+import com.study.dwika.kplchat.model.ConversationResponse;
+
 import com.study.dwika.kplchat.model.Login;
+import com.study.dwika.kplchat.model.Messages;
+import com.study.dwika.kplchat.model.Users;
 import com.study.dwika.kplchat.model.UsersResponse;
 
+import java.util.List;
+
 import io.reactivex.Observable;
+
 
 /**
  * Created by A.I on 15/12/2017.
@@ -63,6 +71,26 @@ public class DataManager implements BaseDataManager {
     }
 
     @Override
+    public Observable<BaseResponse> sendChat(Messages messages, ApiHeader apiHeader) {
+        return baseApiHelper.sendChat(messages, apiHeader);
+    }
+
+    @Override
+    public Observable<ConversationResponse> getConversation(ApiHeader apiHeader) {
+        return baseApiHelper.getConversation(apiHeader);
+    }
+
+    @Override
+    public Observable<UsersResponse> getAvailableFriends(ApiHeader header, String id) {
+        return baseApiHelper.getAvailableFriends(header,id);
+    }
+
+    @Override
+    public Observable<BaseResponse> addMember(ApiHeader header, String convId, String userId) {
+        return baseApiHelper.addMember(header,convId,userId);
+    }
+
+    @Override
     public String getAccessToken() {
         return baseSharedPreferenceHelper.getAccessToken();
     }
@@ -110,6 +138,23 @@ public class DataManager implements BaseDataManager {
     @Override
     public void setEmail(String email) {
         baseSharedPreferenceHelper.setEmail(email);
+    }
+
+    @Override
+
+    public Observable<UsersResponse> getFriend(ApiHeader apiHeader) {
+        return baseApiHelper.getFriend(apiHeader);
+    }
+
+    @Override
+    public List<Messages> getMessages() {
+        return baseDatabaseHelper.getMessages();
+    }
+
+    @Override
+    public void saveMessages(Messages messages) {
+        Log.d("Debug", "Save message datamanager");
+        baseDatabaseHelper.saveMessages(messages);
     }
 
 }

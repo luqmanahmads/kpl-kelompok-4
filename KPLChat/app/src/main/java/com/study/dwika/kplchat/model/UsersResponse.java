@@ -4,11 +4,12 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
+
 /**
- * Created by Dwika on 15-Dec-17.
+ * Created by A.I on 15/12/2017.
  */
 
-public class UsersResponse extends BaseResponse {
+public class UsersResponse extends BaseResponse{
 
     @SerializedName("data")
     private List<Users> usersData;

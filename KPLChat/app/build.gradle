@@ -26,9 +26,11 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
 
-
     //Design
     compile 'com.android.support:design:26.1.0'
+
+    //Recycler View
+    compile 'com.android.support:recyclerview-v7:26.1.0'
 
     // reactive
     compile "io.reactivex.rxjava2:rxjava:2.1.7"
@@ -47,6 +49,13 @@ dependencies {
 
     // Decode JWT
     compile 'com.auth0.android:jwtdecode:1.1.1'
-	
 
+//    RabbitMQ
+    compile 'com.rabbitmq:amqp-client:4.3.0'
+
+//    GSON
+    compile 'com.google.code.gson:gson:2.8.2'
+
+//    SQLBrite
+    compile 'com.squareup.sqlbrite3:sqlbrite:3.0.0'
 }

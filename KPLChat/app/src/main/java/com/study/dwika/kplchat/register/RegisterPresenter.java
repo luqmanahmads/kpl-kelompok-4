@@ -20,8 +20,8 @@ import io.reactivex.schedulers.Schedulers;
 public class RegisterPresenter implements RegisterPresenterContract {
 
     /** View **/
-
     private RegisterActivityContract registerActivityContract;
+
 
     /** Data **/
 
