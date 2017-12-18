@@ -62,7 +62,7 @@ class ChatController extends Controller
     {
         $user = $this->userService->authenticatedUser();
         $datas = $this->chatService->getFriendsToAdd($conversationId, $user->id);
-
+//        dd($datas);
         return $this->success(
             'success',
             $datas,

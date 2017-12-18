@@ -15,14 +15,12 @@ class Controller extends BaseController
 
     use Helpers;
 
-    public function success($message, $data = [], $code = 200)
+    public function success($message, array $data, $code = 200)
     {
         return Response::json([
             'message' => $message,
             'code' => $code,
-            'data' => [
-                $data
-            ]
+            'data' => $data
         ], $code);
     }
 }
