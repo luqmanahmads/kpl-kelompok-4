@@ -98,7 +98,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dip"
             android:background="@color/colorPrimary"
-            android:text="Register"
+            android:text="Register Now"
             android:textAllCaps="false"
             android:textColor="@color/white" />
 
