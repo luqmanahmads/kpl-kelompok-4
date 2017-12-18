@@ -36,7 +36,7 @@ public class RabbitMQSender {
                     Connection connection = factory.newConnection();
                     Channel ch = connection.createChannel();
                     ch.confirmSelect();
-                    
+
 //                    ch.exchangeDeclare("user.1","fanout",true,false, null);
                     Messages messages = new Messages(1, "android");
                     Gson gson = new Gson();

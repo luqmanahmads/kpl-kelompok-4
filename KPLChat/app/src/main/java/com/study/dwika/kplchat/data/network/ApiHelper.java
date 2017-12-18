@@ -83,6 +83,26 @@ public class ApiHelper implements BaseApiHelper {
     }
 
     @Override
+    public Observable<BaseResponse> deliverChat(Messages messages, ApiHeader apiHeader) {
+        return Rx2AndroidNetworking.post(ApiEndPoint.SEND_CHAT)
+                    .addPathParameter("conversation_id", Integer.toString(messages.getConversationId()))
+                    .addHeaders(apiHeader)
+                    .addBodyParameter(messages)
+                    .build()
+                    .getObjectObservable(BaseResponse.class);
+    }
+
+    @Override
+    public Observable<BaseResponse> sc(Messages messages, ApiHeader apiHeader) {
+        return Rx2AndroidNetworking.post(ApiEndPoint.SEND_CHAT)
+                .addPathParameter("conversation_id", Integer.toString(messages.getConversationId()))
+                .addHeaders(apiHeader)
+                .addBodyParameter(messages)
+                .build()
+                .getObjectObservable(BaseResponse.class);
+    }
+
+    @Override
     public Observable<BaseResponse> sendChat(Messages messages, ApiHeader apiHeader) {
         return Rx2AndroidNetworking.post(ApiEndPoint.SEND_CHAT)
                 .addPathParameter("conversation_id", Integer.toString(messages.getConversationId()))

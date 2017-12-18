@@ -17,13 +17,13 @@ public class Messages {
     @SerializedName("message")
     private String message;
 
-    private int conversation_id;
+//    private int conversation_id;
 
     public Messages() {
     }
 
-    public Messages(int conversation_id, String message) {
-        this.conversation_id = conversation_id;
+    public Messages(int conversationId, String message) {
+        this.conversationId = conversationId;
         this.message = message;
     }
 
