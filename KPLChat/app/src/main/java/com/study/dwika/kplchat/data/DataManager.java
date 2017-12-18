@@ -16,6 +16,7 @@ import java.util.List;
 
 import io.reactivex.Observable;
 
+
 /**
  * Created by A.I on 15/12/2017.
  */
@@ -50,6 +51,16 @@ public class DataManager implements BaseDataManager {
     @Override
     public Observable<UsersResponse> getFriend(ApiHeader apiHeader) {
         return baseApiHelper.getFriend(apiHeader);
+    }
+
+    @Override
+    public Observable<BaseResponse> deliverChat(Messages messages, ApiHeader apiHeader) {
+        return baseApiHelper.deliverChat(messages, apiHeader);
+    }
+
+    @Override
+    public Observable<BaseResponse> sc(Messages messages, ApiHeader apiHeader) {
+        return baseApiHelper.sc(messages, apiHeader);
     }
 
     @Override

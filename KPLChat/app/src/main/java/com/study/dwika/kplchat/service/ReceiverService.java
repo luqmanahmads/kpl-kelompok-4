@@ -7,10 +7,10 @@ import android.os.PowerManager;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
+import com.google.gson.Gson;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
-import com.rabbitmq.client.Envelope;
 import com.rabbitmq.client.QueueingConsumer;
 import com.study.dwika.kplchat.data.BaseDataManager;
 import com.study.dwika.kplchat.data.DataManager;
@@ -32,8 +32,8 @@ public class ReceiverService extends Service {
     private ConnectionFactory factory;
     private BaseDataManager baseDataManager;
     private Thread listenThread;
-
-
+    private Messages messages;
+    private Gson gson;
 
     @Nullable
     @Override
@@ -51,6 +51,9 @@ public class ReceiverService extends Service {
 
         baseDataManager = new DataManager(new ApiHelper(), new DatabaseHelper(this), new SharedPreferenceHelper(this));
         setupConnectionFactory();
+
+        messages = new Messages();
+        gson = new Gson();
 
         listenMessage();
 
@@ -74,8 +77,8 @@ public class ReceiverService extends Service {
                         Connection connection = factory.newConnection();
                         Channel channel = connection.createChannel();
                         channel.basicQos(1);
-                        Envelope envelope = new Envelope(11, false, "user.1", "");
-                        channel.basicAck(envelope.getDeliveryTag(), false);
+//                        Envelope envelope = new Envelope(11, false, "user.1", "");
+//                        channel.basicAck(envelope.getDeliveryTag(), false);
                         channel.queueBind("tmp-1", "user.1", "");
                         QueueingConsumer consumer = new QueueingConsumer(channel);
                         channel.basicConsume("tmp-1", false, consumer);
@@ -83,10 +86,11 @@ public class ReceiverService extends Service {
                         while (true){
                             QueueingConsumer.Delivery delivery = consumer.nextDelivery();
 
-                            final String message = new String(delivery.getBody());
-                            Log.d("Debug","[r] " + message);
+                            final String incomingChat = new String(delivery.getBody());
+                            Log.d("Debug","[r] " + incomingChat);
 
-                            Messages messages = new Messages(0,0,message);
+                            messages = gson.fromJson(incomingChat, Messages.class);
+
                             baseDataManager.saveMessages(messages);
                         }
 
