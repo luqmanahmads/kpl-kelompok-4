@@ -6,6 +6,7 @@ import com.rx2androidnetworking.Rx2AndroidNetworking;
 import com.study.dwika.kplchat.model.BaseResponse;
 import com.study.dwika.kplchat.model.ConversationDetailResponse;
 import com.study.dwika.kplchat.model.Login;
+import com.study.dwika.kplchat.model.Messages;
 import com.study.dwika.kplchat.model.Users;
 import com.study.dwika.kplchat.model.UsersResponse;
 
@@ -80,5 +81,16 @@ public class ApiHelper implements BaseApiHelper {
                 .build()
                 .getObjectObservable(UsersResponse.class);
     }
+
+    @Override
+    public Observable<BaseResponse> sendChat(Messages messages, ApiHeader apiHeader) {
+        return Rx2AndroidNetworking.post(ApiEndPoint.SEND_CHAT)
+                .addPathParameter("conversation_id", Integer.toString(messages.getConversationId()))
+                .addHeaders(apiHeader)
+                .addBodyParameter(messages)
+                .build()
+                .getObjectObservable(BaseResponse.class);
+    }
+
 
 }

@@ -66,6 +66,11 @@ public class DataManager implements BaseDataManager {
     }
 
     @Override
+    public Observable<BaseResponse> sendChat(Messages messages, ApiHeader apiHeader) {
+        return baseApiHelper.sendChat(messages, apiHeader);
+    }
+
+    @Override
     public String getAccessToken() {
         return baseSharedPreferenceHelper.getAccessToken();
     }

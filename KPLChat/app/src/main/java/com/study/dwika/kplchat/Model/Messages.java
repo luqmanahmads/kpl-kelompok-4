@@ -17,7 +17,14 @@ public class Messages {
     @SerializedName("message")
     private String message;
 
+    private int conversation_id;
+
     public Messages() {
+    }
+
+    public Messages(int conversation_id, String message) {
+        this.conversation_id = conversation_id;
+        this.message = message;
     }
 
     public Messages(int userId, int conversationId, String message) {

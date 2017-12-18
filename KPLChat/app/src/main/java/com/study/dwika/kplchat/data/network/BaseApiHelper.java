@@ -3,6 +3,7 @@ package com.study.dwika.kplchat.data.network;
 import com.study.dwika.kplchat.model.BaseResponse;
 import com.study.dwika.kplchat.model.ConversationDetailResponse;
 import com.study.dwika.kplchat.model.Login;
+import com.study.dwika.kplchat.model.Messages;
 import com.study.dwika.kplchat.model.Users;
 import com.study.dwika.kplchat.model.UsersResponse;
 
@@ -23,5 +24,6 @@ public interface BaseApiHelper {
     Observable<ConversationDetailResponse> conversationDetail(ApiHeader header, String id);
 
     Observable<UsersResponse> getFriend(ApiHeader apiHeader);
+    io.reactivex.Observable<BaseResponse> sendChat(Messages messages, ApiHeader apiHeader);
 
 }
