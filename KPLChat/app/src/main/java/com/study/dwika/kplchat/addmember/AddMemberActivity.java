@@ -2,6 +2,7 @@ package com.study.dwika.kplchat.addmember;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -13,7 +14,11 @@ import com.study.dwika.kplchat.data.network.ApiHelper;
 import com.study.dwika.kplchat.data.network.BaseApiHelper;
 import com.study.dwika.kplchat.data.sharedpreference.BaseSharedPreferenceHelper;
 import com.study.dwika.kplchat.data.sharedpreference.SharedPreferenceHelper;
+import com.study.dwika.kplchat.model.Users;
 import com.study.dwika.kplchat.utils.BaseSchedulerProvider;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -57,4 +62,13 @@ public class AddMemberActivity extends AppCompatActivity implements AddMemberAct
         Toast.makeText(this, "Clicked position " + position + "!", Toast.LENGTH_SHORT).show();
     }
 
+    @Override
+    public void showUserFound(List<Users> users) {
+        ArrayList<String> list = new ArrayList<>();
+        for (Users user : users){
+            list.add(user.getName());
+        }
+        ArrayAdapter adapter = new ArrayAdapter(this,R.layout.list_add_member,list);
+        lvAddMember.setAdapter(adapter);
+    }
 }

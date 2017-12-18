@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 
 import com.study.dwika.kplchat.R;
+import com.study.dwika.kplchat.addfriend.AddFriendActivity;
 import com.study.dwika.kplchat.addmember.AddMemberActivity;
 import com.study.dwika.kplchat.conversationdetail.ConversationDetailActivity;
 import com.study.dwika.kplchat.data.BaseDataManager;
