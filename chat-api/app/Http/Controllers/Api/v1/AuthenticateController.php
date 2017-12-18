@@ -28,7 +28,6 @@ class AuthenticateController extends Controller
     public function __construct()
     {
         $this->userService = app()->make('userService');
-        $this->rabbitService = app()->make('rabbitService');
     }
 
     public function authenticate(Request $request)
@@ -78,7 +77,6 @@ class AuthenticateController extends Controller
     public function register(RegisterRequest $request)
     {
         $data = $this->userService->create($request->all());
-        $this->rabbitService->createExchangeNewUser($data->id);
 
         return $this->response->item($data, new UsersTransformer)->setStatusCode(201);
     }

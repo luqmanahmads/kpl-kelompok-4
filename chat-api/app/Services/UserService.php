@@ -8,6 +8,7 @@
 
 namespace App\Services;
 
+use App\Repositories\ConversationRepository;
 use App\Repositories\FriendRepository;
 use JWTAuth;
 use App\Repositories\UserRepository;
@@ -17,15 +18,26 @@ class UserService
     private $userRepository;
     private $friendRepository;
 
-    public function __construct(UserRepository $userRepository, FriendRepository $friendRepository)
+    private $rabbitService;
+
+    /**
+     * @var \App\Services\ChatService
+     */
+    private $chatService;
+
+    public function __construct(UserRepository $userRepository,
+                                FriendRepository $friendRepository)
     {
         $this->userRepository = $userRepository;
         $this->friendRepository = $friendRepository;
+
+        $this->rabbitService = app()->make('rabbitService');
     }
 
     public function create($data)
     {
         $data = $this->userRepository->create((array)$data);
+        $this->rabbitService->createExchangeNewUser($data->id);
 
         return $data;
     }
@@ -46,9 +58,13 @@ class UserService
 
     public function addFriend($id)
     {
-        $user = $this->authenticatedUser();
+        $this->chatService = app()->make('chatService');
 
-        return $this->friendRepository->create(['user_id' => $user->id, 'friend_id' => $id]);
+        $user = $this->authenticatedUser();
+        $data = $this->friendRepository->create(['user_id' => $user->id, 'friend_id' => $id]);
+        $this->chatService->createConversation([$user->id, $id]);
+
+        return $data;
     }
 
     public function detectString($input)

@@ -20,11 +20,6 @@ class ChatService
     private $friendRepo;
 
     /**
-     * @var \App\Services\UserService
-     */
-    private $userService;
-
-    /**
      * @var \App\Services\RabbitService
      */
     private $rabbitService;
@@ -38,13 +33,18 @@ class ChatService
         $this->participantRepo = $participantRepository;
         $this->friendRepo = $friendRepository;
 
-        $this->userService = app()->make('userService');
         $this->rabbitService = app()->make('rabbitService');
     }
 
     public function createConversation(array $participants)
     {
+        $newConversation = $this->conversationRepo->create([
+            'created_at' => Date('Y-m-d H:i:s')
+        ]);
 
+        foreach ($participants as $participant) {
+            $this->addParticipantToChat($newConversation->id, $participant);
+        }
     }
 
     public function find($id)
