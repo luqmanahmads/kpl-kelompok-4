@@ -7,54 +7,122 @@
     android:orientation="vertical"
     android:padding="10dp">
 
-    <EditText
-        android:id="@+id/et_reg_name"
-        android:layout_width="fill_parent"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:layout_marginBottom="30dp">
 
-        android:hint="username"
-        android:inputType="textPersonName"
-        android:singleLine="true"
+        <TextView
+            android:id="@+id/text_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Account Registration"
+            android:layout_centerVertical="true"
+            android:textAlignment="center"
+            android:textSize="24dp"
+            android:fontFamily="sans-serif"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="40dp"
+            android:textColor="@color/black"
+            />
+
+        <EditText
+            android:id="@+id/et_reg_name"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+
+            android:hint="Your Name"
+            android:inputType="textPersonName"
+            android:singleLine="true"
+
+            android:background="@color/lightGray"
+            android:layout_marginBottom="10dp"
+            android:padding="10dp"
+            android:textColor="@color/black"
+            />
+
+        <EditText
+            android:id="@+id/et_reg_email"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:singleLine="true"
+
+            android:background="@color/lightGray"
+            android:layout_marginBottom="10dp"
+            android:padding="10dp"
+            android:textColor="@color/black"
+            />
+
+        <EditText
+            android:id="@+id/et_reg_password"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:singleLine="true"
+
+            android:background="@color/lightGray"
+            android:layout_marginBottom="10dp"
+            android:padding="10dp"
+            android:textColor="@color/black"
+            />
+
+        <EditText
+            android:id="@+id/et_reg_phonenumber"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+
+            android:hint="Phone Number"
+            android:inputType="phone"
+            android:singleLine="true"
+
+            android:background="@color/lightGray"
+            android:layout_marginBottom="10dp"
+            android:padding="10dp"
+            android:textColor="@color/black"
+            />
+
+        <Button
+            android:id="@+id/btn_reg"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Register"
+
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="10dp"
+            android:padding="10dp"
+
+            android:textSize="15dp"
+
+            android:background="@color/colorPrimary"
+            android:textAllCaps="false"
+            android:textColor="@color/white" />
+            />
+
+
         />
 
-    <EditText
-        android:id="@+id/et_reg_email"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray"
+            android:layout_marginTop="10dp"/>
 
-        android:hint="sample@email.com"
-        android:inputType="textEmailAddress"
-        android:singleLine="true"
-        />
+        <ProgressBar
+            android:id="@+id/pb_reg"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"/>
 
-    <EditText
-        android:id="@+id/et_reg_password"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-
-        android:hint="password"
-        android:inputType="textPassword"
-        android:singleLine="true"/>
-
-    <EditText
-        android:id="@+id/et_reg_phonenumber"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-
-        android:inputType="textPhonetic"
-        android:singleLine="true"/>
-
-    <Button
-        android:id="@+id/btn_reg"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Register"/>
-
-    <ProgressBar
-        android:id="@+id/pb_reg"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="invisible"/>
+    </LinearLayout>
 
 </LinearLayout>
