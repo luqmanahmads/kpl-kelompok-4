@@ -71,7 +71,7 @@ public class ConversationFragment extends Fragment implements ConversationViewCo
     @Override
     public void getConversation() {
 
-        conversationPresenterContract.getConversation(new ApiHeader("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3QvY2hhdC1hcGkvYXBpL2F1dGhlbnRpY2F0ZSIsImlhdCI6MTUxMzU5MTEwNywiZXhwIjoxNTEzNjc3NTA3LCJuYmYiOjE1MTM1OTExMDcsImp0aSI6InpLWWxUZ0ZBMkFuM3VydWwifQ.xaMUcc0DaTM3_EzGwqtuNa9GjS8_ZVM50pDJJtjI_k4"));
+        conversationPresenterContract.getConversation(new ApiHeader(baseDataManager.getAccessToken()));
 
 
     }

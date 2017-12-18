@@ -66,7 +66,9 @@ public class ConversationAdapter extends RecyclerView.Adapter<ConversationAdapte
         @OnClick(R.id.tvConversationName)
         public void onConversationClick(){
             Intent intent = new Intent (itemView.getContext(), ChatRoomActivity.class);
-
+            int position = getAdapterPosition();
+            int conversationId = conversationList.get(position).getConversationId();
+            intent.putExtra("conversationId", conversationId);
             itemView.getContext().startActivity(intent);
         }
     }

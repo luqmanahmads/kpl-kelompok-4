@@ -82,9 +82,9 @@ public class ReceiverService extends Service {
                         final Channel channel = connection.createChannel();
                         channel.basicQos(1);
 
-                        channel.queueBind("tmp-1", "user.1", "");
+                        channel.queueBind("tmp-" + baseDataManager.getId(), "user." + baseDataManager.getId(), "");
 //
-                        channel.basicConsume("tmp-1", false, new Consumer() {
+                        channel.basicConsume("tmp-" + baseDataManager.getId(), false, new Consumer() {
                             @Override
                             public void handleConsumeOk(String consumerTag) {
 

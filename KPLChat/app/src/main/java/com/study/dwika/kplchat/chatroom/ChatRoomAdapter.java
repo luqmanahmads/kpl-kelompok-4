@@ -40,7 +40,6 @@ public class ChatRoomAdapter extends RecyclerView.Adapter<ChatRoomAdapter.ChatVi
     @Override
     public void onBindViewHolder(ChatViewHolder holder, int position) {
         holder.tvChat.setText(messagesList.get(position).getMessage());
-
     }
 
     @Override
