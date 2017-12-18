@@ -10,7 +10,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/tv_add_member"/>
+        android:text="@string/tv_add_member" />
 
     <View
         android:layout_width="match_parent"
@@ -18,9 +18,15 @@
         android:layout_marginTop="20dp"
         android:background="@android:color/darker_gray" />
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_add_member"
-        android:layout_marginTop="10dp"
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        />
+
+    <ListView
+        android:id="@+id/lv_add_member"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
