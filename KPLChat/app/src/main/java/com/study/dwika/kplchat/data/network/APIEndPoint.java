@@ -24,6 +24,7 @@ public class ApiEndPoint {
     public static final String CONVERSATION_DETAIL = BASE_URL + "conversation/{id}";
     public static final String GET_FRIEND = BASE_URL + "friends";
     public static final String SEND_CHAT = BASE_URL + "conversation/{id}";
+    public static final String GET_CHAT = BASE_URL + "conversation";
 
 
 }

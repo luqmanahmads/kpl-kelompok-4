@@ -1,14 +1,24 @@
 package com.study.dwika.kplchat.model;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by A.I on 28/11/2017.
  */
 
 public class Conversation {
 
-
+    @SerializedName("id")
     private int conversationId;
-    private String title, channelId;
+
+    @SerializedName("title")
+    private String title;
+
+    @SerializedName("isGroup")
+    private Boolean isGroup;
+
+    public Conversation() {
+    }
 
     public int getConversationId() {
         return conversationId;
@@ -26,11 +36,11 @@ public class Conversation {
         this.title = title;
     }
 
-    public String getChannelId() {
-        return channelId;
+    public Boolean getGroup() {
+        return isGroup;
     }
 
-    public void setChannelId(String channelId) {
-        this.channelId = channelId;
+    public void setGroup(Boolean group) {
+        isGroup = group;
     }
 }

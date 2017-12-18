@@ -7,8 +7,6 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
-
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,7 +53,7 @@ public class FriendFragment extends Fragment implements FriendViewContract {
         baseDataManager = new DataManager(new ApiHelper(), new DatabaseHelper(getContext()), new SharedPreferenceHelper(getContext()));
 
         friendPresenterContract = new FriendPresenter(baseDataManager, this, baseSchedulerProvider);
-        Log.d("Debug", "FriendFragment");
+//        Log.d("Debug", "FriendFragment");
         getFriend();
 
     }
