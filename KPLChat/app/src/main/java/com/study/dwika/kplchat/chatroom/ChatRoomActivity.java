@@ -56,12 +56,16 @@ public class ChatRoomActivity extends AppCompatActivity implements ChatRoomActiv
     private ChatRoomAdapter chatRoomAdapter;
     private Handler handler;
     private RabbitMQSender rabbitMQSender;
+    private int conversationId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_room);
         ButterKnife.bind(this);
+
+        Intent intent = getIntent();
+        conversationId = intent.getIntExtra("conversationId", 0);
 
         startService(new Intent(this, ReceiverService.class));
 
@@ -97,7 +101,7 @@ public class ChatRoomActivity extends AppCompatActivity implements ChatRoomActiv
 
     @OnClick(R.id.btnSendChat)
     public void sendChat(){
-        chatRoomPresenterContract.sendMessage(etChat.getText().toString());
+        chatRoomPresenterContract.sendMessage(etChat.getText().toString(), conversationId);
 //        rabbitMQSender.publishToAMQP();
     }
 }

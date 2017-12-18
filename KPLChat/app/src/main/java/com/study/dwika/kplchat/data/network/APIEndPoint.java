@@ -11,7 +11,7 @@ public class ApiEndPoint {
 //    public static final String BASE_URL = "http://35.198.231.167/chat-api/api/";
 //    public static final String BASE_URL = "http://10.107.255.221/chat-api/api/";
 //    public static final String BASE_URL = "http://a08f0a7b.ngrok.io/chat-api/api/";
-//    public static final String BASE_URL = "http://d67e252c.ngrok.io/chat-api/api/";
+//    public static final String BASE_URL = "http://da02ca44.ngrok.io/chat-api/api/";
 //    public static final String BASE_URL = "http://10.151.13.21/chat-api/api/";
     public static final String BASE_URL = "http://da02ca44.ngrok.io/chat-api/api/";
 

@@ -8,6 +8,6 @@ public interface ChatRoomPresenterContract {
 
     void getMessage();
 
-    void sendMessage(String message);
+    void sendMessage(String message, int conversationId);
 
 }

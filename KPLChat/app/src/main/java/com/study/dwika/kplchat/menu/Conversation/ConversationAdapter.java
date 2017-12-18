@@ -1,6 +1,7 @@
 package com.study.dwika.kplchat.menu.Conversation;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,12 +9,14 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.study.dwika.kplchat.R;
+import com.study.dwika.kplchat.chatroom.ChatRoomActivity;
 import com.study.dwika.kplchat.model.Conversation;
 
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by A.I on 16/12/2017.
@@ -38,8 +41,7 @@ public class ConversationAdapter extends RecyclerView.Adapter<ConversationAdapte
     @Override
     public void onBindViewHolder(ConversationViewHolder holder, int position) {
 //        Log.d("Debug", "Conversation adapter " + conversationList.get(position).getTitle());
-//        holder.tvConversationName.setText(conversationList.get(position).getTitle());
-        holder.tvConversationName.setText("test");
+        holder.tvConversationName.setText(conversationList.get(position).getTitle());
     }
 
     @Override
@@ -47,7 +49,7 @@ public class ConversationAdapter extends RecyclerView.Adapter<ConversationAdapte
         return conversationList.size();
     }
 
-    public class ConversationViewHolder extends RecyclerView.ViewHolder{
+    public class ConversationViewHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.tvConversationName)
         TextView tvConversationName;
@@ -59,6 +61,15 @@ public class ConversationAdapter extends RecyclerView.Adapter<ConversationAdapte
             super(itemView);
             ButterKnife.bind(this, itemView);
 
+        }
+
+        @OnClick(R.id.tvConversationName)
+        public void onConversationClick(){
+            Intent intent = new Intent (itemView.getContext(), ChatRoomActivity.class);
+            int position = getAdapterPosition();
+            int conversationId = conversationList.get(position).getConversationId();
+            intent.putExtra("conversationId", conversationId);
+            itemView.getContext().startActivity(intent);
         }
     }
 }

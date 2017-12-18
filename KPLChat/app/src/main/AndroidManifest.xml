@@ -15,6 +15,8 @@
         <activity android:name=".menu.MenuActivity">
 
 
+
+
         </activity>
         <activity
             android:name=".login.LoginActivity"
@@ -27,7 +29,6 @@
             </intent-filter>
 
 
-
         </activity>
 
         <activity android:name="com.study.dwika.kplchat.register.RegisterActivity" />
@@ -35,7 +36,10 @@
         <activity android:name=".conversationdetail.ConversationDetailActivity" />
         <activity android:name=".addmember.AddMemberActivity" />
 
-        <activity android:name=".chatroom.ChatRoomActivity"></activity>
+        <activity android:name=".chatroom.ChatRoomActivity">
+
+
+        </activity>
 
 
 
