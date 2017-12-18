@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 
 import com.study.dwika.kplchat.R;
+import com.study.dwika.kplchat.addmember.AddMemberActivity;
 import com.study.dwika.kplchat.conversationdetail.ConversationDetailActivity;
 import com.study.dwika.kplchat.data.BaseDataManager;
 import com.study.dwika.kplchat.data.DataManager;
@@ -84,7 +85,7 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityCon
 
     @Override
     public void loginSuccess() {
-        Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
+        Intent intent = new Intent(LoginActivity.this, AddMemberActivity.class);
         startActivity(intent);
     }
 

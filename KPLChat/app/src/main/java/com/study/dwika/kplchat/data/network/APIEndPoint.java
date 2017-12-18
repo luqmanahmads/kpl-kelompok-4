@@ -7,12 +7,10 @@ package com.study.dwika.kplchat.data.network;
 public class ApiEndPoint {
 
     //Base url ketik di sini
-    //public static final String BASE_URL = "http://classified5.me/chat-api/api/";
-    //public static final String BASE_URL = "http://10.107.255.221/chat-api/api/";
-//    public static final String BASE_URL = "http://a08f0a7b.ngrok.io/chat-api/api/";
+//    public static final String BASE_URL = "http://classified5.me/chat-api/api/";
     public static final String BASE_URL = "http://10.107.255.221/chat-api/api/";
-
-
+//    public static final String BASE_URL = "http://a08f0a7b.ngrok.io/chat-api/api/";
+//    public static final String BASE_URL = "http://d67e252c.ngrok.io/chat-api/api/";
 
     // address url selanjutnya ketik di sini
     public static final String LOGIN = BASE_URL + "authenticate";
@@ -25,7 +23,7 @@ public class ApiEndPoint {
     public static final String GET_FRIEND = BASE_URL + "friends";
     public static final String SEND_CHAT = BASE_URL + "conversation/{id}";
     public static final String GET_CHAT = BASE_URL + "conversation";
-    public static final String AVAILABLE_FRIENDS_TO_ADD = BASE_URL + "friends/{convId}";
-    public static final String ADD_TO_CONVERSATION = BASE_URL + "conversation/{convId}/{userId}";
+    public static final String AVAILABLE_FRIENDS_TO_ADD = BASE_URL + "conversation/{convId}/participant/add";
+    public static final String ADD_TO_CONVERSATION = BASE_URL + "conversation/{convId}/participant/add/{userId}";
 
 }

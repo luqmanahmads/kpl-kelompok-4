@@ -7,9 +7,12 @@ import android.widget.Toast;
 
 import com.study.dwika.kplchat.R;
 import com.study.dwika.kplchat.data.BaseDataManager;
+import com.study.dwika.kplchat.data.DataManager;
 import com.study.dwika.kplchat.data.database.BaseDatabaseHelper;
+import com.study.dwika.kplchat.data.network.ApiHelper;
 import com.study.dwika.kplchat.data.network.BaseApiHelper;
 import com.study.dwika.kplchat.data.sharedpreference.BaseSharedPreferenceHelper;
+import com.study.dwika.kplchat.data.sharedpreference.SharedPreferenceHelper;
 import com.study.dwika.kplchat.utils.BaseSchedulerProvider;
 
 import butterknife.BindView;
@@ -38,6 +41,12 @@ public class AddMemberActivity extends AppCompatActivity implements AddMemberAct
         setContentView(R.layout.activity_add_member);
 
         ButterKnife.bind(this);
+
+        baseApiHelper = new ApiHelper();
+        baseSharedPreferenceHelper = new SharedPreferenceHelper(this);
+        baseDataManager = new DataManager(baseApiHelper, baseDatabaseHelper, baseSharedPreferenceHelper);
+
+        mPresenter = new AddMemberPresenter(this,baseDataManager,baseSchedulerProvider);
 
         // Hardcode Conversation ID
         mPresenter.getAvailableFriends("1");
