@@ -8,10 +8,13 @@ import android.support.annotation.Nullable;
 import android.util.Log;
 
 import com.google.gson.Gson;
+import com.rabbitmq.client.AMQP;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
-import com.rabbitmq.client.QueueingConsumer;
+import com.rabbitmq.client.Consumer;
+import com.rabbitmq.client.Envelope;
+import com.rabbitmq.client.ShutdownSignalException;
 import com.study.dwika.kplchat.data.BaseDataManager;
 import com.study.dwika.kplchat.data.DataManager;
 import com.study.dwika.kplchat.data.database.DatabaseHelper;
@@ -75,37 +78,66 @@ public class ReceiverService extends Service {
 
                     try{
                         Connection connection = factory.newConnection();
-                        Channel channel = connection.createChannel();
+                        final Channel channel = connection.createChannel();
                         channel.basicQos(1);
-//                        Envelope envelope = new Envelope(11, false, "user.1", "");
-//                        channel.basicAck(envelope.getDeliveryTag(), false);
+
                         channel.queueBind("tmp-1", "user.1", "");
-                        QueueingConsumer consumer = new QueueingConsumer(channel);
-                        channel.basicConsume("tmp-1", false, consumer);
+//
+                        channel.basicConsume("tmp-1", false, new Consumer() {
+                            @Override
+                            public void handleConsumeOk(String consumerTag) {
 
-                        while (true){
-                            QueueingConsumer.Delivery delivery = consumer.nextDelivery();
+                            }
 
-                            final String incomingChat = new String(delivery.getBody());
-                            Log.d("Debug","[r] " + incomingChat);
+                            @Override
+                            public void handleCancelOk(String consumerTag) {
 
-                            messages = gson.fromJson(incomingChat, Messages.class);
+                            }
 
-                            baseDataManager.saveMessages(messages);
-                        }
+                            @Override
+                            public void handleCancel(String consumerTag) throws IOException {
+
+                            }
+
+                            @Override
+                            public void handleShutdownSignal(String consumerTag, ShutdownSignalException sig) {
+
+                            }
+
+                            @Override
+                            public void handleRecoverOk(String consumerTag) {
+
+                            }
+
+                            @Override
+                            public void handleDelivery(String consumerTag, Envelope envelope, AMQP.BasicProperties properties, byte[] body) throws IOException {
+                                String routingKey = envelope.getRoutingKey();
+                                String contentType = properties.getContentType();
+                                long deliveryTag = envelope.getDeliveryTag();
+
+                                final String incomingChat = new String(body);
+
+                                Log.d("Debug", "Incoming chat " + incomingChat);
+
+                                messages = gson.fromJson(incomingChat, Messages.class);
+
+                                baseDataManager.saveMessages(messages);
+
+                                channel.basicAck(deliveryTag, false);
+                            }
+                        });
 
                     } catch (TimeoutException e) {
                         e.printStackTrace();
                     } catch (IOException e) {
                         e.printStackTrace();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    } catch (Exception e){
+                    }
+//
+                    catch (Exception e){
                         Log.d("debug", "Connection broken: " + e.getClass().getName());
                         try {
                             //sleep and then try again
                             Thread.sleep(4000);
-//                        setupConnectionFactory();
                         } catch (InterruptedException el) {
                             el.printStackTrace();
                         }
@@ -126,7 +158,7 @@ public class ReceiverService extends Service {
             factory.setVirtualHost("/");
             factory.setHost("35.198.231.167");
             factory.setPort(5672);
-            Connection conn = factory.newConnection();
+//            Connection conn = factory.newConnection();
         } catch (Exception el) {
             Log.d("Debug", "Connection " + el.toString());
             el.printStackTrace();
