@@ -44,6 +44,7 @@ public class ChatRoomActivity extends AppCompatActivity implements ChatRoomActiv
     @BindView(R.id.tvChat)
     TextView tvChat;
 
+
     @BindView(R.id.rvChat)
     RecyclerView rvChat;
 
@@ -56,7 +57,6 @@ public class ChatRoomActivity extends AppCompatActivity implements ChatRoomActiv
     private ChatRoomAdapter chatRoomAdapter;
     private Handler handler;
     private RabbitMQSender rabbitMQSender;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

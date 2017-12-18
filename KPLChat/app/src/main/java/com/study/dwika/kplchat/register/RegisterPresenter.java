@@ -4,19 +4,14 @@ import android.content.Context;
 import android.util.Log;
 
 import com.study.dwika.kplchat.data.BaseDataManager;
-import com.study.dwika.kplchat.data.network.ApiEndPoint;
 import com.study.dwika.kplchat.model.BaseResponse;
-
 import com.study.dwika.kplchat.model.Users;
 import com.study.dwika.kplchat.utils.BaseSchedulerProvider;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.functions.Consumer;
-
 import io.reactivex.schedulers.Schedulers;
-
-import io.reactivex.functions.Consumer;
 
 /**
  * Created by Luqman Ahmad on 11/29/2017.

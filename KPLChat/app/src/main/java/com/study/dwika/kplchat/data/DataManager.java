@@ -131,11 +131,12 @@ public class DataManager implements BaseDataManager {
     }
 
     @Override
+
     public Observable<UsersResponse> getFriend(ApiHeader apiHeader) {
         return baseApiHelper.getFriend(apiHeader);
     }
 
-
+    @Override
     public List<Messages> getMessages() {
         return baseDatabaseHelper.getMessages();
     }

@@ -2,6 +2,7 @@ package com.study.dwika.kplchat.data.network;
 
 import com.study.dwika.kplchat.model.BaseResponse;
 
+
 import com.study.dwika.kplchat.model.ConversationDetailResponse;
 
 import com.study.dwika.kplchat.model.ConversationResponse;
@@ -23,13 +24,14 @@ public interface BaseApiHelper {
     Observable<BaseResponse> doRegister(Users users);
     Observable<BaseResponse> doLogin(Login login);
     Observable<UsersResponse> authenticatedUser(ApiHeader header);
+    Observable<UsersResponse> getFriend(ApiHeader apiHeader);
+    Observable<BaseResponse> sendChat(Messages messages, ApiHeader apiHeader);
+    Observable<ConversationResponse> getConversation(ApiHeader apiHeader);
 
     Observable<UsersResponse> searchUserByEmail(ApiHeader header, String email);
     Observable<BaseResponse> addFriend(ApiHeader header, String id);
     Observable<ConversationDetailResponse> conversationDetail(ApiHeader header, String id);
 
-    Observable<UsersResponse> getFriend(ApiHeader apiHeader);
-    Observable<BaseResponse> sendChat(Messages messages, ApiHeader apiHeader);
-    Observable<ConversationResponse> getConversation(ApiHeader apiHeader);
+
 
 }

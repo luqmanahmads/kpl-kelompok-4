@@ -3,7 +3,6 @@ package com.study.dwika.kplchat.menu.Friend;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 
-
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
@@ -49,7 +48,6 @@ public class FriendFragment extends Fragment implements FriendViewContract {
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
 
-
         baseDataManager = new DataManager(new ApiHelper(), new DatabaseHelper(getContext()), new SharedPreferenceHelper(getContext()));
 
         friendPresenterContract = new FriendPresenter(baseDataManager, this, baseSchedulerProvider);
@@ -71,7 +69,9 @@ public class FriendFragment extends Fragment implements FriendViewContract {
 
     @Override
     public void getFriend() {
+
         friendPresenterContract.getFriend(new ApiHeader("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEsImlzcyI6Imh0dHA6Ly9jbGFzc2lmaWVkNS5tZS9jaGF0LWFwaS9hcGkvYXV0aGVudGljYXRlIiwiaWF0IjoxNTEzMzUxNjMzLCJleHAiOjE1MTM0MzgwMzMsIm5iZiI6MTUxMzM1MTYzMywianRpIjoiNzlTN21GVHZCWFVHT1UwUyJ9.jpBWJ_98Z6-_TuoatAIirebb3PHfIp820y1F-CjusqQ"));
+
     }
 
     @Override

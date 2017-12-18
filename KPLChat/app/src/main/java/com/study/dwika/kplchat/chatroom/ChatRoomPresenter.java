@@ -43,6 +43,7 @@ public class ChatRoomPresenter implements ChatRoomPresenterContract {
     @Override
     public void sendMessage(String message) {
         Messages messages = new Messages(1, message);
+
         ApiHeader apiHeader = new ApiHeader("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3QvY2hhdC1hcGkvYXBpL2F1dGhlbnRpY2F0ZSIsImlhdCI6MTUxMzU5MTEwNywiZXhwIjoxNTEzNjc3NTA3LCJuYmYiOjE1MTM1OTExMDcsImp0aSI6InpLWWxUZ0ZBMkFuM3VydWwifQ.xaMUcc0DaTM3_EzGwqtuNa9GjS8_ZVM50pDJJtjI_k4");
 
         compositeDisposable.add(baseDataManager.sendChat(messages, apiHeader)

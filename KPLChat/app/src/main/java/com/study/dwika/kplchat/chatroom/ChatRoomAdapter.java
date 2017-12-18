@@ -13,6 +13,7 @@ import com.study.dwika.kplchat.model.Messages;
 import java.util.List;
 
 import butterknife.BindView;
+
 import butterknife.ButterKnife;
 
 /**
@@ -29,6 +30,7 @@ public class ChatRoomAdapter extends RecyclerView.Adapter<ChatRoomAdapter.ChatVi
         this.context = context;
     }
 
+
     @Override
     public ChatViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_chat, null);
@@ -38,17 +40,20 @@ public class ChatRoomAdapter extends RecyclerView.Adapter<ChatRoomAdapter.ChatVi
     @Override
     public void onBindViewHolder(ChatViewHolder holder, int position) {
         holder.tvChat.setText(messagesList.get(position).getMessage());
+
     }
 
     @Override
     public int getItemCount() {
         return messagesList.size();
+
     }
 
     public class ChatViewHolder extends RecyclerView.ViewHolder{
 
         @BindView(R.id.tvChat)
         TextView tvChat;
+
 
         public ChatViewHolder(View itemView) {
             super(itemView);

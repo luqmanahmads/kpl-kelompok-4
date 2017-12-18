@@ -4,9 +4,11 @@ import android.util.Log;
 
 import com.rx2androidnetworking.Rx2AndroidNetworking;
 import com.study.dwika.kplchat.model.BaseResponse;
+
 import com.study.dwika.kplchat.model.ConversationDetailResponse;
 
 import com.study.dwika.kplchat.model.ConversationResponse;
+
 
 import com.study.dwika.kplchat.model.Login;
 import com.study.dwika.kplchat.model.Messages;
@@ -23,7 +25,6 @@ import io.reactivex.Observable;
 public class ApiHelper implements BaseApiHelper {
     @Override
     public Observable<BaseResponse> doRegister(Users users) {
-
         return Rx2AndroidNetworking.post(ApiEndPoint.BASE_URL+ ApiEndPoint.REGISTER)
                 .addBodyParameter(users)
                 .build()
