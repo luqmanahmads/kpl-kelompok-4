@@ -13,7 +13,6 @@ import com.study.dwika.kplchat.model.Messages;
 import java.util.List;
 
 import butterknife.BindView;
-
 import butterknife.ButterKnife;
 
 /**
