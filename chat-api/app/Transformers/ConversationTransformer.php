@@ -17,10 +17,19 @@ class ConversationTransformer extends TransformerAbstract
 {
     public function transform(Conversation $conversation)
     {
+        $isGroup = is_null($conversation->title) ? false : true;
+        $title = $conversation->title;
+        if(!$isGroup) {
+            $userService = app()->make('userService');
+            $user = $userService->authenticatedUser();
+            $participant = $conversation->participant()->where('user_id', '<>', $user->id)->first();
+            $title = $participant->name;
+        }
+
         return [
             'id' => $conversation->id,
-            'isGroup' => is_null($conversation->title) ? false : true,
-            'title' => $conversation->title,
+            'isGroup' => $isGroup,
+            'title' => $title,
             'participants' => $conversation->participant
         ];
     }

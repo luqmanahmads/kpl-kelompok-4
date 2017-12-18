@@ -61,7 +61,7 @@ class UserController extends Controller
     public function getConversations()
     {
         $datas = $this->userService->getConversations();
-//        dd($datas);
+
         return $this->response->collection($datas, new ConversationTransformer);
     }
 }
