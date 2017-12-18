@@ -25,22 +25,10 @@ class RabbitService
      */
     private $channel;
 
-    /**
-     *@var \App\Services\ChatService
-     */
-    private $chatService;
-
-    /**
-     *@var \App\Services\UserService
-     */
-    private $userService;
-
     public function __construct()
     {
         $this->connect();
         $this->getChannel();
-        $this->chatService = app()->make('chatService');
-        $this->userService = app()->make('userService');
     }
 
     public function connect()
@@ -61,12 +49,9 @@ class RabbitService
     public function serverListen()
     {
         $this->channel->queue_bind(config('rabbit.SERVER_QUEUE'), config('rabbit.CONVERSATION_OUTGOING'));
-        $this->channel->basic_consume(config('rabbit.SERVER_QUEUE'), '', false, true, false, false, 'processMsg');
+        $this->channel->basic_consume(config('rabbit.SERVER_QUEUE'), '', false, true, false, false, 'publishMessage');
     }
 
-    /**
-     * @param \PhpAmqpLib\Message\AMQPMessage $msg
-     */
     public function publishMessage($input)
     {
         $routingKey = $input['conversation_id'];
@@ -84,7 +69,7 @@ class RabbitService
     }
 
     /**
-     * @param $name
+     * @param string $name
      * @param string $type
      */
     public function createExchange($name, $type = 'fanout')
