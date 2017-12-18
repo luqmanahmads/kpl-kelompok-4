@@ -20,18 +20,21 @@ public class DatabaseHelper implements BaseDatabaseHelper {
     private DatabaseSource databaseSource;
     private Context context;
     private SQLiteDatabase db;
+    private ContentValues contentValues;
+    private long success;
 
     public DatabaseHelper(Context context) {
         this.context = context;
         databaseSource = new DatabaseSource(context);
         db = databaseSource.getWritableDatabase();
+
     }
 
 
     @Override
-    public List<Messages> getMessages() {
+    public List<Messages> getMessages(int conversationId) {
         List<Messages> messagesList = new ArrayList<Messages>();
-        String selectQuery = "SELECT  * FROM " + DatabaseSource.TABLE_NAME;
+        String selectQuery = "SELECT  * FROM " + DatabaseSource.TABLE_NAME + " WHERE conversationid = " + conversationId;
         Cursor cursor = db.rawQuery(selectQuery, null);
         Log.d("Debug", "get message cursor " + cursor.getCount());
         if (cursor.getCount() == 0){
@@ -60,12 +63,11 @@ public class DatabaseHelper implements BaseDatabaseHelper {
     @Override
     public void saveMessages(Messages messages) {
         Log.d("Debug", "Db Helper messages " + messages.getMessage());
-        ContentValues contentValues = new ContentValues();
+        contentValues = new ContentValues();
         contentValues.put(DatabaseSource.COLUMN_NAME_MESSAGE, messages.getMessage());
         contentValues.put(DatabaseSource.COLUMN_NAME_CONVERSATION_ID, messages.getConversationId());
         contentValues.put(DatabaseSource.COLUMN_NAME_USER_ID, messages.getUserId());
-        long success = db.insert(DatabaseSource.TABLE_NAME, null, contentValues);
+        success = db.insert(DatabaseSource.TABLE_NAME, null, contentValues);
         Log.d("Debug", "insert " + success);
-        db.close();
     }
 }

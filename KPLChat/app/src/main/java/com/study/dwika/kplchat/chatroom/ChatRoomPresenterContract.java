@@ -6,7 +6,7 @@ package com.study.dwika.kplchat.chatroom;
 
 public interface ChatRoomPresenterContract {
 
-    void getMessage();
+    void getMessage(int conversationId);
 
     void sendMessage(String message, int conversationId);
 

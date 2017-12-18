@@ -81,7 +81,7 @@ public class ReceiverService extends Service {
                         connection = factory.newConnection();
                         final Channel channel = connection.createChannel();
                         channel.basicQos(1);
-
+                        Log.d("Debug", "Service user id " + baseDataManager.getId());
                         channel.queueBind("tmp-" + baseDataManager.getId(), "user." + baseDataManager.getId(), "");
 //
                         channel.basicConsume("tmp-" + baseDataManager.getId(), false, new Consumer() {
@@ -125,6 +125,7 @@ public class ReceiverService extends Service {
                                 baseDataManager.saveMessages(messages);
 
                                 channel.basicAck(deliveryTag, false);
+
                                 connection.close();
                             }
                         });

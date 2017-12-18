@@ -24,10 +24,12 @@ public class ChatRoomAdapter extends RecyclerView.Adapter<ChatRoomAdapter.ChatVi
 
     private List<Messages> messagesList;
     private Context context;
+    private int userId;
 
-    public ChatRoomAdapter(List<Messages> messagesList, Context context) {
+    public ChatRoomAdapter(List<Messages> messagesList, Context context, int userId) {
         this.messagesList = messagesList;
         this.context = context;
+        this.userId = userId;
     }
 
 
@@ -39,7 +41,12 @@ public class ChatRoomAdapter extends RecyclerView.Adapter<ChatRoomAdapter.ChatVi
 
     @Override
     public void onBindViewHolder(ChatViewHolder holder, int position) {
-        holder.tvChat.setText(messagesList.get(position).getMessage());
+        if (messagesList.get(position).getUserId() == userId){
+            holder.tvSender.setText(messagesList.get(position).getMessage());
+        }else{
+            holder.tvChat.setText(messagesList.get(position).getMessage());
+        }
+
     }
 
     @Override
@@ -52,6 +59,9 @@ public class ChatRoomAdapter extends RecyclerView.Adapter<ChatRoomAdapter.ChatVi
 
         @BindView(R.id.tvChat)
         TextView tvChat;
+
+        @BindView(R.id.tvSender)
+        TextView tvSender;
 
 
         public ChatViewHolder(View itemView) {

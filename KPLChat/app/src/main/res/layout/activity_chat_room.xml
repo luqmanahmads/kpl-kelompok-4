@@ -7,15 +7,11 @@
     tools:context="com.study.dwika.kplchat.chatroom.ChatRoomActivity">
 
 
-    <TextView
-        android:id="@+id/tvChat"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="chat"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rvChat"
         android:layout_marginTop="10dp"
+        android:layout_marginBottom="50dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 

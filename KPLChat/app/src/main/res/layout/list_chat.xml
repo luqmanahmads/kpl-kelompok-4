@@ -6,8 +6,16 @@
     android:layout_height="wrap_content">
 
     <TextView
+        android:layout_marginTop="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/tvChat"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorPrimary"
+        android:id="@+id/tvSender"
+        android:gravity="end"/>
 
 </LinearLayout>

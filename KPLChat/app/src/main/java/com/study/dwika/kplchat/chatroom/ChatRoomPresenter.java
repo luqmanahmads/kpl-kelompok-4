@@ -35,9 +35,9 @@ public class ChatRoomPresenter implements ChatRoomPresenterContract {
 
 
     @Override
-    public void getMessage() {
+    public void getMessage(int conversationId) {
 //        Log.d("Debug", "Presenter message 0 " + baseDataManager.getMessages().get(0).getMessage());
-        chatRoomActivityContract.displayChat(baseDataManager.getMessages());
+        chatRoomActivityContract.displayChat(baseDataManager.getMessages(conversationId));
     }
 
     @Override

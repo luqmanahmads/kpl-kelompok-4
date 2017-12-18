@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface BaseDatabaseHelper {
 
-    List<Messages> getMessages();
+    List<Messages> getMessages(int conversationId);
 
     void saveMessages(Messages messages);
 }

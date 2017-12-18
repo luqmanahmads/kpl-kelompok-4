@@ -147,8 +147,8 @@ public class DataManager implements BaseDataManager {
     }
 
     @Override
-    public List<Messages> getMessages() {
-        return baseDatabaseHelper.getMessages();
+    public List<Messages> getMessages(int conversationId) {
+        return baseDatabaseHelper.getMessages(conversationId);
     }
 
     @Override
