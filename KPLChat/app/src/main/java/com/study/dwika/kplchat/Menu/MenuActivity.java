@@ -5,9 +5,9 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 
+import com.study.dwika.kplchat.R;
 import com.study.dwika.kplchat.menu.Conversation.ConversationFragment;
 import com.study.dwika.kplchat.menu.Friend.FriendFragment;
-import com.study.dwika.kplchat.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
