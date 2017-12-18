@@ -8,6 +8,7 @@
 
 namespace App\Repositories;
 
+use DB;
 
 class ParticipantRepository extends BaseRepository
 {

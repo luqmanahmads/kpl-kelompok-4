@@ -21,6 +21,7 @@ class ChatController extends Controller
     public function __construct()
     {
         $this->chatService = app()->make('chatService');
+        $this->userService = app()->make('userService');
     }
 
     public function getConversationDetail($id)
@@ -42,4 +43,36 @@ class ChatController extends Controller
 
         return $this->success('not found', [], 404);
     }
+
+    public function getFriendsToAdd($conversationId)
+    {
+        $user = $this->userService->authenticatedUser();
+        $datas = $this->chatService->getFriendsToAdd($conversationId, $user->id);
+
+        return $this->success(
+            'success',
+            $datas,
+            200
+        );
+    }
+
+    public function addParticipantToChat($conversationId, $friendId)
+    {
+        $user = $this->userService->authenticatedUser();
+
+        $isEligible = $this->chatService->isEligible($user->id, $conversationId);
+
+        if ($isEligible) {
+            $add = $this->chatService->addParticipantToChat($conversationId, $friendId);
+
+            return $this->success(
+                'success',
+                [],
+                201
+            );
+        }
+
+        return $this->response->errorUnauthorized();
+    }
+
 }

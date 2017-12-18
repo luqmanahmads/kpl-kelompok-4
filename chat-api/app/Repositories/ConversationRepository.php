@@ -20,4 +20,10 @@ class ConversationRepository extends BaseRepository
     {
         return $this->model->with('participant')->find($id);
     }
+
+    public function addParticipant($conversationId, $friendId)
+    {
+        $conv = $this->find($conversationId);
+        return $conv->participant()->attach($friendId);
+    }
 }
