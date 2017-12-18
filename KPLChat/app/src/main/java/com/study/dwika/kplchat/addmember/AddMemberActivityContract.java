@@ -10,5 +10,6 @@ import java.util.List;
 
 public interface AddMemberActivityContract {
     void showUserFound(List<Users> users);
-
+    void showLoading();
+    void hideLoading();
 }

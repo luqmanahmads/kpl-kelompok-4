@@ -8,6 +8,8 @@ import com.study.dwika.kplchat.model.BaseResponse;
 import com.study.dwika.kplchat.model.UsersResponse;
 import com.study.dwika.kplchat.utils.BaseSchedulerProvider;
 
+import java.security.AccessControlContext;
+
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.functions.Consumer;
@@ -34,6 +36,7 @@ public class AddMemberPresenter implements AddMemberPresenterContract {
 
     @Override
     public void getAvailableFriends(String id) {
+        addMemberActivityContract.showLoading();
         compositeDisposable.add(baseDataManager
                 .getAvailableFriends(new ApiHeader(baseDataManager.getAccessToken()), id)
                 .subscribeOn(Schedulers.io())
@@ -42,13 +45,15 @@ public class AddMemberPresenter implements AddMemberPresenterContract {
                     @Override
                     public void accept(UsersResponse usersResponse) throws Exception {
                         Log.d("Debug", "Status " + usersResponse.getStatus());
-                        Log.d("Debug","User "+usersResponse.getUsersData().size());
+                        Log.d("Debug", "User " + usersResponse.getUsersData().size());
+                        addMemberActivityContract.hideLoading();
                         addMemberActivityContract.showUserFound(usersResponse.getUsersData());
                     }
                 }, new Consumer<Throwable>() {
                     @Override
                     public void accept(Throwable throwable) throws Exception {
                         Log.d("Debug", "getAvailableFriends error " + throwable.getLocalizedMessage());
+                        addMemberActivityContract.hideLoading();
                     }
                 })
         );

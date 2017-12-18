@@ -4,10 +4,9 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.RecyclerView;
-import android.widget.ArrayAdapter;
+import android.view.View;
 import android.widget.ListView;
-import android.widget.Toast;
+import android.widget.ProgressBar;
 
 import com.study.dwika.kplchat.R;
 import com.study.dwika.kplchat.data.BaseDataManager;
@@ -20,7 +19,6 @@ import com.study.dwika.kplchat.data.sharedpreference.SharedPreferenceHelper;
 import com.study.dwika.kplchat.model.Users;
 import com.study.dwika.kplchat.utils.BaseSchedulerProvider;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -33,8 +31,10 @@ import butterknife.OnItemClick;
 
 public class AddMemberActivity extends AppCompatActivity implements AddMemberActivityContract {
 
-    @BindView(R.id.rv_add_member)
-    RecyclerView rvAddMember;
+    @BindView(R.id.lv_add_member)
+    ListView lvAddMember;
+    @BindView(R.id.progressBar)
+    ProgressBar progressBar;
 
     private AddMemberPresenterContract mPresenter;
     private BaseDataManager baseDataManager;
@@ -61,19 +61,19 @@ public class AddMemberActivity extends AppCompatActivity implements AddMemberAct
         mPresenter.getAvailableFriends("1");
     }
 
-    @OnItemClick(R.id.rv_add_member)
+    @OnItemClick(R.id.lv_add_member)
     public void onFriendClick(int position) {
 
         final Users clickedUser = addMemberAdapter.findClicked(position);
 
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
         alert.setTitle("Add Member?");
-        alert.setMessage("Add "+clickedUser.getName()+" to conversation?");
+        alert.setMessage("Add " + clickedUser.getName() + " to conversation?");
 
         alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
                 // Hardcode Conversation ID
-                mPresenter.addMemberToConversation(String.valueOf(clickedUser.getId()),"1");
+                mPresenter.addMemberToConversation(String.valueOf(clickedUser.getId()), "1");
             }
         });
 
@@ -88,8 +88,19 @@ public class AddMemberActivity extends AppCompatActivity implements AddMemberAct
     }
 
     @Override
-    public void showUserFound(List<Users> users) {
-        addMemberAdapter = new AddMemberAdapter(users, this);
-        rvAddMember.setAdapter(addMemberAdapter);
+    public void showUserFound(List<Users> usersList) {
+        addMemberAdapter = new AddMemberAdapter(this, usersList);
+        lvAddMember.setAdapter(addMemberAdapter);
+
+    }
+
+    @Override
+    public void showLoading() {
+        progressBar.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void hideLoading() {
+        progressBar.setVisibility(View.INVISIBLE);
     }
 }
