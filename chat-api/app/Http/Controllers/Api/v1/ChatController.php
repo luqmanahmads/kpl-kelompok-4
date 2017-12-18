@@ -100,6 +100,11 @@ class ChatController extends Controller
             $input['user_id'] = $userId;
             $this->rabbitService->publishMessage($input);
 
+            return $this->success(
+                'success',
+                [],
+                200
+            );
         } else {
             return $this->response->errorUnauthorized();
         }
