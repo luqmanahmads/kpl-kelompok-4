@@ -15,27 +15,32 @@ use PhpAmqpLib\Message\AMQPMessage;
 
 class RabbitService
 {
-    /**
-     * The event dispatcher instance.
-     *
+    /*
      * @var \PhpAmqpLib\Connection\AMQPStreamConnection
      */
     private $connection;
 
     /**
-     * The event dispatcher instance.
-     *
-     * @var AMQPChannel
+     *@var AMQPChannel
      */
     private $channel;
 
+    /**
+     *@var \App\Services\ChatService
+     */
     private $chatService;
 
-    public function __construct(ChatService $chatService)
+    /**
+     *@var \App\Services\UserService
+     */
+    private $userService;
+
+    public function __construct()
     {
         $this->connect();
         $this->getChannel();
-        $this->chatService = $chatService;
+        $this->chatService = app()->make('chatService');
+        $this->userService = app()->make('userService');
     }
 
     public function connect()
@@ -62,24 +67,21 @@ class RabbitService
     /**
      * @param \PhpAmqpLib\Message\AMQPMessage $msg
      */
-    public function processMsg($msg)
+    public function publishMessage($input)
     {
-        $body = json_decode($msg->body);
-        $routingKey = $body->conversation_id;
-        $user = $body->user_id;
-        $message = $body->message;
+        $routingKey = $input['conversation_id'];
+        $message = $input['message'];
+        $userId = $input['user_id'];
 
-        if ($this->chatService->isEligible($user, $routingKey)) {
-            $data = [
-                'conversation_id' => $routingKey,
-                'user_id' => $user,
-                'message' => $message
-            ];
+        $data = [
+            'conversation_id' => $routingKey,
+            'user_id' => $userId,
+            'message' => $message
+        ];
 
-            $msg = new AMQPMessage(json_encode($data));
-        }
-
+        $msg = new AMQPMessage(json_encode($data));
         $this->channel->basic_publish($msg, config('rabbit.CONVERSATION_INCOMING'), $routingKey);
+
     }
 
     public function __destruct()

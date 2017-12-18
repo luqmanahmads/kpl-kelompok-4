@@ -16,12 +16,26 @@ use Illuminate\Http\Request;
 
 class ChatController extends Controller
 {
+    /**
+     *@var \App\Services\ChatService
+     */
     private $chatService;
+
+    /**
+     *@var \App\Services\UserService
+     */
+    private $userService;
+
+    /**
+     *@var \App\Services\RabbitService
+     */
+    private $rabbitService;
 
     public function __construct()
     {
         $this->chatService = app()->make('chatService');
         $this->userService = app()->make('userService');
+        $this->rabbitService = app()->make('rabbitService');
     }
 
     public function getConversationDetail($id)
@@ -75,4 +89,19 @@ class ChatController extends Controller
         return $this->response->errorUnauthorized();
     }
 
+    public function sendMessage(Request $request)
+    {
+        $input = $request->only('conversation_id', 'message');
+
+        $user = $this->userService->authenticatedUser();
+        $userId = $user->id;
+
+        if ($this->chatService->isEligible($userId, $input['conversation_id'])) {
+            $input['user_id'] = $userId;
+            $this->rabbitService->publishMessage($input);
+
+        } else {
+            return $this->response->errorUnauthorized();
+        }
+    }
 }

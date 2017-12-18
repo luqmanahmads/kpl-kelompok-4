@@ -16,6 +16,7 @@ class ChatServiceProvider extends ServiceProvider
     {
         $this->app->bind('userService', 'App\Services\UserService');
         $this->app->bind('chatService', 'App\Services\ChatService');
+        $this->app->bind('rabbitService', 'App\Services\RabbitService');
     }
 
     /**

@@ -44,6 +44,7 @@ $api->version('v1', function ($api){
     $api->group(['prefix' => 'conversation'], function ($api){
         $api->get('/', 'App\Http\Controllers\Api\v1\UserController@getConversations');
         $api->get('/{id}', 'App\Http\Controllers\Api\v1\ChatController@getConversationDetail');
+        $api->post('/{id}', 'App\Http\Controllers\Api\v1\ChatController@sendMessage');
         $api->get('/{id}/participant/add/', 'App\Http\Controllers\Api\v1\ChatController@getFriendsToAdd');
         $api->post('/{id}/participant/add/{user_id}', 'App\Http\Controllers\Api\v1\ChatController@addParticipantToChat');
     });
