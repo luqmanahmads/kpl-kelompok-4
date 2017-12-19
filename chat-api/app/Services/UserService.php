@@ -18,6 +18,9 @@ class UserService
     private $userRepository;
     private $friendRepository;
 
+    /**
+     * @var \App\Services\RabbitService
+     */
     private $rabbitService;
 
     /**
@@ -38,6 +41,7 @@ class UserService
     {
         $data = $this->userRepository->create((array)$data);
         $this->rabbitService->createExchangeNewUser($data->id);
+        $this->rabbitService->createQueueNewUser($data->id);
 
         return $data;
     }
