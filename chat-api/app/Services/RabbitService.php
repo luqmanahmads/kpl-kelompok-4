@@ -83,6 +83,12 @@ class RabbitService
         $this->createExchange($name, $type);
     }
 
+    public function createQueueNewUser($id)
+    {
+        $this->channel->queue_declare('queue-'.$id);
+        $this->channel->queue_bind('queue-'.$id, 'user.'.$id);
+    }
+
     public function bindNewParticipant($dst, $src, $routingKey)
     {
         $this->channel->exchange_bind($dst, $src, $routingKey);
