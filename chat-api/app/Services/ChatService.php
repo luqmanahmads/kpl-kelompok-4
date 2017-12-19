@@ -78,7 +78,7 @@ class ChatService
     public function addParticipantToChat($conversationId, $friendId)
     {
         $data = $this->conversationRepo->addParticipant($conversationId, $friendId);
-        $this->rabbitService->bindNewParticipant('user'.$friendId, config('rabbit.CONVERSATION_INCOMING'), $conversationId);
+        $this->rabbitService->bindNewParticipant('user.'.$friendId, config('rabbit.CONVERSATION_INCOMING'), $conversationId);
 
         return $data;
     }
