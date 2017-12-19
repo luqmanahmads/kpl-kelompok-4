@@ -34,6 +34,7 @@ public class AddFriendPresenter implements AddFriendPresenterContract {
 
     @Override
     public void searchByEmail(String email) {
+        addFriendActivityContract.showLoading();
         compositeDisposable.add(baseDataManager
                 .searchUserByEmail(new ApiHeader(baseDataManager.getAccessToken()), email)
                 .subscribeOn(Schedulers.io())
@@ -43,11 +44,13 @@ public class AddFriendPresenter implements AddFriendPresenterContract {
                                public void accept(UsersResponse usersResponse) throws Exception {
                                    Log.d("Debug", "user name " + usersResponse.getUsersData().get(0).getName());
                                    addFriendActivityContract.showUserFound(usersResponse.getUsersData().get(0));
+                                   addFriendActivityContract.hideLoading();
                                }
                            }, new Consumer<Throwable>() {
                                @Override
                                public void accept(Throwable throwable) throws Exception {
                                    Log.d("Debug", "searchByEmail error " + throwable.getLocalizedMessage());
+                                   addFriendActivityContract.hideLoading();
                                }
                            }
                 )
@@ -56,6 +59,7 @@ public class AddFriendPresenter implements AddFriendPresenterContract {
 
     @Override
     public void addById(String id) {
+        addFriendActivityContract.showLoading();
         compositeDisposable.add(baseDataManager
                 .addFriend(new ApiHeader(baseDataManager.getAccessToken()), id)
                 .subscribeOn(Schedulers.io())
@@ -64,11 +68,13 @@ public class AddFriendPresenter implements AddFriendPresenterContract {
                                @Override
                                public void accept(BaseResponse baseResponse) throws Exception {
                                    Log.d("Debug", "response " + baseResponse.getStatus());
+                                   addFriendActivityContract.hideLoading();
                                }
                            }, new Consumer<Throwable>() {
                                @Override
                                public void accept(Throwable throwable) throws Exception {
                                    Log.d("Debug", "addById error - " + throwable.getLocalizedMessage());
+                                   addFriendActivityContract.hideLoading();
                                }
                            }
                 )

@@ -1,5 +1,6 @@
 package com.study.dwika.kplchat.conversationdetail;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -42,11 +43,15 @@ public class ConversationDetailActivity extends AppCompatActivity implements Con
     private BaseApiHelper baseApiHelper;
     private BaseDatabaseHelper baseDatabaseHelper;
     private BaseSharedPreferenceHelper baseSharedPreferenceHelper;
+    private int conversationId;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_conversation_detail);
+
+        Intent intent = getIntent();
+        conversationId = intent.getIntExtra("conversationId", 0);
 
         ButterKnife.bind(this);
 
@@ -56,8 +61,7 @@ public class ConversationDetailActivity extends AppCompatActivity implements Con
 
         mPresenter = new ConversationDetailPresenter(this, baseDataManager,baseSchedulerProvider);
 
-        //Hardcode conversation id
-        mPresenter.findConversationDetail("1");
+        mPresenter.findConversationDetail(String.valueOf(conversationId));
     }
 
     @Override

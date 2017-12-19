@@ -1,11 +1,13 @@
 package com.study.dwika.kplchat.addfriend;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.study.dwika.kplchat.R;
@@ -16,6 +18,7 @@ import com.study.dwika.kplchat.data.network.ApiHelper;
 import com.study.dwika.kplchat.data.network.BaseApiHelper;
 import com.study.dwika.kplchat.data.sharedpreference.BaseSharedPreferenceHelper;
 import com.study.dwika.kplchat.data.sharedpreference.SharedPreferenceHelper;
+import com.study.dwika.kplchat.menu.MenuActivity;
 import com.study.dwika.kplchat.model.Users;
 import com.study.dwika.kplchat.utils.BaseSchedulerProvider;
 
@@ -33,6 +36,8 @@ public class AddFriendActivity extends AppCompatActivity implements AddFriendAct
     EditText etEmail;
     @BindView(R.id.tv_name_add_friend)
     TextView tvName;
+    @BindView(R.id.progressBar)
+    ProgressBar progressBar;
 
     private Users userFound;
 
@@ -72,6 +77,10 @@ public class AddFriendActivity extends AppCompatActivity implements AddFriendAct
         Log.d("Debug", "Clicked add friend with id " + userFound.getId());
         try {
             mPresenter.addById(String.valueOf(userFound.getId()));
+
+            Intent menu = new Intent(this, MenuActivity.class);
+            startActivity(menu);
+
         } catch (Exception e) {
             Log.d("Debug", "onAddFriendClick error ");
         }
@@ -85,6 +94,16 @@ public class AddFriendActivity extends AppCompatActivity implements AddFriendAct
         } catch (Exception e) {
             Log.d("Debug", "showUserFound error ");
         }
+    }
+
+    @Override
+    public void showLoading() {
+        progressBar.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void hideLoading() {
+        progressBar.setVisibility(View.INVISIBLE);
     }
 
 }
