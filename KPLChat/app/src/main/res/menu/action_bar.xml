@@ -5,7 +5,4 @@
         android:title="Add Friend"
         app:showAsAction="never" />
 
-    <item android:id="@+id/createGroup"
-        android:title="Create Group"
-        app:showAsAction="never" />
 </menu>

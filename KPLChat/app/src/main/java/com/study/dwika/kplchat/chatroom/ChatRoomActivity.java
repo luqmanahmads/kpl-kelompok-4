@@ -101,9 +101,11 @@ public class ChatRoomActivity extends AppCompatActivity implements ChatRoomActiv
         int id = item.getItemId();
         if(id == R.id.ac_conversation_detail) {
             Intent intent = new Intent(this, ConversationDetailActivity.class);
+            intent.putExtra("conversationId",conversationId);
             startActivity(intent);
         }else if(id == R.id.ac_add_member){
             Intent intent = new Intent(this, AddMemberActivity.class);
+            intent.putExtra("conversationId",conversationId);
             startActivity(intent);
         }
         return super.onOptionsItemSelected(item);

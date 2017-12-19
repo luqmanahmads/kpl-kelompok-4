@@ -91,8 +91,6 @@ public class MenuActivity extends AppCompatActivity {
         if(id == R.id.addFriend) {
             Intent intent = new Intent(MenuActivity.this, AddFriendActivity.class);
             startActivity(intent);
-        }else if(id == R.id.createGroup){
-
         }
         return super.onOptionsItemSelected(item);
     }

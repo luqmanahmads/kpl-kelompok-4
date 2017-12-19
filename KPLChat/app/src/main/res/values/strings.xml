@@ -8,4 +8,5 @@
     <string name="btn_search_add_friend">Search</string>
     <string name="btn_add_friend">Add</string>
     <string name="tv_add_member">Add Member</string>
+    <string name="tv_conversation_detail">Member</string>
 </resources>
