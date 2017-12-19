@@ -5,8 +5,10 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.study.dwika.kplchat.R;
@@ -34,9 +36,10 @@ public class ConversationDetailActivity extends AppCompatActivity implements Con
 
     @BindView(R.id.tv_conversation_title)
     TextView tvConversationTitle;
-
     @BindView(R.id.lv_participants)
     ListView lvParticipants;
+    @BindView(R.id.progressBar)
+    ProgressBar progressBar;
 
     private ConversationDetailPresenterContract mPresenter;
     private BaseDataManager baseDataManager;
@@ -60,20 +63,29 @@ public class ConversationDetailActivity extends AppCompatActivity implements Con
         baseSharedPreferenceHelper = new SharedPreferenceHelper(this);
         baseDataManager = new DataManager(baseApiHelper, baseDatabaseHelper, baseSharedPreferenceHelper);
 
-        mPresenter = new ConversationDetailPresenter(this, baseDataManager,baseSchedulerProvider);
+        mPresenter = new ConversationDetailPresenter(this, baseDataManager, baseSchedulerProvider);
 
-        Log.d("Debug","Conversation id "+conversationId);
+        Log.d("Debug", "Conversation id " + conversationId);
         mPresenter.findConversationDetail(String.valueOf(conversationId));
     }
 
     @Override
     public void showConversationDetail(ConversationDetail conversationDetail) {
         ArrayList<String> list = new ArrayList<>();
-        for (Users user : conversationDetail.getParticipants()){
+        for (Users user : conversationDetail.getParticipants()) {
             list.add(user.getName());
         }
-        ArrayAdapter adapter = new ArrayAdapter<>(this, R.layout.list_conversation_participants,list);
+        ArrayAdapter adapter = new ArrayAdapter<>(this, R.layout.list_conversation_participants, list);
         lvParticipants.setAdapter(adapter);
     }
 
+    @Override
+    public void showLoading() {
+        progressBar.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void hideLoading() {
+        progressBar.setVisibility(View.INVISIBLE);
+    }
 }

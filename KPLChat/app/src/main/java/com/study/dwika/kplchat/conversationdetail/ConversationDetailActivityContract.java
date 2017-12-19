@@ -8,5 +8,7 @@ import com.study.dwika.kplchat.model.ConversationDetail;
 
 public interface ConversationDetailActivityContract {
     void showConversationDetail(ConversationDetail conversationDetail);
+    void showLoading();
+    void hideLoading();
 
 }

@@ -7,5 +7,5 @@
 
     <item android:id="@+id/createGroup"
         android:title="Create Group"
-        app:showAsAction="always" />
+        app:showAsAction="never" />
 </menu>
