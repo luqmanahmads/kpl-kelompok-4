@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -61,6 +62,7 @@ public class ConversationDetailActivity extends AppCompatActivity implements Con
 
         mPresenter = new ConversationDetailPresenter(this, baseDataManager,baseSchedulerProvider);
 
+        Log.d("Debug","Conversation id "+conversationId);
         mPresenter.findConversationDetail(String.valueOf(conversationId));
     }
 

@@ -7,10 +7,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
 
 import com.study.dwika.kplchat.R;
+import com.study.dwika.kplchat.addmember.AddMemberActivity;
+import com.study.dwika.kplchat.conversationdetail.ConversationDetailActivity;
 import com.study.dwika.kplchat.data.BaseDataManager;
 import com.study.dwika.kplchat.data.DataManager;
 import com.study.dwika.kplchat.data.database.BaseDatabaseHelper;
@@ -85,6 +89,26 @@ public class ChatRoomActivity extends AppCompatActivity implements ChatRoomActiv
 
 
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.conversation_action_bar, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if(id == R.id.ac_conversation_detail) {
+            Intent intent = new Intent(this, ConversationDetailActivity.class);
+            startActivity(intent);
+        }else if(id == R.id.ac_add_member){
+            Intent intent = new Intent(this, AddMemberActivity.class);
+            startActivity(intent);
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
 
     @Override
     public void displayChat(List<Messages> messagesList) {

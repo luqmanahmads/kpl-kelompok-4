@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.ProgressBar;
@@ -62,6 +63,7 @@ public class AddMemberActivity extends AppCompatActivity implements AddMemberAct
 
         mPresenter = new AddMemberPresenter(this, baseDataManager, baseSchedulerProvider);
 
+        Log.d("Debug","Conversation id "+conversationId);
         mPresenter.getAvailableFriends(String.valueOf(conversationId));
     }
 
