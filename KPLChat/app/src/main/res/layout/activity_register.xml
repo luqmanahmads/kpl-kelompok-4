@@ -21,9 +21,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_marginBottom="0dp"
+
             android:layout_marginTop="30dp"
-            android:fontFamily="sans-serif"
             android:text="Account Registration"
             android:textAlignment="center"
             android:textColor="@color/white"
@@ -38,19 +37,19 @@
             android:textAlignment="center"
             android:textColor="@color/white" />
 
+
         <EditText
             android:id="@+id/et_reg_name"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
 
             android:layout_marginBottom="10dp"
-            android:background="@color/lightGray"
-            android:hint="Your Name"
 
             android:inputType="textPersonName"
-            android:padding="10dp"
             android:singleLine="true"
-            android:textColor="@color/black" />
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:hint="Name"/>
 
         <EditText
             android:id="@+id/et_reg_email"
@@ -58,13 +57,12 @@
             android:layout_height="wrap_content"
 
             android:layout_marginBottom="10dp"
-            android:background="@color/lightGray"
-            android:hint="Email"
-
             android:inputType="textEmailAddress"
-            android:padding="10dp"
             android:singleLine="true"
-            android:textColor="@color/black" />
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:hint="Email"/>
+
 
         <EditText
             android:id="@+id/et_reg_password"
@@ -72,13 +70,14 @@
             android:layout_height="wrap_content"
 
             android:layout_marginBottom="10dp"
-            android:background="@color/lightGray"
-            android:hint="Password"
+
 
             android:inputType="textPassword"
-            android:padding="10dp"
             android:singleLine="true"
-            android:textColor="@color/black" />
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:hint="Password"/>
+
 
         <EditText
             android:id="@+id/et_reg_phonenumber"
@@ -86,13 +85,12 @@
             android:layout_height="wrap_content"
 
             android:layout_marginBottom="10dp"
-            android:background="@color/lightGray"
-            android:hint="Phone Number"
 
             android:inputType="phone"
-            android:padding="10dp"
             android:singleLine="true"
-            android:textColor="@color/black" />
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:hint="Phone Number"/>
 
         <Button
             android:id="@+id/btn_reg"
@@ -105,10 +103,11 @@
             android:padding="10dp"
 
             android:text="Register"
-
             android:textAllCaps="false"
             android:textColor="@color/colorPrimary"
             android:textSize="15dp" />
+
+
 
 
         <View
@@ -120,7 +119,7 @@
         <ProgressBar
             android:id="@+id/pb_reg"
             style="?android:attr/progressBarStyle"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:visibility="invisible" />
 
