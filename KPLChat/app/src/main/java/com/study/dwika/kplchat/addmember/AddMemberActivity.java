@@ -1,6 +1,7 @@
 package com.study.dwika.kplchat.addmember;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -43,11 +44,15 @@ public class AddMemberActivity extends AppCompatActivity implements AddMemberAct
     private BaseDatabaseHelper baseDatabaseHelper;
     private BaseSharedPreferenceHelper baseSharedPreferenceHelper;
     private AddMemberAdapter addMemberAdapter;
+    private int conversationId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_member);
+
+        Intent intent = getIntent();
+        conversationId = intent.getIntExtra("conversationId", 0);
 
         ButterKnife.bind(this);
 
@@ -57,8 +62,7 @@ public class AddMemberActivity extends AppCompatActivity implements AddMemberAct
 
         mPresenter = new AddMemberPresenter(this, baseDataManager, baseSchedulerProvider);
 
-        // Hardcode Conversation ID
-        mPresenter.getAvailableFriends("1");
+        mPresenter.getAvailableFriends(String.valueOf(conversationId));
     }
 
     @OnItemClick(R.id.lv_add_member)
@@ -72,8 +76,7 @@ public class AddMemberActivity extends AppCompatActivity implements AddMemberAct
 
         alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
-                // Hardcode Conversation ID
-                mPresenter.addMemberToConversation(String.valueOf(clickedUser.getId()), "1");
+                mPresenter.addMemberToConversation(String.valueOf(clickedUser.getId()), String.valueOf(conversationId));
             }
         });
 

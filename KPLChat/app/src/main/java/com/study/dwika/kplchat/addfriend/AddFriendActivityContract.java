@@ -8,4 +8,6 @@ import com.study.dwika.kplchat.model.Users;
 
 public interface AddFriendActivityContract {
     void showUserFound(Users user);
+    void showLoading();
+    void hideLoading();
 }

@@ -38,7 +38,6 @@ public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.FriendView
     @Override
     public void onBindViewHolder(FriendViewHolder holder, int position) {
         holder.tvName.setText(usersList.get(position).getName());
-        holder.tvName.setText("hola");
     }
 
     @Override
