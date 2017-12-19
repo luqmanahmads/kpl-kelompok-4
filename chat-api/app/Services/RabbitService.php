@@ -85,8 +85,8 @@ class RabbitService
 
     public function createQueueNewUser($id)
     {
-        $this->channel->queue_declare('queue-'.$id);
-        $this->channel->queue_bind('queue-'.$id, 'user.'.$id);
+        $this->channel->queue_declare('queue-'.$id, false, true, false, false);
+        $this->channel->queue_bind('tmp-'.$id, 'user.'.$id);
     }
 
     public function bindNewParticipant($dst, $src, $routingKey)

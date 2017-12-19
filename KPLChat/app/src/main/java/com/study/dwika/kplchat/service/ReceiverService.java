@@ -38,6 +38,7 @@ public class ReceiverService extends Service {
     private Messages messages;
     private Gson gson;
     private Connection connection;
+    private Channel channel;
 
     @Nullable
     @Override
@@ -75,15 +76,16 @@ public class ReceiverService extends Service {
         listenThread = new Thread(new Runnable() {
             @Override
             public void run() {
-                while(true){
+
 
                     try{
                         connection = factory.newConnection();
-                        final Channel channel = connection.createChannel();
+                        channel = connection.createChannel();
                         channel.basicQos(1);
                         Log.d("Debug", "Service user id " + baseDataManager.getId());
                         channel.queueBind("tmp-" + baseDataManager.getId(), "user." + baseDataManager.getId(), "");
 //
+                        while(true){
                         channel.basicConsume("tmp-" + baseDataManager.getId(), false, new Consumer() {
                             @Override
                             public void handleConsumeOk(String consumerTag) {
@@ -120,16 +122,25 @@ public class ReceiverService extends Service {
 
                                 Log.d("Debug", "Incoming chat " + incomingChat);
 
-                                messages = gson.fromJson(incomingChat, Messages.class);
+                                try {
+                                    messages = gson.fromJson(incomingChat, Messages.class);
 
-                                baseDataManager.saveMessages(messages);
+                                    baseDataManager.saveMessages(messages);
+                                } catch (Exception e) {
+                                    Log.d("Debug", "Receive error " + e.getLocalizedMessage());
+                                }
 
                                 channel.basicAck(deliveryTag, false);
+//                                Log.d("Debug" , "After ACK");
 
-                                connection.close();
+
+//                                connection.close();
                             }
                         });
-                        connection.close();
+
+                        }
+
+//                        connection.close();
                     } catch (TimeoutException e) {
                         e.printStackTrace();
                     } catch (IOException e) {
@@ -145,7 +156,7 @@ public class ReceiverService extends Service {
                             el.printStackTrace();
                         }
                     }
-                }
+
 
             }
             });
