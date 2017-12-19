@@ -4,16 +4,6 @@
     <item android:id="@+id/addFriend"
         android:title="Add Friend"
         android:icon="@drawable/add_friend"
-          
- <!-- 
-        app:showAsAction="always"
-        />
-
-    <item android:id="@+id/createGroup"
-        android:title="Create Group"
-        android:icon="@drawable/add_group"
-        app:showAsAction="always" />
- -->
         app:showAsAction="never" />
 
 </menu>
