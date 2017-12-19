@@ -33,6 +33,7 @@ public class ConversationDetailPresenter implements ConversationDetailPresenterC
 
     @Override
     public void findConversationDetail(String id) {
+        conversationDetailActivityContract.showLoading();
         compositeDisposable.add(baseDataManager
                 .conversationDetail(new ApiHeader(baseDataManager.getAccessToken()), id)
                 .subscribeOn(Schedulers.io())
@@ -41,11 +42,13 @@ public class ConversationDetailPresenter implements ConversationDetailPresenterC
                     @Override
                     public void accept(ConversationDetailResponse conversationDetailResponse) throws Exception {
                         conversationDetailActivityContract.showConversationDetail(conversationDetailResponse.getData().get(0));
+                        conversationDetailActivityContract.hideLoading();
                     }
                 }, new Consumer<Throwable>() {
                     @Override
                     public void accept(Throwable throwable) throws Exception {
                         Log.d("Debug","findConversationDetail error " + throwable.getLocalizedMessage());
+                        conversationDetailActivityContract.hideLoading();
                     }
                 })
         );

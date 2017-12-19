@@ -4,10 +4,10 @@
     <item
         android:id="@+id/ac_conversation_detail"
         android:title="Conversation Detail"
-        app:showAsAction="always" />
+        app:showAsAction="never" />
 
     <item
         android:id="@+id/ac_add_member"
         android:title="Add Member"
-        app:showAsAction="always" />
+        app:showAsAction="never" />
 </menu>

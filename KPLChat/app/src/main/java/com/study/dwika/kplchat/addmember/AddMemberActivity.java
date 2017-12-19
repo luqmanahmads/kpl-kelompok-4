@@ -11,6 +11,7 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 
 import com.study.dwika.kplchat.R;
+import com.study.dwika.kplchat.chatroom.ChatRoomActivity;
 import com.study.dwika.kplchat.data.BaseDataManager;
 import com.study.dwika.kplchat.data.DataManager;
 import com.study.dwika.kplchat.data.database.BaseDatabaseHelper;
@@ -79,6 +80,10 @@ public class AddMemberActivity extends AppCompatActivity implements AddMemberAct
         alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
                 mPresenter.addMemberToConversation(String.valueOf(clickedUser.getId()), String.valueOf(conversationId));
+
+                Intent intent = new Intent (AddMemberActivity.this, ChatRoomActivity.class);
+                intent.putExtra("conversationId", conversationId);
+                startActivity(intent);
             }
         });
 
