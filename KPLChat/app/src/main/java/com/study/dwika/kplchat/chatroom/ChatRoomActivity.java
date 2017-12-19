@@ -9,7 +9,6 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import com.study.dwika.kplchat.R;
 import com.study.dwika.kplchat.data.BaseDataManager;
@@ -29,7 +28,6 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-
 import butterknife.OnClick;
 
 
@@ -40,10 +38,6 @@ public class ChatRoomActivity extends AppCompatActivity implements ChatRoomActiv
 
     @BindView(R.id.btnSendChat)
     Button btnSendChat;
-
-    @BindView(R.id.tvChat)
-    TextView tvChat;
-
 
     @BindView(R.id.rvChat)
     RecyclerView rvChat;
@@ -57,12 +51,16 @@ public class ChatRoomActivity extends AppCompatActivity implements ChatRoomActiv
     private ChatRoomAdapter chatRoomAdapter;
     private Handler handler;
     private RabbitMQSender rabbitMQSender;
+    private int conversationId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_room);
         ButterKnife.bind(this);
+
+        Intent intent = getIntent();
+        conversationId = intent.getIntExtra("conversationId", 0);
 
         startService(new Intent(this, ReceiverService.class));
 
@@ -80,7 +78,7 @@ public class ChatRoomActivity extends AppCompatActivity implements ChatRoomActiv
             @Override
             public void run() {
                 //call function
-                chatRoomPresenterContract.getMessage();
+                chatRoomPresenterContract.getMessage(conversationId);
                 handler.postDelayed(this, 5000);
             }
         }, 5000);
@@ -91,14 +89,14 @@ public class ChatRoomActivity extends AppCompatActivity implements ChatRoomActiv
     @Override
     public void displayChat(List<Messages> messagesList) {
         Log.d("Debug", "chat number 0 " + messagesList.get(0).getMessage());
-        chatRoomAdapter = new ChatRoomAdapter( messagesList,this);
+        chatRoomAdapter = new ChatRoomAdapter( messagesList,this,  Integer.parseInt(baseDataManager.getId()));
 
         rvChat.setAdapter(chatRoomAdapter);
     }
 
     @OnClick(R.id.btnSendChat)
     public void sendChat(){
-        chatRoomPresenterContract.sendMessage(etChat.getText().toString());
+        chatRoomPresenterContract.sendMessage(etChat.getText().toString(), conversationId);
 //        rabbitMQSender.publishToAMQP();
     }
 }

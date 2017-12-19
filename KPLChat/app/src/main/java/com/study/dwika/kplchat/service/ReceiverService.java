@@ -37,6 +37,7 @@ public class ReceiverService extends Service {
     private Thread listenThread;
     private Messages messages;
     private Gson gson;
+    private Connection connection;
 
     @Nullable
     @Override
@@ -77,13 +78,13 @@ public class ReceiverService extends Service {
                 while(true){
 
                     try{
-                        Connection connection = factory.newConnection();
+                        connection = factory.newConnection();
                         final Channel channel = connection.createChannel();
                         channel.basicQos(1);
-
-                        channel.queueBind("tmp-1", "user.1", "");
+                        Log.d("Debug", "Service user id " + baseDataManager.getId());
+                        channel.queueBind("tmp-" + baseDataManager.getId(), "user." + baseDataManager.getId(), "");
 //
-                        channel.basicConsume("tmp-1", false, new Consumer() {
+                        channel.basicConsume("tmp-" + baseDataManager.getId(), false, new Consumer() {
                             @Override
                             public void handleConsumeOk(String consumerTag) {
 
@@ -124,9 +125,11 @@ public class ReceiverService extends Service {
                                 baseDataManager.saveMessages(messages);
 
                                 channel.basicAck(deliveryTag, false);
+
+                                connection.close();
                             }
                         });
-
+                        connection.close();
                     } catch (TimeoutException e) {
                         e.printStackTrace();
                     } catch (IOException e) {

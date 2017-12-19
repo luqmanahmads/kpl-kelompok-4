@@ -35,16 +35,16 @@ public class ChatRoomPresenter implements ChatRoomPresenterContract {
 
 
     @Override
-    public void getMessage() {
+    public void getMessage(int conversationId) {
 //        Log.d("Debug", "Presenter message 0 " + baseDataManager.getMessages().get(0).getMessage());
-        chatRoomActivityContract.displayChat(baseDataManager.getMessages());
+        chatRoomActivityContract.displayChat(baseDataManager.getMessages(conversationId));
     }
 
     @Override
-    public void sendMessage(String message) {
-        Messages messages = new Messages(1, message);
+    public void sendMessage(String message, int conversationId) {
+        Messages messages = new Messages(conversationId, message);
 
-        ApiHeader apiHeader = new ApiHeader("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3QvY2hhdC1hcGkvYXBpL2F1dGhlbnRpY2F0ZSIsImlhdCI6MTUxMzU5MTEwNywiZXhwIjoxNTEzNjc3NTA3LCJuYmYiOjE1MTM1OTExMDcsImp0aSI6InpLWWxUZ0ZBMkFuM3VydWwifQ.xaMUcc0DaTM3_EzGwqtuNa9GjS8_ZVM50pDJJtjI_k4");
+        ApiHeader apiHeader = new ApiHeader(baseDataManager.getAccessToken());
 
         compositeDisposable.add(baseDataManager.sendChat(messages, apiHeader)
             .subscribeOn(Schedulers.io())

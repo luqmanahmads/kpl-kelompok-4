@@ -5,13 +5,11 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 
 import com.study.dwika.kplchat.R;
-import com.study.dwika.kplchat.addmember.AddMemberActivity;
 import com.study.dwika.kplchat.data.BaseDataManager;
 import com.study.dwika.kplchat.data.DataManager;
 import com.study.dwika.kplchat.data.database.BaseDatabaseHelper;
@@ -87,6 +85,7 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityCon
     public void loginSuccess() {
         Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
         startActivity(intent);
+        finish();
     }
 
 }

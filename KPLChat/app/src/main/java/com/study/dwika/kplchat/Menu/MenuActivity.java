@@ -1,13 +1,17 @@
 package com.study.dwika.kplchat.menu;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 
+import com.study.dwika.kplchat.R;
+import com.study.dwika.kplchat.addfriend.AddFriendActivity;
 import com.study.dwika.kplchat.menu.Conversation.ConversationFragment;
 import com.study.dwika.kplchat.menu.Friend.FriendFragment;
-import com.study.dwika.kplchat.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -73,6 +77,24 @@ public class MenuActivity extends AppCompatActivity {
 
         viewPager.setAdapter(menuViewPagerAdapter);
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.action_bar, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if(id == R.id.addFriend) {
+            Intent intent = new Intent(MenuActivity.this, AddFriendActivity.class);
+            startActivity(intent);
+        }else if(id == R.id.createGroup){
+
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 

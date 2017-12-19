@@ -8,8 +8,6 @@ import com.study.dwika.kplchat.model.BaseResponse;
 import com.study.dwika.kplchat.model.UsersResponse;
 import com.study.dwika.kplchat.utils.BaseSchedulerProvider;
 
-import java.security.AccessControlContext;
-
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.functions.Consumer;

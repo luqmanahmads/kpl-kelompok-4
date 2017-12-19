@@ -4,17 +4,12 @@ import android.util.Log;
 
 import com.rx2androidnetworking.Rx2AndroidNetworking;
 import com.study.dwika.kplchat.model.BaseResponse;
-
 import com.study.dwika.kplchat.model.ConversationDetailResponse;
-
 import com.study.dwika.kplchat.model.ConversationResponse;
-
-
 import com.study.dwika.kplchat.model.Login;
 import com.study.dwika.kplchat.model.Messages;
 import com.study.dwika.kplchat.model.Users;
 import com.study.dwika.kplchat.model.UsersResponse;
-
 
 import io.reactivex.Observable;
 
