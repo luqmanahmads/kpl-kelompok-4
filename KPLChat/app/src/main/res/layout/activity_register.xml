@@ -13,8 +13,8 @@
         android:layout_gravity="center"
         android:layout_marginBottom="30dp"
         android:orientation="vertical"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp">
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
 
         <TextView
             android:id="@+id/text_id"
@@ -22,8 +22,10 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
 
+            android:layout_marginBottom="0dp"
             android:layout_marginTop="30dp"
-            android:text="Account Registration"
+            android:fontFamily="sans-serif"
+            android:text="Register"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="24dp" />
@@ -37,6 +39,14 @@
             android:textAlignment="center"
             android:textColor="@color/white" />
 
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:paddingLeft="40dp"
+            android:paddingRight="40dp"
+            android:text="Please fill all the information needed for the acount registration"
+            android:textAlignment="center"
+            android:textColor="@color/white" />
 
         <EditText
             android:id="@+id/et_reg_name"
@@ -44,7 +54,6 @@
             android:layout_height="wrap_content"
 
             android:layout_marginBottom="10dp"
-
             android:inputType="textPersonName"
             android:singleLine="true"
             android:textColor="@color/white"
@@ -57,6 +66,7 @@
             android:layout_height="wrap_content"
 
             android:layout_marginBottom="10dp"
+
             android:inputType="textEmailAddress"
             android:singleLine="true"
             android:textColor="@color/white"
@@ -70,13 +80,13 @@
             android:layout_height="wrap_content"
 
             android:layout_marginBottom="10dp"
-
+            android:hint="Password"
 
             android:inputType="textPassword"
             android:singleLine="true"
             android:textColor="@color/white"
             android:textColorHint="@color/white"
-            android:hint="Password"/>
+            />
 
 
         <EditText
@@ -84,7 +94,6 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
 
-            android:layout_marginBottom="10dp"
 
             android:inputType="phone"
             android:singleLine="true"
@@ -106,8 +115,6 @@
             android:textAllCaps="false"
             android:textColor="@color/colorPrimary"
             android:textSize="15dp" />
-
-
 
 
         <View
