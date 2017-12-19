@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@color/white"
+    android:background="@color/colorPrimary"
     android:gravity="center"
     android:orientation="vertical"
     android:padding="10dp">
@@ -11,117 +11,118 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginBottom="30dp"
         android:orientation="vertical"
         android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-        android:layout_marginBottom="30dp">
+        android:paddingRight="20dp">
 
         <TextView
             android:id="@+id/text_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Account Registration"
             android:layout_centerVertical="true"
-            android:textAlignment="center"
-            android:textSize="24dp"
-            android:fontFamily="sans-serif"
+            android:layout_marginBottom="0dp"
             android:layout_marginTop="30dp"
-            android:layout_marginBottom="40dp"
-            android:textColor="@color/black"
-            />
+            android:fontFamily="sans-serif"
+            android:text="Account Registration"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="24dp" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:text="Please fill the information below to register to KPLChat"
+            android:textAlignment="center"
+            android:textColor="@color/white" />
 
         <EditText
             android:id="@+id/et_reg_name"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
 
-            android:hint="Your Name"
-            android:inputType="textPersonName"
-            android:singleLine="true"
-
-            android:background="@color/lightGray"
             android:layout_marginBottom="10dp"
+            android:background="@color/lightGray"
+            android:hint="Your Name"
+
+            android:inputType="textPersonName"
             android:padding="10dp"
-            android:textColor="@color/black"
-            />
+            android:singleLine="true"
+            android:textColor="@color/black" />
 
         <EditText
             android:id="@+id/et_reg_email"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
 
-            android:hint="Email"
-            android:inputType="textEmailAddress"
-            android:singleLine="true"
-
-            android:background="@color/lightGray"
             android:layout_marginBottom="10dp"
+            android:background="@color/lightGray"
+            android:hint="Email"
+
+            android:inputType="textEmailAddress"
             android:padding="10dp"
-            android:textColor="@color/black"
-            />
+            android:singleLine="true"
+            android:textColor="@color/black" />
 
         <EditText
             android:id="@+id/et_reg_password"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
 
-            android:hint="Password"
-            android:inputType="textPassword"
-            android:singleLine="true"
-
-            android:background="@color/lightGray"
             android:layout_marginBottom="10dp"
+            android:background="@color/lightGray"
+            android:hint="Password"
+
+            android:inputType="textPassword"
             android:padding="10dp"
-            android:textColor="@color/black"
-            />
+            android:singleLine="true"
+            android:textColor="@color/black" />
 
         <EditText
             android:id="@+id/et_reg_phonenumber"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
 
-            android:hint="Phone Number"
-            android:inputType="phone"
-            android:singleLine="true"
-
-            android:background="@color/lightGray"
             android:layout_marginBottom="10dp"
+            android:background="@color/lightGray"
+            android:hint="Phone Number"
+
+            android:inputType="phone"
             android:padding="10dp"
-            android:textColor="@color/black"
-            />
+            android:singleLine="true"
+            android:textColor="@color/black" />
 
         <Button
             android:id="@+id/btn_reg"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Register"
+            android:layout_marginBottom="10dp"
 
             android:layout_marginTop="30dp"
-            android:layout_marginBottom="10dp"
+            android:background="@color/white"
             android:padding="10dp"
 
-            android:textSize="15dp"
+            android:text="Register"
 
-            android:background="@color/colorPrimary"
             android:textAllCaps="false"
-            android:textColor="@color/white" />
-            />
+            android:textColor="@color/colorPrimary"
+            android:textSize="15dp" />
 
-
-        />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@android:color/darker_gray"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="10dp"
+            android:background="@android:color/darker_gray" />
 
         <ProgressBar
             android:id="@+id/pb_reg"
             style="?android:attr/progressBarStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:visibility="invisible"/>
+            android:visibility="invisible" />
 
     </LinearLayout>
 
