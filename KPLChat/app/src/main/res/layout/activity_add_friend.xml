@@ -15,50 +15,43 @@
         android:paddingLeft="20dp"
         android:paddingRight="20dp">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/tv_add_friend"
-            android:textAlignment="center" />
-
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:orientation="horizontal"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp">
+            android:paddingLeft="0dp"
+            android:paddingRight="0dp">
 
             <EditText
                 android:id="@+id/et_add_friend_email"
-                android:layout_width="fill_parent"
+                android:layout_width="306dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:background="@color/lightGray"
+                android:layout_weight="1"
                 android:hint="@string/hint_email"
                 android:inputType="textEmailAddress"
                 android:padding="10dp"
                 android:singleLine="true"
                 android:textColor="@color/black"
-                android:textColorHint="@color/darkGray"
-                android:layout_weight="1"/>
+                android:textColorHint="@color/darkGray" />
 
             <Button
                 android:id="@+id/btn_search_add_friend"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:layout_weight="3"
                 android:background="@color/colorPrimary"
                 android:text="@string/btn_search_add_friend"
                 android:textAllCaps="false"
-                android:textColor="@color/white"
-                android:layout_weight="3"/>
+                android:textColor="@color/white" />
         </LinearLayout>
 
         <TextView
+            android:id="@+id/tv_name_add_friend"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/tv_name_add_friend"
-            android:textAlignment="center"/>
+            android:textAlignment="center" />
 
         <Button
             android:id="@+id/btn_add_friend"
