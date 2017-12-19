@@ -69,6 +69,10 @@ public class RegisterActivity extends AppCompatActivity implements RegisterActiv
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+        if(getSupportActionBar() != null) {
+            getSupportActionBar().setElevation(0);
+        }
+
         ButterKnife.bind(this);
 
         AndroidNetworking.initialize(getApplicationContext());
