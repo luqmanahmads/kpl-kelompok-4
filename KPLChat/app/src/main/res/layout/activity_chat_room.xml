@@ -17,22 +17,27 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_alignParentBottom="true"
+        android:background="@color/lightGray"
+        android:orientation="horizontal"
         android:weightSum="3">
 
         <EditText
             android:id="@+id/etChat"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="2"/>
+            android:layout_weight="2.2"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp" />
 
         <Button
             android:id="@+id/btnSendChat"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="send"/>
+            android:layout_weight="0.8"
+            android:background="@color/colorPrimary"
+            android:text="send"
+            android:textColor="@color/white" />
 
     </LinearLayout>
 

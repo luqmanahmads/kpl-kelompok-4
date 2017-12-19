@@ -49,6 +49,9 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityCon
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        if(getSupportActionBar() != null) {
+            getSupportActionBar().setElevation(0);
+        }
 
         ButterKnife.bind(this);
 
